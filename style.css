@@ -1,4 +1,8 @@
-button{
+button, input{
     background-color: green;
     color: white;
+    border-color: black;
+}
+#row_import, #export-button{
+    text-align: right;
 }
