@@ -2,9 +2,10 @@
     background-color: green;
     color: white;
     border-color: black;
+    text-align: right;
 }
 #file-port div{
-    text-align: right;
+    size: auto;
 }
 #start{
     background-color: red;
