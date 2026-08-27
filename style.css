@@ -1,12 +1,16 @@
-#file-port div *{
+#file-port button{
     background-color: green;
     color: white;
     border-color: black;
 }
-#file-port div{
-    size: auto;
+#file-port{
+    border: 0px;
+}
+th, td{
+    padding: 2px;
 }
 #start{
     background-color: red;
     font-size: 20px;
+    color: white;
 }
