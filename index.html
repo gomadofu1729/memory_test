@@ -9,11 +9,22 @@
 <h1>暗記</h1>
 <div id="file-port">
     <div>
-        <button id="import-button">インポート</button>
+        <button id="sample-import">サンプルデータを使用</button>
+        <select id="sample-list">
+            <option value="">サンプルを選択</option>
+            <option value="prefectureal_office">都道府県庁住所</option>
+        </select>
+    </div>
+    <div>
+        <button id="data-import">カードデータをインポート</button>
         <input type="file" id="fileInput" accept=".csv,.txt">
     </div>
     <div>
-        <button id="export-button">エクスポート</button>
+        <button id="history-import">学習履歴をインポート</button>
+        <input type="file" id="fileInput" accept=".csv">
+    </div>
+    <div>
+        <button id="export">学習履歴をエクスポート</button>
     </div>
 </div>
 <button id="start">開始</button>
