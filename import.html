@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カードデータをインポート - めもりーくぇすちょねあ/title>
+<script src="import.js" defer></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>カードデータをインポート</h1>
+</header>
+<main>
+    <section>
+        <h2>1. カードデータ</h2>
+        <input
+            type="file"
+            id="select-file"
+            accept=".csv,.tsv,.txt"
+        >
+        <p id="fileInfo"></p>
+    </section>
+
+    <section>
+        <h2>2. カードセット</h2>
+        <label>
+            <input
+                type="radio"
+                name="setMode"
+                value="new"
+                checked
+            >
+            新しいセットを作成
+        </label>
+        <div>
+            <label for="new-set-name">セット名</label>
+            <input
+                type="text"
+                id="new-set-name"
+                placeholder="例: 日本の都道府県庁"
+            >
+        </div>
+        <label>
+            <input
+                type="radio"
+                name="setMode"
+                value="existing"
+            >
+            既存のセットに追加
+        </label>
+
+        <select id="existing" disabled>
+            <option value="">既存セットを選択</option>
+        </select>
+    </section>
+
+    <section>
+        <h2>3. 出題方式</h2>
+        <div id="methods">
+            <!-- JavaScriptで生成 -->
+        </div>
+        <button id="add-method">
+            ＋ 出題方式を追加
+        </button>
+    </section>
+
+    <section>
+        <h2>4. 確認</h2>
+
+        <div id="summary">
+            まだ設定されていません。
+        </div>
+        <button id="register">
+            登録
+        </button>
+    </section>
+</main>
+</body>
+</html>
