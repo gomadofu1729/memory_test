@@ -6,7 +6,6 @@ const exportBTN= document.getElementById("export");
 const setting= document.getElementById("setting");
 const start= document.getElementById("start");
 
-console.log("ええいああ")
 data_import.addEventListener("click", ()=>{
     alert("データをインポートするよ！");
 });
@@ -20,5 +19,5 @@ setting.addEventListener("click", ()=>{
     alert(select_sets.value +" の設定をするよ！");
 })
 start.addEventListener("click", ()=>{
-    alert(select_sets.value +" でスタートするよ！");
+    alert(select_sets.value +" ではじめるよ！");
 })
