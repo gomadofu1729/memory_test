@@ -6,6 +6,8 @@ const exportBTN= document.getElementById("export");
 const setting= document.getElementById("setting");
 const start= document.getElementById("start");
 
+let カードセット;
+
 console.log(history_file.value);
 data_import.addEventListener("click", ()=>{
     alert("データインポートの画面を開くよ！");
@@ -23,10 +25,8 @@ history_file.addEventListener("change", ()=>{
     const 読取= new FileReader();
     読取.addEventListener("load", ()=>{
         alert(`${history_file.files[0].name}を読み込んだよ！`);
-        const 取得データ= JSON.parse(読取.result);
-        console.log(取得データ.cards);
-        console.log(取得データ.methods);
-        console.log(取得データ.cards.data.glyph);
+        カードセット= JSON.parse(読取.result);
+        console.log(カードセット.name);
     });
     読取.readAsText(history_file.files[0]);
 });
