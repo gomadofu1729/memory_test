@@ -24,7 +24,7 @@ history_file.addEventListener("change", ()=>{
     alert(`${history_file.value.name} をインポートするよ！`);
     const 読取= new FileReader();
     読取.addEventListener("load", ()=>{
-        console.log(読取.result);
+        const 送信データ= JSON.parse(読取.result);
     });
     読取.readAsText(history_file.value);
 });
@@ -34,7 +34,7 @@ exportBTN.addEventListener("click", ()=>{
 });
 setting.addEventListener("click", ()=>{
     alert(`${select_sets.value} の設定をするよ！`);
-    window.location.href= `setting.html?Set=${select_sets.value}`;
+    window.location.href= `set_setting.html?Set=${select_sets.value}`;
 });
 start.addEventListener("click", ()=>{
     alert(`${select_sets.value} ではじめるよ！`);
