@@ -1,22 +1,23 @@
-class CardSet {
-    constructor(name, cards, methods) {
-        this.name = name;
-        this.cards = cards;
-        this.methods = methods;
-    }
-}
-class Card {
-    constructor(id, data) {
-        this.id = id;
-        this.data = data;
-    }
-}
-class Method {
-    constructor(id, question_field, answer_field, question_text = "", answer_text = "") {
-        this.id = id;
-        this.question_field = question_field;
-        this.answer_field = answer_field;
-        this.question_text = question_text;
-        this.answer_text = answer_text;
-    }
-}
+const data_import= document.getElementById("data-import");
+const history_import= document.getElementById("history-import");
+const history_file= document.getElementById("history-file");
+const select_sets= document.getElementById("select-sets");
+const export= document.getElementById("export");
+const setting= document.getElementById("setting");
+const start= document.getElementById("start");
+
+data_import.addEventListener("click", ()=>{
+    alert("データをインポートするよ！");
+});
+history_import.addEventListener("click", ()=>{
+    alert("履歴をインポートするよ！");
+})
+export.addEventListener("click", ()=>{
+    alert(select_sets.value +" をエクスポートするよ！");
+})
+setting.addEventListener("click", ()=>{
+    alert(select_sets.value +" の設定をするよ！");
+})
+start.addEventListener("click", ()=>{
+    alert(select_sets.value +" でスタートするよ！");
+})
