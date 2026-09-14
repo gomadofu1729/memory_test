@@ -8,6 +8,11 @@ const start= document.getElementById("start");
 
 let カードセット;
 
+const DBリクエスト= indexedDB.open("めもりーくぇすちょねあ", 1);
+DBリクエスト.addEventListener("upgradeneeded", ()=>{
+    const データベース= DBリクエスト.result:
+    データベース.createObjectStore("Card_Sets",{keyPath:"id"});
+})
 data_import.addEventListener("click", ()=>{
     alert("データインポートの画面を開くよ！");
     window.location.href= "import.html";
