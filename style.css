@@ -10,8 +10,10 @@ th, td{
     padding: 2px;
 }
 #Main-buttons button{
-    background-color: black;
     color: white;
+}
+#export, #setting{
+    background-color: black;
 }
 #start{
     background-color: red;
