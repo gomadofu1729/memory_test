@@ -20,8 +20,8 @@ history_file.addEventListener("change", ()=>{
         alert("もう一度えらんでね！");
         return;
     }
-    console.log(file);
-    alert(`${file.name} をインポートするよ！`)
+    console.log(history_file.value);
+    alert(`${history_file.value} をインポートするよ！`)
 })
 exportBTN.addEventListener("click", ()=>{
     alert(`${select_sets.value} をエクスポートするよ！`);
