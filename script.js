@@ -1,5 +1,6 @@
 const data_import= document.getElementById("data-import");
 const history_import= document.getElementById("history-import");
+const history_file= document.getElementById("history-file");
 const select_sets= document.getElementById("select-sets");
 const exportBTN= document.getElementById("export");
 const setting= document.getElementById("setting");
@@ -10,7 +11,9 @@ data_import.addEventListener("click", ()=>{
     window.location.href= "import.html";
 });
 history_import.addEventListener("click", ()=>{
-    alert(" をインポートするよ！");
+    alert("ファイルをえらんでね！");
+    history_file.click();
+    alert(`${history_file.value} をインポートするよ！`);
 
 })
 exportBTN.addEventListener("click", ()=>{
