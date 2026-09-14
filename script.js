@@ -8,7 +8,6 @@ const start= document.getElementById("start");
 
 let カードセット;
 
-console.log(history_file.value);
 data_import.addEventListener("click", ()=>{
     alert("データインポートの画面を開くよ！");
     window.location.href= "import.html";
@@ -26,7 +25,10 @@ history_file.addEventListener("change", ()=>{
     読取.addEventListener("load", ()=>{
         alert(`${history_file.files[0].name}を読み込んだよ！`);
         カードセット= JSON.parse(読取.result);
-        console.log(カードセット.name);
+        const 新選択肢= document.createElement("option");
+        新選択肢.value= カードセット.id;
+        新選択肢.textContent= カードセット.name;
+        select_sets.appendChild(新選択肢);
     });
     読取.readAsText(history_file.files[0]);
 });
