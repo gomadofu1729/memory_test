@@ -20,12 +20,12 @@ history_file.addEventListener("change", ()=>{
         alert("もう一度えらんでね！");
         return;
     }
-    console.log(history_file.value);
     const 読取= new FileReader();
     読取.addEventListener("load", ()=>{
+        alert(`${history_file.value.name}を読み込んだよ！`);
         const 送信データ= JSON.parse(読取.result);
+        console.log(送信データ.name);
     });
-    alert(`${history_file.value}を読み込むよ！`);
     読取.readAsText(history_file.files[0]);
 });
 exportBTN.addEventListener("click", ()=>{
