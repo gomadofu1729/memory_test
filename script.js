@@ -20,12 +20,3 @@ class Method {
         this.answer_text = answer_text;
     }
 }
-
-function getWeight(history) {
-    if (history.length === 0) {
-        return 2;
-    }
-    const correct= history.filter(x => x === 1).length;
-    const correct_rate = correct / history.length;
-    return 1+ (1 - correct_rate);
-}

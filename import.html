@@ -14,6 +14,10 @@
 <main>
     <section>
         <h2>1. カードデータ</h2>
+        <select id="import-type">
+            <option value="user-file">ファイルを選択</option>
+            <option value="pref">sample: 都道府県庁住所</option>
+        </select>
         <input
             type="file"
             id="select-file"
@@ -34,7 +38,7 @@
             新しいセットを作成
         </label>
         <div>
-            <label for="new-set-name">セット名</label>
+            <label for="new-set-name">　セット名</label>
             <input
                 type="text"
                 id="new-set-name"
