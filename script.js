@@ -14,24 +14,27 @@ data_import.addEventListener("click", ()=>{
 history_import.addEventListener("click", ()=>{
     alert("ファイルをえらんでね！");
     history_file.click();
-})
+});
 history_file.addEventListener("change", ()=>{
     if (!history_file.value){
         alert("もう一度えらんでね！");
         return;
     }
     console.log(history_file.value);
-    alert(`${history_file.value} をインポートするよ！`)
-})
+    alert(`${history_file.value.name} をインポートするよ！`);
+    const 読取= new FileReader();
+    読取.addEventListener("load", ()=>{console.log(読取.result);});
+    読取.readAsText(history_file.value);
+});
 exportBTN.addEventListener("click", ()=>{
     alert(`${select_sets.value} をエクスポートするよ！`);
     
-})
+});
 setting.addEventListener("click", ()=>{
     alert(`${select_sets.value} の設定をするよ！`);
     window.location.href= `setting.html?Set=${select_sets.value}`;
-})
+});
 start.addEventListener("click", ()=>{
     alert(`${select_sets.value} ではじめるよ！`);
     window.location.href= `memorize.html?Set=${select_sets.value}`;
-})
+});
