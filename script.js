@@ -6,6 +6,7 @@ const exportBTN= document.getElementById("export");
 const setting= document.getElementById("setting");
 const start= document.getElementById("start");
 
+console.log(history_file.value);
 data_import.addEventListener("click", ()=>{
     alert("データインポートの画面を開くよ！");
     window.location.href= "import.html";
@@ -13,8 +14,14 @@ data_import.addEventListener("click", ()=>{
 history_import.addEventListener("click", ()=>{
     alert("ファイルをえらんでね！");
     history_file.click();
-    alert(`${history_file.value} をインポートするよ！`);
-
+})
+history_file.addEventListener("change", ()=>{
+    if (!history_file.value){
+        alert("もう一度えらんでね！");
+        return;
+    }
+    console.log(file);
+    alert(`${file.name} をインポートするよ！`)
 })
 exportBTN.addEventListener("click", ()=>{
     alert(`${select_sets.value} をエクスポートするよ！`);
