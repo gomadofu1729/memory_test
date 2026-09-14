@@ -25,7 +25,7 @@ history_file.addEventListener("change", ()=>{
     読取.addEventListener("load", ()=>{
         const 送信データ= JSON.parse(読取.result);
     });
-    alert(`${history_file.value}を読み込むよ！`)
+    alert(`${history_file.value}を読み込むよ！`);
     読取.readAsText(history_file.value);
 });
 exportBTN.addEventListener("click", ()=>{
