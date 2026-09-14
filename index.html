@@ -10,17 +10,7 @@
 <h1>暗記</h1>
 <table id="file-port">
     <tr>
-        <td><button id="sample-import">サンプルデータを使用</button></td>
-        <td>
-            <select id="sample-list">
-                <option value="">サンプルを選択</option>
-                <option value="prefectureal_office">都道府県庁住所</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td><button id="data-import">カードデータをインポート</button></td>
-        <td><input type="file" id="fileInput" accept=".csv,.txt"></td>
+        <td><button id="data-import">カードデータをインポート</button></td><td></td>
     </tr>
     <tr>
         <td><button id="history-import">学習履歴をインポート</button></td>
@@ -35,9 +25,11 @@
         </td>
     </tr>
 </table>
-<br>
+<div>
 <select id="select-sets">
     <option value="">セットを選択</option>
 </select>
+</div>
+<button id="check">セットを確認</button>
 <button id="start">開始</button>
 </body>
