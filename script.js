@@ -25,8 +25,8 @@ history_file.addEventListener("change", ()=>{
     const 読取= new FileReader();
     読取.addEventListener("load", ()=>{
         console.log(読取.result);
-        読取.readAsText(history_file.value);
     });
+    読取.readAsText(history_file.value);
 });
 exportBTN.addEventListener("click", ()=>{
     alert(`${select_sets.value} をエクスポートするよ！`);
