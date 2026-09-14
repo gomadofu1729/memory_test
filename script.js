@@ -6,6 +6,7 @@ const export= document.getElementById("export");
 const setting= document.getElementById("setting");
 const start= document.getElementById("start");
 
+console.log("ええいああ")
 data_import.addEventListener("click", ()=>{
     alert("データをインポートするよ！");
 });

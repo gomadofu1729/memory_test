@@ -9,8 +9,11 @@
 th, td{
     padding: 2px;
 }
+#Main-buttons button{
+    background-color: black;
+    color: white;
+}
 #start{
     background-color: red;
-    color: white;
     font-size: 20px;
 }
