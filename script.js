@@ -24,7 +24,9 @@ history_file.addEventListener("change", ()=>{
     読取.addEventListener("load", ()=>{
         alert(`${history_file.files[0].name}を読み込んだよ！`);
         const 取得データ= JSON.parse(読取.result);
-        console.log(取得データ.name);
+        console.log(取得データ.cards);
+        console.log(取得データ.methods);
+        console.log(取得データ.cards.data.glyph);
     });
     読取.readAsText(history_file.files[0]);
 });
