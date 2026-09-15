@@ -8,11 +8,6 @@ const setting= document.getElementById("setting");
 const start= document.getElementById("start");
 
 let カードセット;
-const DBリクエスト= indexedDB.open("めもりーくぇすちょねあ", 1);
-DBリクエスト.addEventListener("upgradeneeded", ()=>{
-    const データベース= DBリクエスト.result;
-    データベース.createObjectStore("Card_Sets",{keyPath:"id"});
-})
 
 cards_import.addEventListener("click", ()=>{
     遷移.import();
