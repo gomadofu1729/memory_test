@@ -9,7 +9,7 @@
 th, td{
     padding: 2px;
 }
-#Main-buttons:not(#start) button{
+#Main-buttons button:not(#start){
     background-color: black;
     color: white;
 }
