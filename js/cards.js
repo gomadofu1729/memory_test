@@ -80,7 +80,7 @@ document.addEventListener("click", (event)=>{
             CloseBodyMenu();
         }
         if(!event.target.closest("#card-table-body")){
-            conosle.log("あじ");
+            console.log("あじ");
             CloseHeadMenu();
         }
     }
