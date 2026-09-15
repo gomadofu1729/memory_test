@@ -2,6 +2,13 @@ p{
     margin-top: auto;
     margin-bottom: auto;
 }
+table{
+    border: 2px;
+    border-collapse: collapse;
+}
+th{
+    background-color: lightblue;
+}
 
 .vertical{
     display: flex;
@@ -10,6 +17,9 @@ p{
 }
 .vertical button{
     margin-bottom: 2px;
+}
+.pop-up{
+    background-color: white;
 }
 
 #file-port button{

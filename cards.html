@@ -9,21 +9,40 @@
 </head>
 <body>
 <header><h1>カードデータ</h1></header>
-<p id="set-name"></p>
-<table id="table">
-    <tr id="header">
-        <th>ID</th>
-        <th>仮</th>
-    </tr>
-    <tr>
-        <td>01</td>
-        <td>ほげ</td>
-    </tr>
+<h4 id="set-name"></h4>
+<table>
+    <thead id="card-table-head">
+        <tr>
+            <th data-field-id="id">ID</th>
+            <th data-field-id="hoge">仮</th>
+        </tr>
+    </thead>
+    <tbody id="card-table-body">
+        <tr>
+            <td data-card-id="01">01</td>
+            <td>ふが</td>
+        </tr>
+    </tbody>
 </table>
 <div id="buttons">
     <button id="confirm">変更を保存</button>
     <button id="cards-import">カードをインポート</button>
     <button id="cards-export">カードをエクスポート</button>
     <button id="setting">設定画面に戻る</button>
+</div>
+<div id="head-menu" class="pop-up vertical" hidden>
+    <p id="field-name">表示名: </p>
+    <button id="field-edit">編集</button>
+    <p id="field-id">フィールドID: </p>
+    <p>ここから問う方式</p>
+    <div id="field-method-from"></div>
+    <p>ここを問う方式</p>
+    <div id="field-method-to"></div>
+</div>
+<div id="card-menu" class="pop-up vertical" hidden>
+    <button id="content-edit">編集</button>
+    <button id="card-exclusion">除外設定</button>
+    <button id="card-delete">削除</button>
+    <button id="card-undelete">削除取り消し</button>
 </div>
 </body>
