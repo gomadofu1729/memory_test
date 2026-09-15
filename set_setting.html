@@ -15,14 +15,14 @@
     <input type="text" id="set-name-edit" hidden>
 </div>
 <h3>カード</h3>
-<div id="cards">
+<div id="cards" class="vertical">
     <p id="cards-number">0件</p>
-    <button id="cards-check">カードを閲覧</button><br>
-    <button id="cards-import">カードをインポート</button><br>
+    <button id="cards-check">カードを閲覧</button>
+    <button id="cards-import">カードをインポート</button>
     <button id="cards-export">カードをエクスポート</button>
 </div>
 <h3>出題方式</h3>
-<div id="methods">
+<div id="methods" class="vertical">
     <p id="methods-number">0件</p>
     <button id="methods-edit">出題方式を管理</button>
 </div>
@@ -32,8 +32,13 @@
     <button id="exclusion-edit">除外設定を管理</button>
 </div>
 <h3>データ</h3>
-<div id="buttons">
-    <button id="history-export">カードセットをエクスポート</button><br>
+<div id="buttons" class="vertical">
+    <button id="history-export">カードセットをエクスポート</button>
     <button id="delete">カードセットを削除</button>
+</div>
+<h6></h6>
+<div id="transit" class="vertical">
+    <button id="index">メニューに戻る</button>
+    <button id="start">このセットで開始</button>
 </div>
 </body>
