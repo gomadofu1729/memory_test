@@ -17,7 +17,7 @@ const 倉庫番= {
         })
         
     }
-    save(カードセット){
+    store(カードセット){
         const 処理= 倉庫番.db.transaction("カードケース","readwrite");
         const 店= 処理.objectStore("カードケース"); //「たな」と読む。以下同じ。
         店.put(カードセット);
