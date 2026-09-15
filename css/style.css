@@ -27,10 +27,6 @@ th{
     background-color: white;
     border: 2px solid black;
 }
-.pop-up button{
-    font-size: 14px;
-    padding: 2px;
-}
 
 #file-port button{
     background-color: green;

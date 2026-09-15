@@ -19,7 +19,7 @@ const card_exclusion= document.getElementById("card-exclusion");
 const card_delete= document.getElementById("card-delete");
 const card_undelete= document.getElementById("card-undelete");
 
-const set= {
+const set= { //仮
     "id": "hoge",
     "name": "hoge",
     "fields": [
@@ -40,9 +40,16 @@ const set= {
     ]
 };
 
+function CloseHeadMenu() {
+    head_menu.classList.remove("vertical");
+}
+function CloseBodyMenu() {
+    body_menu.classList.remove("vertical");
+}
+
 card_table_head.addEventListener("click", (event)=>{
     const 対象セル= event.target.closest(("th"));
-    if (!対象セル){return;}
+    if(!対象セル){return;}
 
     const 対象のID= 対象セル.dataset.fieldId;
     if(対象のID === "id"){return;}
@@ -52,3 +59,25 @@ card_table_head.addEventListener("click", (event)=>{
     head_menu.style.left = `${event.clientX}px`;
     head_menu.style.top = `${event.clientY}px`;
 });
+card_table_body.addEventListener("click", (event)=>{
+    const 対象セル= event.target.closest(("td"));
+    if(!対象セル){return;}
+
+    const 対象のID= 対象セル.dataset.fieldId;
+    if(対象のID === "id"){return;}
+    
+    const 目的フィールド= set.cards.find(f => f.id === 対象のID);
+    body_menu.classList.add("vertical");
+    body_menu.style.left = `${event.clientX}px`;
+    body_menu.style.top = `${event.clientY}px`;
+})
+document.addEventListener("click", (event)=>{
+    if(!event.target.closest(".pop-up")){
+        if(!event.target.closest(card_table_head)){
+            CloseHeadMenu();
+        }
+        if(!event.target.closest(card_table_body)){
+            CloseBodyMenu();
+        }
+    }
+})
