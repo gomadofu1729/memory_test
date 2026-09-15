@@ -24,7 +24,9 @@ th{
 }
 .pop-up.vertical{
     position: fixed;
-    background-color: white;
+    background-color: lightgray;
+    border: 2px;
+    border-color: black;
 }
 
 #file-port button{
