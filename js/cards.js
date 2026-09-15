@@ -40,17 +40,7 @@ const set= { //仮
     ]
 };
 
-function CloseHeadMenu() {
-    head_menu.classList.remove("vertical");
-    console.log("りす");
-}
-function CloseBodyMenu() {
-    body_menu.classList.remove("vertical");
-    console.log("あじ");
-}
-
 card_table_head.addEventListener("click", (event)=>{
-    console.log("あるぱか");
     const 対象セル= event.target.closest(("th"));
     if(!対象セル){return;}
 
@@ -63,7 +53,6 @@ card_table_head.addEventListener("click", (event)=>{
     head_menu.style.top = `${event.clientY}px`;
 });
 card_table_body.addEventListener("click", (event)=>{
-    console.log("しゃち");
     const 対象セル= event.target.closest(("td"));
     if(!対象セル){return;}
 
@@ -78,10 +67,10 @@ card_table_body.addEventListener("click", (event)=>{
 document.addEventListener("click", (event)=>{
     if(!event.target.closest(".pop-up")){
         if(!event.target.closest("#card-table-head")){
-            CloseHeadMenu();
+            head_menu.classList.remove("vertical");
         }
         if(!event.target.closest("#card-table-body")){
-            CloseBodyMenu();
+            body_menu.classList.remove("vertical");
         }
     }
 })
