@@ -8,6 +8,11 @@ const setting= document.getElementById("setting");
 const start= document.getElementById("start");
 
 let カードセット;
+async function main() {
+    await 倉庫番.open();
+    console.log(倉庫番.db);
+}
+main();
 
 cards_import.addEventListener("click", ()=>{
     船頭.import();
