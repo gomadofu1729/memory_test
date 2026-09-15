@@ -43,7 +43,8 @@ card_table_head.addEventListener("click", (event)=>{
 
     const 対象のID= 対象セル.dataset.fieldID;
     if(対象のID === "id"){return;}
+    console.log(対象のID)
     
-    const 目的フィールド= set.fields.find(い => い.id===対象のID);
+    const 目的フィールド= set.fields.find(f => f.id === 対象のID);
     console.log(目的フィールド);
 });
