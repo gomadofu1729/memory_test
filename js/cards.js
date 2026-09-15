@@ -42,9 +42,11 @@ const set= { //仮
 
 function CloseHeadMenu() {
     head_menu.classList.remove("vertical");
+    console.log("りす");
 }
 function CloseBodyMenu() {
     body_menu.classList.remove("vertical");
+    console.log("あじ");
 }
 
 card_table_head.addEventListener("click", (event)=>{
@@ -76,11 +78,9 @@ card_table_body.addEventListener("click", (event)=>{
 document.addEventListener("click", (event)=>{
     if(!event.target.closest(".pop-up")){
         if(!event.target.closest("#card-table-head")){
-            console.log("りす");
             CloseHeadMenu();
         }
         if(!event.target.closest("#card-table-body")){
-            console.log("あじ");
             CloseBodyMenu();
         }
     }
