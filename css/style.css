@@ -23,6 +23,7 @@ th{
     display: none;
 }
 .pop-up.vertical{
+    position: fixed;
     background-color: white;
 }
 

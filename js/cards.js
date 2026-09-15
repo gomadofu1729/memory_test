@@ -48,8 +48,7 @@ card_table_head.addEventListener("click", (event)=>{
     if(対象のID === "id"){return;}
     
     const 目的フィールド= set.fields.find(f => f.id === 対象のID);
-    console.log(目的フィールド);
+    head_menu.classList.add("vertical");
     head_menu.style.left = `${event.clientX}px`;
     head_menu.style.top = `${event.clientY}px`;
-    head_menu.classList.add("vertical");
 });
