@@ -47,9 +47,9 @@ cards_export.addEventListener("click", ()=>{
 })
 setting.addEventListener("click", ()=>{
     alert(`${select_sets.value} の設定をするよ！`);
-    window.location.href= `set_setting.html?Set=${select_sets.value}`;
+    visit.setting(select_sets.value);
 });
 start.addEventListener("click", ()=>{
     alert(`${select_sets.value} ではじめるよ！`);
-    window.location.href= `memorize.html?Set=${select_sets.value}`;
+    visit.memorize(select_sets.value);
 });
