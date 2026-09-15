@@ -8,7 +8,7 @@ const エクスポート= {
         リンク.click();
         URL.revokeObjectURL(url);
     }
-    history(セットID){
+    back_up(セットID){
         const カードセット;
         エクスポート.download(
             JSON.stringify(カードセット, null, 4),

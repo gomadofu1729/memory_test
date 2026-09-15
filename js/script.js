@@ -38,7 +38,7 @@ cards_export.addEventListener("click", ()=>{
 })
 set_export.addEventListener("click", ()=>{
     alert(`${select_sets.value} のバックアップをエクスポートするよ！`);
-    エクスポート.history(select_sets.value)
+    エクスポート.back_up(select_sets.value)
 });
 setting.addEventListener("click", ()=>{
     alert(`${select_sets.value} の設定をするよ！`);
