@@ -16,12 +16,12 @@ const 倉庫番= {
             })
         })
         
-    }
-    house(カードセット){
+    },
+    store(カードセット){
         const 処理= 倉庫番.db.transaction("カードケース","readwrite");
         const 店= 処理.objectStore("カードケース"); //「たな」と読む。以下同じ。
         店.put(カードセット);
-    }
+    },
     get(セットID){
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readonly");
@@ -34,7 +34,7 @@ const 倉庫番= {
                 reject(注文.error)
             });
         });
-    }
+    },
     enum(){
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readonly");
@@ -47,8 +47,8 @@ const 倉庫番= {
                 reject(注文.error)
             });
         });
-    }
-    get(セットID){
+    },
+    delete(セットID){
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readonly");
             const 店= 処理.objectStore("カードケース");
