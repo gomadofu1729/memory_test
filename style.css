@@ -9,13 +9,12 @@
 th, td{
     padding: 2px;
 }
-#Main-buttons button{
-    color: white;
-}
-#export, #setting{
+#Main-buttons button :not(#start){
     background-color: black;
+    color: white;
 }
 #start{
     background-color: red;
+    color: white;
     font-size: 20px;
 }
