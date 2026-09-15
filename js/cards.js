@@ -77,11 +77,11 @@ document.addEventListener("click", (event)=>{
     if(!event.target.closest(".pop-up")){
         if(!event.target.closest("#card-table-head")){
             console.log("りす");
-            CloseBodyMenu();
+            CloseHeadMenu();
         }
         if(!event.target.closest("#card-table-body")){
             console.log("あじ");
-            CloseHeadMenu();
+            CloseBodyMenu();
         }
     }
 })
