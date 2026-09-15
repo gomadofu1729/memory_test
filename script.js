@@ -2,7 +2,8 @@ const data_import= document.getElementById("data-import");
 const history_import= document.getElementById("history-import");
 const history_file= document.getElementById("history-file");
 const select_sets= document.getElementById("select-sets");
-const exportBTN= document.getElementById("export");
+const history_export= document.getElementById("history-export");
+const data_export= document.getElementById("data-export");
 const setting= document.getElementById("setting");
 const start= document.getElementById("start");
 
@@ -37,10 +38,13 @@ history_file.addEventListener("change", ()=>{
     });
     読取.readAsText(history_file.files[0]);
 });
-exportBTN.addEventListener("click", ()=>{
+history_export.addEventListener("click", ()=>{
     alert(`${select_sets.value} をエクスポートするよ！`);
     
 });
+data_export.addEventListener("click", ()=>{
+
+})
 setting.addEventListener("click", ()=>{
     alert(`${select_sets.value} の設定をするよ！`);
     window.location.href= `set_setting.html?Set=${select_sets.value}`;
