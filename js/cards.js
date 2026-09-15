@@ -75,11 +75,11 @@ card_table_body.addEventListener("click", (event)=>{
 })
 document.addEventListener("click", (event)=>{
     if(!event.target.closest(".pop-up")){
-        if(!event.target.closest("card_table_head")){
+        if(!event.target.closest("#card-table-head")){
             console.log("りす");
             CloseBodyMenu();
         }
-        if(!event.target.closest("card_table_body")){
+        if(!event.target.closest("#card-table-body")){
             conosle.log("あじ");
             CloseHeadMenu();
         }
