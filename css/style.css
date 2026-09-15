@@ -18,6 +18,9 @@ th, td{
     color: white;
     font-size: 20px;
 }
+p{
+    margin: auto;
+}
 .vertical{
     display: flex;
     flex-direction: column;
