@@ -19,38 +19,17 @@ const card_exclusion= document.getElementById("card-exclusion");
 const card_delete= document.getElementById("card-delete");
 const card_undelete= document.getElementById("card-undelete");
 
-const set= { //仮
-    "id": "hoge",
-    "name": "hoge",
-    "fields": [
-        {
-            "id": "id",
-            "name": "id"
-        },
-        {
-            "id": "hoge",
-            "name": "仮"
-        }
-    ],
-    "cards": [
-        {
-            "id": "01",
-            "hoge": "ふが"
-        }
-    ]
-};
-
 let 目的フィールド;
 let 目的カード;
 
-card_table_head.addEventListener("click", (event)=>{
+card_table_head.addEventListener("click", (event) =>{
     const 対象セル= event.target.closest(("th"));
     if(!対象セル){return;}
 
     const 対象のID= 対象セル.dataset.fieldId;
     if(対象のID === "id"){return;}
     
-    目的フィールド= set.fields.find(f => f.id === 対象のID);
+    目的フィールド= set.fields.find((ふ) => ふ.id === 対象のID);
     head_menu.classList.add("vertical");
     head_menu.style.left = `${event.clientX}px`;
     head_menu.style.top = `${event.clientY}px`;
@@ -59,10 +38,10 @@ card_table_body.addEventListener("click", (event)=>{
     const 対象セル= event.target.closest(("td"));
     if(!対象セル){return;}
 
+    if(対象セル.dataset.fieldId === undefined){return;}
     const 対象のID= 対象セル.dataset.fieldId;
-    if(対象のID === "id"){return;}
     
-    目的カード= set.cards.find(f => f.id === 対象のID);
+    目的カード= set.cards.find((ふ) => ふ.id === 対象のID);
     body_menu.classList.add("vertical");
     body_menu.style.left = `${event.clientX}px`;
     body_menu.style.top = `${event.clientY}px`;
