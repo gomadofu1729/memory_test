@@ -1,4 +1,4 @@
-const visit= {
+const 遷移= {
     index(){
         window.location.href= `index.html`;
     },
@@ -31,7 +31,7 @@ const エクスポート= {
         リンク.click();
         URL.revokeObjectURL(url);
     }
-    history(セットID){
+    set(セットID){
         const カードセット;
         エクスポート.download(
             JSON.stringify(カードセット, null, 4),

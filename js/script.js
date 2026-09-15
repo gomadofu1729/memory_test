@@ -8,15 +8,14 @@ const setting= document.getElementById("setting");
 const start= document.getElementById("start");
 
 let カードセット;
-
 const DBリクエスト= indexedDB.open("めもりーくぇすちょねあ", 1);
 DBリクエスト.addEventListener("upgradeneeded", ()=>{
     const データベース= DBリクエスト.result;
     データベース.createObjectStore("Card_Sets",{keyPath:"id"});
 })
+
 cards_import.addEventListener("click", ()=>{
-    alert("データインポートの画面を開くよ！");
-    window.location.href= "import.html";
+    遷移.import();
 });
 set_import.addEventListener("click", ()=>{
     alert("ファイルをえらんでね！");
@@ -38,18 +37,19 @@ set_file.addEventListener("change", ()=>{
     });
     読取.readAsText(set_file.files[0]);
 });
-set_export.addEventListener("click", ()=>{
-    alert(`${select_sets.value} をエクスポートするよ！`);
-    
-});
 cards_export.addEventListener("click", ()=>{
-
+    alert(`${select_sets.value} のデータをエクスポートするよ！`);
+    エクスポート.data(select_sets.value)
 })
+set_export.addEventListener("click", ()=>{
+    alert(`${select_sets.value} のバックアップをエクスポートするよ！`);
+    エクスポート.history(select_sets.value)
+});
 setting.addEventListener("click", ()=>{
     alert(`${select_sets.value} の設定をするよ！`);
-    visit.setting(select_sets.value);
+    遷移.setting(select_sets.value);
 });
 start.addEventListener("click", ()=>{
     alert(`${select_sets.value} ではじめるよ！`);
-    visit.memorize(select_sets.value);
+    遷移.memorize(select_sets.value);
 });
