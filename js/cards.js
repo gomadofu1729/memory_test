@@ -57,10 +57,10 @@ document.addEventListener("click", (event)=>{
     }
 })
 cards_import.addEventListener("click", ()=>{
-    遷移.import(セットID);
+    船頭.import(セットID);
 })
 cards_export.addEventListener("click", ()=>{
-    エクスポート.data(セットID)
+    飛脚.data(セットID)
 })
 setting.addEventListener("click", ()=>{
     visit.import(セットID);

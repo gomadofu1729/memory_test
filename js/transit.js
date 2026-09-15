@@ -1,4 +1,4 @@
-const 遷移= {
+const 船頭= {
     index(){
         window.location.href= `index.html`;
     },

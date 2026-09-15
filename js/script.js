@@ -10,7 +10,7 @@ const start= document.getElementById("start");
 let カードセット;
 
 cards_import.addEventListener("click", ()=>{
-    遷移.import();
+    船頭.import();
 });
 set_import.addEventListener("click", ()=>{
     alert("ファイルをえらんでね！");
@@ -34,17 +34,17 @@ set_file.addEventListener("change", ()=>{
 });
 cards_export.addEventListener("click", ()=>{
     alert(`${select_sets.value} のデータをエクスポートするよ！`);
-    エクスポート.data(select_sets.value)
+    飛脚.data(select_sets.value)
 })
 set_export.addEventListener("click", ()=>{
     alert(`${select_sets.value} のバックアップをエクスポートするよ！`);
-    エクスポート.back_up(select_sets.value)
+    飛脚.history(select_sets.value)
 });
 setting.addEventListener("click", ()=>{
     alert(`${select_sets.value} の設定をするよ！`);
-    遷移.setting(select_sets.value);
+    船頭.setting(select_sets.value);
 });
 start.addEventListener("click", ()=>{
     alert(`${select_sets.value} ではじめるよ！`);
-    遷移.memorize(select_sets.value);
+    船頭.memorize(select_sets.value);
 });

@@ -1,4 +1,4 @@
-const エクスポート= {
+const 飛脚= {
     download(中身, 名前, 方式){
         const ブロブ= new Blob([中身], {type: 方式});
         const url= URL.createObjectURL(ブロブ);
@@ -7,15 +7,15 @@ const エクスポート= {
         リンク.download= `${名前}.${方式}`;
         リンク.click();
         URL.revokeObjectURL(url);
-    }
-    back_up(セットID){
+    },
+    history(セットID){
         const カードセット;
-        エクスポート.download(
+        飛脚.download(
             JSON.stringify(カードセット, null, 4),
             `${カードセット.name}.json`,
             "application/json"
         );
-    }
+    },
     data(セットID){
         const カードセット;
         const 見出し= カードセット.fields.map((ふ) => ふ.id);
@@ -28,7 +28,7 @@ const エクスポート= {
             中身.push(行.join("\t"));
         }
         const tsv= 中身.join("\n");
-        エクスポート.download(
+        飛脚.download(
             tsv,
             `${カードセット.name}.tsv`,
             "text/tab-separated-values"
