@@ -19,16 +19,16 @@
         <label for="seTnamEinput">セット名: </label>
         <input type="text" name="seTnamEinput" id="set-name-input">
     </div>
-    <button id="set-name-edit">編集</button>
+    <button id="set-name-edit" class="wait" disabled disabled>編集</button>
     <button id="set-name-restore" hidden>やめる</button>
     <button id="set-name-confirm" hidden>確定</button>
 </div>
 <h3>カード</h3>
 <div id="cards" class="vertical">
     <p id="cards-number">0件</p>
-    <button id="cards-edit">カードを管理</button>
+    <button id="cards-edit" class="wait" disabled>カードを管理</button>
     <button id="cards-import">カードをインポート</button>
-    <button id="cards-export">カードをエクスポート</button>
+    <button id="cards-export" class="wait" disabled>カードをエクスポート</button>
 </div>
 <h3>出題方式</h3>
 <div id="methods" class="vertical">
@@ -42,12 +42,12 @@
 </div>
 <h3>データ</h3>
 <div id="buttons" class="vertical">
-    <button id="set-export">カードセットをエクスポート</button>
+    <button id="set-export" class="wait" disabled>カードセットをエクスポート</button>
     <button id="delete">カードセットを削除</button>
 </div>
 <h4>他</h4>
 <div id="transit" class="vertical">
     <button id="index">メニューに戻る</button>
-    <button id="start">このセットで開始</button>
+    <button id="start" class="wait" disabled>このセットで開始</button>
 </div>
 </body>

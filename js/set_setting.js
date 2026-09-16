@@ -18,12 +18,18 @@ const index= document.getElementById("index");
 const start= document.getElementById("start");
 
 let カードセット;
-async function OP(){
+async function OP(){   
     await 倉庫番.ready();
     const params= new URLSearchParams(location.search);
     const セットID= params.get("set");
     カードセット= await 倉庫番.get(セットID);
-    set_name_display.textContent =`セット名: ${カードセット.name}`;
+    const 初期化待ち達= document.querySelectorAll(".初期化待ち");
+    for (const よ of 初期化待ち達) {
+        よ.disabled = false;
+    set_name_display.textContent= `セット名: ${カードセット.name}`;
+    cards_number.textContent= `${カードセット.cards.length}件`;
+    methods_number.textContent= `${カードセット.methods.length}件`;
+    exclusion_number.textContent= `${カードセット.exclusion.length}件`;
 }
 OP();
 
