@@ -23,7 +23,7 @@ async function OP(){
     const params= new URLSearchParams(location.search);
     const セットID= params.get("set");
     カードセット= await 倉庫番.get(セットID);
-    const 初期化待ち達= document.querySelectorAll(".初期化待ち");
+    const 初期化待ち達= document.querySelectorAll(".wait");
     for (const よ of 初期化待ち達) {
         よ.disabled = false;
     }
