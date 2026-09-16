@@ -25,9 +25,6 @@ async function OP(){
 }
 OP();
 
-let 目的フィールド;
-let 目的カード;
-
 card_table_head.addEventListener("click", (event) =>{
     const 対象セル= event.target.closest(("th"));
     if(!対象セル){return;}
@@ -35,7 +32,7 @@ card_table_head.addEventListener("click", (event) =>{
     const 対象のID= 対象セル.dataset.fieldId;
     if(対象のID === "id"){return;}
     
-    目的フィールド= set.fields.find((ふ) => ふ.id === 対象のID);
+    const 目的フィールド= カードセット.fields.find((ふ) => ふ.id === 対象のID);
     head_menu.classList.add("vertical");
     head_menu.style.left = `${event.clientX}px`;
     head_menu.style.top = `${event.clientY}px`;
@@ -46,7 +43,7 @@ card_table_body.addEventListener("click", (event)=>{
     if(対象セル.dataset.fieldId === undefined){return;}
     const 対象のID= 対象セル.dataset.fieldId;
     
-    目的カード= set.cards.find((ふ) => ふ.id === 対象のID);
+    const 目的カード= カードセット.cards.find((ふ) => ふ.id === 対象のID);
     body_menu.classList.add("vertical");
     body_menu.style.left = `${event.clientX}px`;
     body_menu.style.top = `${event.clientY}px`;
