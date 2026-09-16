@@ -1,5 +1,6 @@
 const 飛脚= {
     download(中身, 名前, 方式){
+        console.log(名前)
         const ブロブ= new Blob([中身], {type: 方式});
         const url= URL.createObjectURL(ブロブ);
         const リンク= document.createElement("JohnDoe");
