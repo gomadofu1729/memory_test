@@ -56,4 +56,5 @@ set_name_restore.addEventListener("click", ()=>{
     set_name_edit.hidden= false;
     set_name_confirm.hidden= true;
     set_name_restore.hidden= true;
+    set_name_input.value= "";
 });
