@@ -41,6 +41,7 @@ set_name_edit.addEventListener("click", ()=>{
     set_name_confirm.hidden= false;
     set_name_restore.hidden= false;
     set_name_input.placeholder= カードセット.name;
+    set_name_input.value= "";
 });
 set_name_confirm.addEventListener("click", ()=>{
     set_name_display.hidden= false;
@@ -48,6 +49,7 @@ set_name_confirm.addEventListener("click", ()=>{
     set_name_edit.hidden= false;
     set_name_confirm.hidden= true;
     set_name_restore.hidden= true;
+    await 倉庫番.store(カードセット);
     カードセット.name= set_name_input.value;
     set_name_display.textContent =`セット名: ${カードセット.name}`;
 });
@@ -58,3 +60,30 @@ set_name_restore.addEventListener("click", ()=>{
     set_name_confirm.hidden= true;
     set_name_restore.hidden= true;
 });
+cards_edit.addEventListener("click", ()=>{
+    船頭.cards(セットID);
+});
+cards_import.addEventListener("click", ()=>{
+    船頭.import();
+});
+cards_export.addEventListener("click", ()=>{
+    飛脚.data(カードセット);
+});
+methods_edit.addEventListener("click", ()=>{
+    船頭.methods(セットID);
+});
+exclusion_edit.addEventListener("click", ()=>{
+    船頭.exclusion(セットID);
+});
+set_export.addEventListener("click", ()=>{
+    飛脚.history(カードセット);
+});
+set_delete.addEventListener("click", ()=>{
+
+});
+index.addEventListener("click", ()=>{
+    船頭.index();
+});
+start.addEventListener("click", ()=>{
+    船頭.memorize(セットID);
+})
