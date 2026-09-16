@@ -28,6 +28,7 @@ async function OP(){
 OP();
 
 card_table_head.addEventListener("click", (event) =>{
+    console.log("テレキャスター");
     const 対象セル= event.target.closest(("th"));
     if(!対象セル){return;}
 
@@ -40,6 +41,7 @@ card_table_head.addEventListener("click", (event) =>{
     head_menu.style.top = `${event.clientY}px`;
 });
 card_table_body.addEventListener("click", (event)=>{
+    console.log("セーラー服");
     const 対象セル= event.target.closest(("td"));
     if(!対象セル){return;}
     if(対象セル.dataset.fieldId === undefined){return;}
@@ -49,23 +51,25 @@ card_table_body.addEventListener("click", (event)=>{
     body_menu.classList.add("vertical");
     body_menu.style.left = `${event.clientX}px`;
     body_menu.style.top = `${event.clientY}px`;
-})
+});
 document.addEventListener("click", (event)=>{
     if(!event.target.closest(".pop-up")){
         if(!event.target.closest("#card-table-head")){
             head_menu.classList.remove("vertical");
+            console.log("機関銃");
         }
         if(!event.target.closest("#card-table-body")){
             body_menu.classList.remove("vertical");
+            console.log("散弾銃");
         }
     }
-})
+});
 cards_import.addEventListener("click", ()=>{
     船頭.import(セットID);
-})
+});
 cards_export.addEventListener("click", ()=>{
     飛脚.data(セットID)
-})
+});
 setting.addEventListener("click", ()=>{
-    visit.import(セットID);
-})
+    船頭.import(セットID);
+});
