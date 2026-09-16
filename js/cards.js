@@ -33,10 +33,13 @@ async function OP(){
     }
     for(const カード of カードセット.cards){
         const 行= document.createElement("tr");
+        行.dataset.cardId= カード.id
         const IDセル= document.createElement("td");
+        IDセル.textContent= カード.id
         行.appendChild(IDセル);
         for(const フィールド of カードセット.fields){
             const セル=document.createElement("td");
+            セル.textContent= カード.data[フィールド.id]
             行.appendChild(セル);
         }
         card_table_body.appendChild(行);
