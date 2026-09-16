@@ -30,16 +30,16 @@ set_name_edit.addEventListener("click", ()=>{
     set_name_display.hidden= true;
     set_name_div.hidden= false;
     set_name_edit.hidden= true;
-    set_name_confirm= false;
-    set_name_restore= false;
+    set_name_confirm.hidden= false;
+    set_name_restore.hidden= false;
     set_name_input.placeholder= カードセット.name;
 });
 set_name_confirm.addEventListener("click", ()=>{
     set_name_display.hidden= false;
     set_name_div.hidden= true;
     set_name_edit.hidden= false;
-    set_name_confirm= true;
-    set_name_restore= true;
+    set_name_confirm.hidden= true;
+    set_name_restore.hidden= true;
     カードセット.name= set_name_input.value;
     set_name_display.textContent =`セット名: ${カードセット.name}`;
 });
@@ -47,6 +47,6 @@ set_name_restore.addEventListener("click", ()=>{
     set_name_display.hidden= false;
     set_name_div.hidden= true;
     set_name_edit.hidden= false;
-    set_name_confirm= true;
-    set_name_restore= true;
+    set_name_confirm.hidden= true;
+    set_name_restore.hidden= true;
 });
