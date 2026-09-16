@@ -17,14 +17,17 @@ const set_delete= document.getElementById("delete");
 const index= document.getElementById("index");
 const start= document.getElementById("start");
 
+let カードセット;
 async function OP(){
     await 倉庫番.ready();
     const params= new URLSearchParams(location.search);
     const セットID= params.get("set");
-    const カードセット= await 倉庫番.get(セットID);
-    set_name_display.textContent =`セット名: ${カードセット.name}`;
+    const カードセット仮= await 倉庫番.get(セットID);
 }
 OP();
+
+カードセット= カードセット仮;
+set_name_display.textContent =`セット名: ${カードセット.name}`;
 
 set_name_edit.addEventListener("click", ()=>{
     set_name_display.hidden= true;
