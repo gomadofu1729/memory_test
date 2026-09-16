@@ -18,9 +18,17 @@ const 倉庫番= {
         
     },
     store(カードセット){
-        const 処理= 倉庫番.db.transaction("カードケース","readwrite");
-        const 店= 処理.objectStore("カードケース"); //「たな」と読む。以下同じ。
-        店.put(カードセット);
+        return new Promise((resolve,result)=>{
+            const 処理= 倉庫番.db.transaction("カードケース","readonly");
+            const 店= 処理.objectStore("カードケース");
+            const 注文= 店.put(id);
+            注文.addEventListener("success", ()=>{
+                resolve();
+            });
+            注文.addEventListener("error", ()=>{
+                reject(注文.error)
+            });
+        });
     },
     get(セットID){
         return new Promise((resolve,result)=>{

@@ -10,7 +10,6 @@ const start= document.getElementById("start");
 let カードセット;
 async function main() {
     await 倉庫番.open();
-    console.log(倉庫番.db);
 }
 main();
 
@@ -27,29 +26,26 @@ set_file.addEventListener("change", ()=>{
         return;
     }
     const 読取= new FileReader();
-    読取.addEventListener("load", ()=>{
+    読取.addEventListener("load", async ()=>{
         alert(`${set_file.files[0].name}を読み込んだよ！`);
         カードセット= JSON.parse(読取.result);
         const 新選択肢= document.createElement("option");
         新選択肢.value= カードセット.id;
         新選択肢.textContent= カードセット.name;
         select_sets.appendChild(新選択肢);
+        倉庫番.store(カードセット);
     });
     読取.readAsText(set_file.files[0]);
 });
 cards_export.addEventListener("click", ()=>{
-    alert(`${select_sets.value} のデータをエクスポートするよ！`);
     飛脚.data(select_sets.value)
 })
 set_export.addEventListener("click", ()=>{
-    alert(`${select_sets.value} のバックアップをエクスポートするよ！`);
     飛脚.history(select_sets.value)
 });
 setting.addEventListener("click", ()=>{
-    alert(`${select_sets.value} の設定をするよ！`);
     船頭.setting(select_sets.value);
 });
 start.addEventListener("click", ()=>{
-    alert(`${select_sets.value} ではじめるよ！`);
     船頭.memorize(select_sets.value);
 });
