@@ -28,12 +28,10 @@ async function OP(){
 OP();
 
 card_table_head.addEventListener("click", (event) =>{
-    console.log("テレキャスター");
     const 対象セル= event.target.closest(("th"));
     if(!対象セル){return;}
-
+    if(対象セル.dataset.fieldId === undefined){return;}
     const 対象のID= 対象セル.dataset.fieldId;
-    if(対象のID === "id"){return;}
     
     const 目的フィールド= カードセット.fields.find((ふ) => ふ.id === 対象のID);
     head_menu.classList.add("vertical");
@@ -41,13 +39,12 @@ card_table_head.addEventListener("click", (event) =>{
     head_menu.style.top = `${event.clientY}px`;
 });
 card_table_body.addEventListener("click", (event)=>{
-    console.log("セーラー服");
     const 対象セル= event.target.closest(("td"));
     if(!対象セル){return;}
-    if(対象セル.dataset.fieldId === undefined){return;}
-    const 対象のID= 対象セル.dataset.fieldId;
+    const 対象カード= event.target.closest(("tr"));
+    if(!対象カード){return;}
+    const 対象のID= 対象カード.dataset.cardId;
     
-    const 目的カード= カードセット.cards.find((ふ) => ふ.id === 対象のID);
     body_menu.classList.add("vertical");
     body_menu.style.left = `${event.clientX}px`;
     body_menu.style.top = `${event.clientY}px`;
@@ -56,11 +53,9 @@ document.addEventListener("click", (event)=>{
     if(!event.target.closest(".pop-up")){
         if(!event.target.closest("#card-table-head")){
             head_menu.classList.remove("vertical");
-            console.log("機関銃");
         }
         if(!event.target.closest("#card-table-body")){
             body_menu.classList.remove("vertical");
-            console.log("散弾銃");
         }
     }
 });
