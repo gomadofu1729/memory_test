@@ -35,22 +35,3 @@ const 飛脚= {
         );
     }
 }
-
-const set= { //仮
-    "id": "hoge",
-    "name": "hoge",
-    "fields": [
-        {
-            "id": "hoge",
-            "name": "仮"
-        }
-    ],
-    "cards": [
-        {
-            "id": "01",
-            "data":{
-                "hoge": "ふが"
-            }
-        }
-    ]
-};

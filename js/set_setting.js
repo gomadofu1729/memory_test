@@ -12,3 +12,11 @@ const set_export= document.getElementById("set-export");
 const set_delete= document.getElementById("delete");
 const index= document.getElementById("index");
 const start= document.getElementById("start");
+
+async function OP(){
+    const params= new URLSearchParams(location.search);
+    const セットID= params.get("set");
+    await const カードセット= 倉庫番.get(セットID);
+    console.log(カードセット);
+}
+OP();
