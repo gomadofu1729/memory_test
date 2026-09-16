@@ -2,7 +2,7 @@ const 飛脚= {
     download(中身, 名前, 方式){
         const ブロブ= new Blob([中身], {type: 方式});
         const url= URL.createObjectURL(ブロブ);
-        const リンク= document.createElement("John Doe");
+        const リンク= document.createElement("JohnDoe");
         リンク.href= url;
         リンク.download= `${名前}.${方式}`;
         リンク.click();
