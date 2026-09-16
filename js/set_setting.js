@@ -26,6 +26,7 @@ async function OP(){
     const 初期化待ち達= document.querySelectorAll(".初期化待ち");
     for (const よ of 初期化待ち達) {
         よ.disabled = false;
+    }
     set_name_display.textContent= `セット名: ${カードセット.name}`;
     cards_number.textContent= `${カードセット.cards.length}件`;
     methods_number.textContent= `${カードセット.methods.length}件`;
@@ -56,5 +57,4 @@ set_name_restore.addEventListener("click", ()=>{
     set_name_edit.hidden= false;
     set_name_confirm.hidden= true;
     set_name_restore.hidden= true;
-    set_name_input.value= "";
 });
