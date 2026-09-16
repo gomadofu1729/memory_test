@@ -25,7 +25,6 @@ set_file.addEventListener("change", ()=>{
     }
     const 読取= new FileReader();
     読取.addEventListener("load", async ()=>{
-        alert(`${set_file.files[0].name}を読み込んだよ！`);
         カードセット= JSON.parse(読取.result);
         const 新選択肢= document.createElement("option");
         新選択肢.value= カードセット.id;
