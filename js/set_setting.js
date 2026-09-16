@@ -43,7 +43,7 @@ set_name_edit.addEventListener("click", ()=>{
     set_name_input.placeholder= カードセット.name;
     set_name_input.value= "";
 });
-set_name_confirm.addEventListener("click", ()=>{
+set_name_confirm.addEventListener("click", async ()=>{
     set_name_display.hidden= false;
     set_name_div.hidden= true;
     set_name_edit.hidden= false;
