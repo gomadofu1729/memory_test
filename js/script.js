@@ -9,7 +9,7 @@ const start= document.getElementById("start");
 
 async function OP(){
     await 倉庫番.ready();
-    const カードケース= 倉庫番.enumerate();
+    const カードケース= await 倉庫番.enumerate();
     for(const D of カードケース){
         const 新選択肢= document.createElement("option");
         新選択肢.value= D.id;
