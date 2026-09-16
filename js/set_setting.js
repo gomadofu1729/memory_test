@@ -18,6 +18,6 @@ async function OP(){
     const params= new URLSearchParams(location.search);
     const セットID= params.get("set");
     const カードセット= await 倉庫番.get(セットID);
-    console.log(カードセット);
+    set_name_display.textContent =カードセット.name
 }
 OP();
