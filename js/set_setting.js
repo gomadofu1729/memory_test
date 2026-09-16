@@ -22,11 +22,10 @@ async function OP(){
     await 倉庫番.ready();
     const params= new URLSearchParams(location.search);
     const セットID= params.get("set");
-    const カードセット仮= await 倉庫番.get(セットID);
+    カードセット= await 倉庫番.get(セットID);
 }
 OP();
 
-カードセット= カードセット仮;
 set_name_display.textContent =`セット名: ${カードセット.name}`;
 
 set_name_edit.addEventListener("click", ()=>{
