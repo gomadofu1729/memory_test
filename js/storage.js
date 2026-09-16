@@ -19,7 +19,7 @@ const 倉庫番= {
     },
     store(カードセット){
         return new Promise((resolve,result)=>{
-            const 処理= 倉庫番.db.transaction("カードケース","readonly");
+            const 処理= 倉庫番.db.transaction("カードケース","readwrite");
             const 店= 処理.objectStore("カードケース");
             const 注文= 店.put(id);
             注文.addEventListener("success", ()=>{
