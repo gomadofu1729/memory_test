@@ -49,7 +49,7 @@ const 倉庫番= {
             });
         });
     },
-    async enum(){
+    async enumerate(){
         await 倉庫番.ready();
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readonly");

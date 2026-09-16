@@ -7,7 +7,17 @@ const cards_export= document.getElementById("cards-export");
 const setting= document.getElementById("setting");
 const start= document.getElementById("start");
 
+async function OP(){
+    const カードケース= await 倉庫番.enumerate();
+    for(const D of カードケース){
+        const 新選択肢= document.createElement("option");
+        新選択肢.value= D.id;
+        新選択肢.textContent= D.name;
+        select_sets.appendChild(新選択肢);
+    }
+}
 let カードセット;
+OP();
 
 cards_import.addEventListener("click", ()=>{
     船頭.import();
@@ -21,12 +31,12 @@ set_file.addEventListener("change", ()=>{
     }
     const 読取= new FileReader();
     読取.addEventListener("load", async ()=>{
-        カードセット= JSON.parse(読取.result);
+        D= JSON.parse(読取.result);
         const 新選択肢= document.createElement("option");
-        新選択肢.value= カードセット.id;
-        新選択肢.textContent= カードセット.name;
+        新選択肢.value= D.id;
+        新選択肢.textContent= D.name;
         select_sets.appendChild(新選択肢);
-        倉庫番.store(カードセット);
+        倉庫番.store(D);
     });
     読取.readAsText(set_file.files[0]);
 });
