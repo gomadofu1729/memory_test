@@ -6,8 +6,8 @@ const set_export= document.getElementById("set-export");
 const setting= document.getElementById("setting");
 const start= document.getElementById("start");
 
+let カードセット;
 async function OP(){
-    let カードセット;
     await 倉庫番.ready();
     const カードケース= await 倉庫番.enumerate();
     for(const D of カードケース){
