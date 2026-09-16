@@ -14,6 +14,7 @@ const index= document.getElementById("index");
 const start= document.getElementById("start");
 
 async function OP(){
+    await 倉庫番.ready();
     const params= new URLSearchParams(location.search);
     const セットID= params.get("set");
     const カードセット= await 倉庫番.get(セットID);

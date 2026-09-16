@@ -21,8 +21,7 @@ const 倉庫番= {
             await 倉庫番.open();
         }
     },
-    async store(カードセット){
-        await 倉庫番.ready();
+    store(カードセット){
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readwrite");
             const 店= 処理.objectStore("カードケース");
@@ -35,8 +34,7 @@ const 倉庫番= {
             });
         });
     },
-    async get(セットID){
-        await 倉庫番.ready();
+    get(セットID){
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readonly");
             const 店= 処理.objectStore("カードケース");
@@ -49,8 +47,7 @@ const 倉庫番= {
             });
         });
     },
-    async enumerate(){
-        await 倉庫番.ready();
+    enumerate(){
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readonly");
             const 店= 処理.objectStore("カードケース");
@@ -63,8 +60,7 @@ const 倉庫番= {
             });
         });
     },
-    async delete(セットID){
-        await 倉庫番.ready();
+    delete(セットID){
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readonly");
             const 店= 処理.objectStore("カードケース");

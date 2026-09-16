@@ -17,8 +17,13 @@ const card_exclusion= document.getElementById("card-exclusion");
 const card_delete= document.getElementById("card-delete");
 const card_undelete= document.getElementById("card-undelete");
 
-const params = new URLSearchParams(location.search);
-const セットID = params.get("set");
+async function OP(){
+    await 倉庫番.ready();
+    const params= new URLSearchParams(location.search);
+    const セットID= params.get("set");
+    const カードセット= await 倉庫番.get(セットID);
+}
+OP();
 
 let 目的フィールド;
 let 目的カード;

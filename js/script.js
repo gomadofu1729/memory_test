@@ -8,7 +8,8 @@ const setting= document.getElementById("setting");
 const start= document.getElementById("start");
 
 async function OP(){
-    const カードケース= await 倉庫番.enumerate();
+    await 倉庫番.ready();
+    const カードケース= 倉庫番.enumerate();
     for(const D of カードケース){
         const 新選択肢= document.createElement("option");
         新選択肢.value= D.id;
@@ -16,7 +17,6 @@ async function OP(){
         select_sets.appendChild(新選択肢);
     }
 }
-let カードセット;
 OP();
 
 cards_import.addEventListener("click", ()=>{
@@ -31,7 +31,7 @@ set_file.addEventListener("change", ()=>{
     }
     const 読取= new FileReader();
     読取.addEventListener("load", async ()=>{
-        D= JSON.parse(読取.result);
+        let D= JSON.parse(読取.result);
         const 新選択肢= document.createElement("option");
         新選択肢.value= D.id;
         新選択肢.textContent= D.name;
