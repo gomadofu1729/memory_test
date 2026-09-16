@@ -52,8 +52,11 @@ card_table_head.addEventListener("click", (event) =>{
     if(!対象セル){return;}
     if(対象セル.dataset.fieldId === undefined){return;}
     const 対象のID= 対象セル.dataset.fieldId;
+    const フィールド= カードセット.fields.find((ふ) => ふ.id === 対象のID);
     
-    const 目的フィールド= カードセット.fields.find((ふ) => ふ.id === 対象のID);
+    field_name.textContent= `表示名: ${フィールド.name}`;
+    field_id.textContent= `フィールドID: ${フィールド.id}`
+    
     head_menu.classList.add("vertical");
     head_menu.style.left = `${event.clientX}px`;
     head_menu.style.top = `${event.clientY}px`;
