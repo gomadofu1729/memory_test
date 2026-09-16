@@ -18,10 +18,10 @@ const index= document.getElementById("index");
 const start= document.getElementById("start");
 
 let カードセット;
-async function OP(){   
-    await 倉庫番.ready();
+async function OP(){
     const params= new URLSearchParams(location.search);
     const セットID= params.get("set");
+    await 倉庫番.ready();
     カードセット= await 倉庫番.get(セットID);
     const 初期化待ち達= document.querySelectorAll(".wait");
     for (const よ of 初期化待ち達) {
