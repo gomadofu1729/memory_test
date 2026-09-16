@@ -9,7 +9,7 @@ const 飛脚= {
         URL.revokeObjectURL(url);
     },
     history(セットID){
-        const カードセット=倉庫番.get(セットID);
+        const カードセット= 倉庫番.get(セットID);
         飛脚.download(
             JSON.stringify(カードセット, null, 4),
             `${カードセット.name}.json`,
@@ -17,7 +17,7 @@ const 飛脚= {
         );
     },
     data(セットID){
-        const カードセット=倉庫番.get(セットID);
+        const カードセット= 倉庫番.get(セットID);
         const 見出し= カードセット.fields.map((ふ) => ふ.id);
         const 中身= [["id"].concat(見出し).join("\t")];
         for(const カード of カードセット.cards){

@@ -40,7 +40,7 @@ const 倉庫番= {
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readonly");
             const 店= 処理.objectStore("カードケース");
-            const 注文= 店.get(id);
+            const 注文= 店.get(セットID);
             注文.addEventListener("success", ()=>{
                 resolve(注文.result);
             });
@@ -68,7 +68,7 @@ const 倉庫番= {
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readonly");
             const 店= 処理.objectStore("カードケース");
-            const 注文= 店.delete(id);
+            const 注文= 店.delete(セットID);
             注文.addEventListener("success", ()=>{
                 resolve();
             });
