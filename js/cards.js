@@ -55,7 +55,21 @@ card_table_head.addEventListener("click", (event) =>{
     const フィールド= カードセット.fields.find((ふ) => ふ.id === 対象のID);
     
     field_name.textContent= `表示名: ${フィールド.name}`;
-    field_id.textContent= `フィールドID: ${フィールド.id}`
+    field_id.textContent= `フィールドID: ${対象のID}`;
+    field_method_from.replaceChildren();
+    field_method_to.replaceChildren();
+    for(const 方式 of カードセット.methods){
+        if(方式.Q == 対象のID){
+            const P= document.createElement("p");
+            P.textContent= `${方式.sentence} > ${方式.A}`;
+            field_method_from.appendChild(P);
+        }
+        if(方式.A == 対象のID){
+            const P= document.createElement("p");
+            P.textContent= `${方式.Q} > ${方式.sentence}`;
+            field_method_to.appendChild(P);
+        }
+    }
     
     head_menu.classList.add("vertical");
     head_menu.style.left = `${event.clientX}px`;
