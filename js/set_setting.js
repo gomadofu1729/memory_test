@@ -50,8 +50,8 @@ set_name_confirm.addEventListener("click", async ()=>{
     set_name_edit.hidden= false;
     set_name_confirm.hidden= true;
     set_name_restore.hidden= true;
-    await 倉庫番.store(カードセット);
     カードセット.name= set_name_input.value;
+    await 倉庫番.store(カードセット);
     set_name_display.textContent =`セット名: ${カードセット.name}`;
 });
 set_name_restore.addEventListener("click", ()=>{
