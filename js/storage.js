@@ -22,7 +22,7 @@ const 倉庫番= {
         }
     },
     async store(カードセット){
-        await ready();
+        await 倉庫番.ready();
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readwrite");
             const 店= 処理.objectStore("カードケース");
@@ -36,7 +36,7 @@ const 倉庫番= {
         });
     },
     async get(セットID){
-        await ready();
+        await 倉庫番.ready();
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readonly");
             const 店= 処理.objectStore("カードケース");
@@ -50,7 +50,7 @@ const 倉庫番= {
         });
     },
     async enum(){
-        await ready();
+        await 倉庫番.ready();
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readonly");
             const 店= 処理.objectStore("カードケース");
@@ -64,7 +64,7 @@ const 倉庫番= {
         });
     },
     async delete(セットID){
-        await ready();
+        await 倉庫番.ready();
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readonly");
             const 店= 処理.objectStore("カードケース");
