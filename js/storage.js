@@ -18,7 +18,7 @@ const 倉庫番= {
     },
     async ready(){
         if(倉庫番.db === null){
-            await open();
+            await 倉庫番.open();
         }
     },
     async store(カードセット){
