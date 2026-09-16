@@ -26,7 +26,6 @@ async function OP(){
     const 初期化待ち達= document.querySelectorAll(".wait");
     for (const よ of 初期化待ち達) {
         よ.disabled = false;
-        console.log(よ.textContent);
     }
     set_name_display.textContent= `セット名: ${カードセット.name}`;
     cards_number.textContent= `${カードセット.cards.length}件`;
