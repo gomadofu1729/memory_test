@@ -1,12 +1,23 @@
 const 飛脚= {
     download(中身, 名前, 方式){
         const ブロブ= new Blob([中身], {type: 方式});
+        console.log("臨");
         const url= URL.createObjectURL(ブロブ);
-        const リンク= document.createElement("JohnDoe");
+        console.log("兵");
+        const リンク= document.createElement("a");
+        console.log("闘");
         リンク.href= url;
-        リンク.download= `${名前}.${方式}`;
+        console.log("者");
+        リンク.download= 名前;
+        console.log("開");
+        document.body.appendChild(リンク);
+        console.log("陣");
         リンク.click();
+        console.log("列");
+        リンク.remove();
+        console.log("在");
         URL.revokeObjectURL(url);
+        console.log("前");
     },
     history(カードセット){
         飛脚.download(
