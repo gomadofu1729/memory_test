@@ -31,7 +31,7 @@ async function OP(){
     set_name_display.textContent= `セット名: ${カードセット.name}`;
     cards_number.textContent= `${カードセット.cards.length}件`;
     methods_number.textContent= `${カードセット.methods.length}件`;
-    exclusion_number.textContent= `${カードセット.exclusion.length}件`;
+    exclusion_number.textContent= `${カードセット.exclusions.length}件`;
 }
 OP();
 
