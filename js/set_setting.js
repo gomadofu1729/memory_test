@@ -23,10 +23,9 @@ async function OP(){
     const params= new URLSearchParams(location.search);
     const セットID= params.get("set");
     カードセット= await 倉庫番.get(セットID);
+    set_name_display.textContent =`セット名: ${カードセット.name}`;
 }
 OP();
-
-set_name_display.textContent =`セット名: ${カードセット.name}`;
 
 set_name_edit.addEventListener("click", ()=>{
     set_name_display.hidden= true;
