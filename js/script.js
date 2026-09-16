@@ -17,12 +17,10 @@ cards_import.addEventListener("click", ()=>{
     船頭.import();
 });
 set_import.addEventListener("click", ()=>{
-    alert("ファイルをえらんでね！");
     set_file.click();
 });
 set_file.addEventListener("change", ()=>{
     if (!set_file.value){
-        alert("もう一度えらんでね！");
         return;
     }
     const 読取= new FileReader();
