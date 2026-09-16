@@ -1,5 +1,6 @@
 const set_name= document.getElementById("set-name");
 const card_table_head= document.getElementById("card-table-head");
+const head_row= document.getElementById("head-row");
 const card_table_body= document.getElementById("card-table-body");
 const confirm= document.getElementById("confirm");
 const cards_import= document.getElementById("cards-import");
@@ -24,6 +25,12 @@ async function OP(){
     const params= new URLSearchParams(location.search);
     セットID= params.get("set");
     カードセット= await 倉庫番.get(セットID);
+    for(const フィールド of カードセット.fields){
+        const 見出し= document.createElement("th");
+        見出し.textContent= フィールド.name;
+        見出し.dataset.fieldId= フィールド.id;
+        head_row.appendChild(見出し);
+    }
 }
 OP();
 
