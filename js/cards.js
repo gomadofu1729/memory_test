@@ -31,6 +31,16 @@ async function OP(){
         見出し.dataset.fieldId= フィールド.id;
         head_row.appendChild(見出し);
     }
+    for(const カード of カードセット.cards){
+        const 行= document.createElement("tr");
+        const IDセル= document.createElement("td");
+        行.appendChild(IDセル);
+        for(const フィールド of カードセット.fields){
+            const セル=document.createElement("td");
+            行.appendChild(セル);
+        }
+        card_table_body.appendChild(行);
+    }
 }
 OP();
 
