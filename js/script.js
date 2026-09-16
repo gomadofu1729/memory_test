@@ -3,11 +3,11 @@ const set_import= document.getElementById("set-import");
 const set_file= document.getElementById("set-file");
 const select_sets= document.getElementById("select-sets");
 const set_export= document.getElementById("set-export");
-const cards_export= document.getElementById("cards-export");
 const setting= document.getElementById("setting");
 const start= document.getElementById("start");
 
 async function OP(){
+    let カードセット;
     await 倉庫番.ready();
     const カードケース= await 倉庫番.enumerate();
     for(const D of カードケース){
@@ -40,11 +40,11 @@ set_file.addEventListener("change", ()=>{
     });
     読取.readAsText(set_file.files[0]);
 });
-cards_export.addEventListener("click", ()=>{
-    飛脚.data(select_sets.value)
+select_sets.addEventListener("change", async ()=>{
+    カードセット= await 倉庫番.get(select_sets.value)
 })
 set_export.addEventListener("click", ()=>{
-    飛脚.history(select_sets.value)
+    飛脚.history(カードセット)
 });
 setting.addEventListener("click", ()=>{
     船頭.setting(select_sets.value);
