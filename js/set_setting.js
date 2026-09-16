@@ -1,5 +1,9 @@
 const set_name_display= document.getElementById("set-name-display");
+const set_name_div= document.getElementById("set-name-div");
+const set_name_input= document.getElementById("set-name-input");
 const set_name_edit= document.getElementById("set-name-edit");
+const set_name_confirm= document.getElementById("set-name-confirm");
+const set_name_restore= document.getElementById("set-name-restore");
 const cards_number= document.getElementById("cards-number");
 const cards_edit= document.getElementById("cards-edit");
 const cards_import= document.getElementById("cards-import");
@@ -18,6 +22,31 @@ async function OP(){
     const params= new URLSearchParams(location.search);
     const セットID= params.get("set");
     const カードセット= await 倉庫番.get(セットID);
-    set_name_display.textContent =カードセット.name
+    set_name_display.textContent =`セット名: ${カードセット.name}`;
 }
 OP();
+
+set_name_edit.addEventListener("click", ()=>{
+    set_name_display.hidden= true;
+    set_name_div.hidden= false;
+    set_name_edit.hidden= true;
+    set_name_confirm= false;
+    set_name_restore= false;
+    set_name_input.placeholder= カードセット.name;
+});
+set_name_confirm.addEventListener("click", ()=>{
+    set_name_display.hidden= false;
+    set_name_div.hidden= true;
+    set_name_edit.hidden= false;
+    set_name_confirm= true;
+    set_name_restore= true;
+    カードセット.name= set_name_input.value;
+    set_name_display.textContent =`セット名: ${カードセット.name}`;
+});
+set_name_restore.addEventListener("click", ()=>{
+    set_name_display.hidden= false;
+    set_name_div.hidden= true;
+    set_name_edit.hidden= false;
+    set_name_confirm= true;
+    set_name_restore= true;
+});

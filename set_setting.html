@@ -15,7 +15,13 @@
 <h3>基本情報</h3>
 <div id="set-name">
     <p id="set-name-display">セット名: </p>
-    <input type="text" id="set-name-edit" hidden>
+    <div id="set-name-div" hidden>
+        <label for="set-name-input">セット名: </label>
+        <input type="text" name="set-name-input">
+    </div>
+    <button id="set-name-edit">編集</button>
+    <button id="set-name-restore" hidden>やめる</button>
+    <button id="set-name-confirm" hidden>確定</button>
 </div>
 <h3>カード</h3>
 <div id="cards" class="vertical">
