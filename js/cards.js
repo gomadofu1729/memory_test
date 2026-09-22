@@ -29,9 +29,11 @@ let セットID;
 let 仮カードセット;
 let 指定フィールドID;
 let 指定フィールドセル
+let 削除予定フィールド= new Set();
 let 指定カードID;
 let 指定カードセル;
-let 指定カード行
+let 指定カード行;
+let 削除予定カード= new Set();
 async function OP(){
     await 倉庫番.ready();
     const params= new URLSearchParams(location.search);
@@ -149,7 +151,15 @@ field_reset.addEventListener("click", ()=>{
     仮フィールド.name= フィールド.name;
     指定フィールドセル.textContent= フィールド.name;
     指定フィールドセル.style.color= "black";
-})
+});
+field_delete.addEventListener("click", ()=>{
+    field_edit.disabled= true;
+    field_reset.disabled= true;
+    field_undelete.hidden= false;
+    削除予定フィールド.add(指定フィールドID);
+    指定フィールドセル.style.color= "gray";
+    指定フィールドセル.style.textDecoration= "line-through";
+});
 
 cards_import.addEventListener("click", ()=>{
     船頭.import(セットID);
