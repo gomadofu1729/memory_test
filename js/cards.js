@@ -141,7 +141,7 @@ field_confirm.addEventListener("click", ()=>{
     field_edit.hidden= false;
     field_confirm.hidden= true;
     field_reset.hidden= false;
-    field_delete= false;
+    field_delete.hidden= false;
     const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
     仮フィールド.name= field_name_input.value;
     指定フィールドセル.textContent= 仮フィールド.name;
