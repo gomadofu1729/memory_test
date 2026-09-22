@@ -31,9 +31,9 @@
 <div id="head-menu" class="pop-up">
     <p id="field-id">フィールドID: </p>
     <p id="field-name">表示名: </p>
-    <div id="field-name-div" hidden>
-        <label for="field-name-input">表示名: </label>
-        <input type="text" id="field-name-input">
+    <div id="field-resetdiv" hidden>
+        <label for="field-resetinput">表示名: </label>
+        <input type="text" id="field-resetinput">
     </div>
     <button id="field-edit">編集</button>
     <button id="field-confirm" hidden>確定</button>
@@ -46,9 +46,17 @@
     <button id="field-undelete" hidden>削除取り消し</button>
 </div>
 <div id="body-menu" class="pop-up">
+    <p id="card-id">カードID: </p>
+    <p id="content-name"></p>
+    <div id="content-div" hidden>
+        <label for="content-input" id="content-label"></label>
+        <input type="text" id="content-input">
+    </div>
     <button id="content-edit">編集</button>
+    <button id="content-confirm" hidden>確定</button>
+    <button id="content-reset">元に戻す</button>
     <button id="card-exclusion">除外設定</button>
     <button id="card-delete">カード削除</button>
-    <button id="card-reset">元に戻す</button>
+    <button id="card-undelete" hidden>カード削除取り消し</button>
 </div>
 </body>

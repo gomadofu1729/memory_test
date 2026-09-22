@@ -9,8 +9,8 @@ const setting= document.getElementById("setting");
 const head_menu= document.getElementById("head-menu");
 const field_id= document.getElementById("field-id");
 const field_name= document.getElementById("field-name");
-const field_name_div= document.getElementById("field-name-div");
-const field_name_input= document.getElementById("field-name-input");
+const field_div= document.getElementById("field-div");
+const field_input= document.getElementById("field-input");
 const field_edit= document.getElementById("field-edit");
 const field_confirm= document.getElementById("field-confirm");
 const field_reset= document.getElementById("field-reset");
@@ -19,10 +19,17 @@ const field_method_to= document.getElementById("field-method-to");
 const field_delete= document.getElementById("field-delete");
 const field_undelete= document.getElementById("field-undelete");
 const body_menu= document.getElementById("body-menu");
+const card_id= document.getElementById("card-id");
+const content_name= document.getElementById("content-name");
+const content_div= document.getElementById("content-div");
+const content_label= document.getElementById("content-label");
+const content_input= document.getElementById("content-input")
 const content_edit= document.getElementById("content-edit");
+const content_confirm= document.getElementById("content-confirm");
+const content_reset= document.getElementById("content-reset");
 const card_exclusion= document.getElementById("card-exclusion");
 const card_delete= document.getElementById("card-delete");
-const card_reset= document.getElementById("card-reset");
+const card_undelete= document.getElementById("card-undelete");
 
 let カードセット;
 let セットID;
@@ -72,7 +79,7 @@ card_table_head.addEventListener("click", (event) =>{
     
     field_name.textContent= `表示名: ${仮フィールド.name}`;
     field_id.textContent= `フィールドID: ${対象のID}`;
-    field_name_input.placeholder= 仮フィールド.name;
+    field_input.placeholder= 仮フィールド.name;
     field_method_from.replaceChildren();
     field_method_to.replaceChildren();
     for(const 方式 of カードセット.methods){
@@ -124,26 +131,26 @@ document.addEventListener("click", (event)=>{
 
 field_edit.addEventListener("click", ()=>{
     field_name.hidden= true;
-    field_name_div.hidden= false;
+    field_div.hidden= false;
     field_edit.hidden= true;
     field_confirm.hidden= false;
     field_reset.hidden= true;
     field_delete.hidden= true;
-    field_name_input.value= "";
+    field_input.value= "";
 });
 field_confirm.addEventListener("click", ()=>{
-    const newName= field_name_input.value.trim();
+    const newName= field_input.value.trim();
     if(newName=== ""){
         return;
     }
     field_name.hidden= false;
-    field_name_div.hidden= true;
+    field_div.hidden= true;
     field_edit.hidden= false;
     field_confirm.hidden= true;
     field_reset.hidden= false;
     field_delete.hidden= false;
     const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
-    仮フィールド.name= field_name_input.value;
+    仮フィールド.name= field_input.value;
     指定フィールドセル.textContent= 仮フィールド.name;
     指定フィールドセル.style.color= "brown";
 });
@@ -177,6 +184,7 @@ field_undelete.addEventListener("click", ()=>{
         指定フィールドセル.style.color= "maroon";
     }
 })
+
 
 cards_import.addEventListener("click", ()=>{
     船頭.import(セットID);
