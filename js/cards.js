@@ -128,6 +128,7 @@ field_edit.addEventListener("click", ()=>{
     field_edit.hidden= true;
     field_confirm.hidden= false;
     field_reset.hidden= true;
+    field_delete.hidden= true;
     field_name_input.value= "";
 });
 field_confirm.addEventListener("click", ()=>{
@@ -140,6 +141,7 @@ field_confirm.addEventListener("click", ()=>{
     field_edit.hidden= false;
     field_confirm.hidden= true;
     field_reset.hidden= false;
+    field_delete= false;
     const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
     仮フィールド.name= field_name_input.value;
     指定フィールドセル.textContent= 仮フィールド.name;
@@ -155,11 +157,26 @@ field_reset.addEventListener("click", ()=>{
 field_delete.addEventListener("click", ()=>{
     field_edit.disabled= true;
     field_reset.disabled= true;
+    field_delete.hidden= true;
     field_undelete.hidden= false;
     削除予定フィールド.add(指定フィールドID);
     指定フィールドセル.style.color= "gray";
     指定フィールドセル.style.textDecoration= "line-through";
 });
+field_undelete.addEventListener("click", ()=>{
+    field_edit.disabled= false;
+    field_reset.disabled= true;
+    field_delete.hidden= false;
+    field_undelete.hidden= true;
+    指定フィールドセル.style.textDecoration= "none";
+    削除予定フィールド.delete(指定フィールドID);
+    const フィールド= カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
+    if(指定フィールドセル.textContent === フィールド.name){
+        指定フィールドセル.style.color= "black";
+    }else{
+        指定フィールドセル.style.color= "maroon";
+    }
+})
 
 cards_import.addEventListener("click", ()=>{
     船頭.import(セットID);
