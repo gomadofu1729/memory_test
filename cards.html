@@ -29,18 +29,25 @@
     <button id="setting">設定画面に戻る</button>
 </div>
 <div id="head-menu" class="pop-up">
-    <p id="field-name">表示名: </p>
-    <button id="field-edit">編集</button>
     <p id="field-id">フィールドID: </p>
+    <p id="field-name">表示名: </p>
+    <div id="field-name-div" hidden>
+        <label for="field-name-input">表示名: </label>
+        <input type="text" id="field-name-input">
+    </div>
+    <button id="field-edit">編集</button>
+    <button id="field-confirm" hidden>確定</button>
     <p>これから問う方式: </p>
     <div id="field-method-from"></div>
     <p>これを問われる方式: </p>
     <div id="field-method-to"></div>
+    <button id="field-delete">削除</button>
+    <button id="field-undo">元に戻す</button>
 </div>
 <div id="body-menu" class="pop-up">
     <button id="content-edit">編集</button>
     <button id="card-exclusion">除外設定</button>
     <button id="card-delete">削除</button>
-    <button id="card-undelete">削除取り消し</button>
+    <button id="card-undo">元に戻す</button>
 </div>
 </body>

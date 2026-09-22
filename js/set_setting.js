@@ -82,8 +82,6 @@ set_export.addEventListener("click", ()=>{
 set_delete.addEventListener("click", async ()=>{
     const 返答= confirm(`本当に「${カードセット.name}」を削除しますか?`);
     if(!返答){return;}
-    const 返答2= confirm(`ホンマに? 後悔せん?`);
-    if(!返答2){return;}
     await 倉庫番.delete(セットID);
     船頭.index();
 });

@@ -7,19 +7,27 @@ const cards_import= document.getElementById("cards-import");
 const cards_export= document.getElementById("cards-export");
 const setting= document.getElementById("setting");
 const head_menu= document.getElementById("head-menu");
-const field_name= document.getElementById("field-name");
-const field_edit= document.getElementById("field-edit");
 const field_id= document.getElementById("field-id");
+const field_name= document.getElementById("field-name");
+const field_name_div= document.getElementById("field-name-div");
+const field_name_input= document.getElementById("field-name-input");
+const field_edit= document.getElementById("field-edit");
+const field_confirm= document.getElementById("field-confirm");
 const field_method_from= document.getElementById("field-method-from");
 const field_method_to= document.getElementById("field-method-to");
+const field_delete= document.getElementById("field-delete");
+const field_undo= document.getElementById("field-undo");
 const body_menu= document.getElementById("body-menu");
 const content_edit= document.getElementById("content-edit");
 const card_exclusion= document.getElementById("card-exclusion");
 const card_delete= document.getElementById("card-delete");
-const card_undelete= document.getElementById("card-undelete");
+const card_undo= document.getElementById("card-undo");
 
 let カードセット;
 let セットID;
+let 仮カードセット;
+let 指定フィールドID;
+let 指定カードID;
 async function OP(){
     await 倉庫番.ready();
     const params= new URLSearchParams(location.search);
@@ -44,6 +52,7 @@ async function OP(){
         }
         card_table_body.appendChild(行);
     }
+    仮カードセット= structuredClone(カードセット);
 }
 OP();
 
@@ -70,7 +79,8 @@ card_table_head.addEventListener("click", (event) =>{
             field_method_to.appendChild(P);
         }
     }
-    
+    指定フィールドID= 対象のID;
+    head_menu.dataset.selectedId= 対象のID;
     head_menu.classList.add("vertical");
     head_menu.style.left = `${event.clientX}px`;
     head_menu.style.top = `${event.clientY}px`;
@@ -82,6 +92,7 @@ card_table_body.addEventListener("click", (event)=>{
     if(!対象カード){return;}
     const 対象のID= 対象カード.dataset.cardId;
     
+    指定カードID= 対象のID;
     body_menu.classList.add("vertical");
     body_menu.style.left = `${event.clientX}px`;
     body_menu.style.top = `${event.clientY}px`;
@@ -96,6 +107,13 @@ document.addEventListener("click", (event)=>{
         }
     }
 });
+field_edit.addEventListener("click", ()=>{
+    field_name.hidden= true;
+    field_name_div.hidden= false;
+    field_edit.hidden= true;
+    field_confirm.hidden= false;
+});
+
 cards_import.addEventListener("click", ()=>{
     船頭.import(セットID);
 });
