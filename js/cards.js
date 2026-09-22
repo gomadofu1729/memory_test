@@ -13,21 +13,25 @@ const field_name_div= document.getElementById("field-name-div");
 const field_name_input= document.getElementById("field-name-input");
 const field_edit= document.getElementById("field-edit");
 const field_confirm= document.getElementById("field-confirm");
+const field_reset= document.getElementById("field-reset");
 const field_method_from= document.getElementById("field-method-from");
 const field_method_to= document.getElementById("field-method-to");
 const field_delete= document.getElementById("field-delete");
-const field_undo= document.getElementById("field-undo");
+const field_undelete= document.getElementById("field-undelete");
 const body_menu= document.getElementById("body-menu");
 const content_edit= document.getElementById("content-edit");
 const card_exclusion= document.getElementById("card-exclusion");
 const card_delete= document.getElementById("card-delete");
-const card_undo= document.getElementById("card-undo");
+const card_reset= document.getElementById("card-reset");
 
 let カードセット;
 let セットID;
 let 仮カードセット;
 let 指定フィールドID;
+let 指定フィールドセル
 let 指定カードID;
+let 指定カードセル;
+let 指定カード行
 async function OP(){
     await 倉庫番.ready();
     const params= new URLSearchParams(location.search);
@@ -65,21 +69,26 @@ card_table_head.addEventListener("click", (event) =>{
     
     field_name.textContent= `表示名: ${フィールド.name}`;
     field_id.textContent= `フィールドID: ${対象のID}`;
+    field_name_input.placeholder= フィールド.name;
     field_method_from.replaceChildren();
     field_method_to.replaceChildren();
     for(const 方式 of カードセット.methods){
         if(方式.Q == 対象のID){
             const P= document.createElement("p");
-            P.textContent= `${方式.sentence} > ${方式.A}`;
+            P.textContent= `・${方式.sentence} > ${方式.A}`;
+            P.style.color= "gray";
             field_method_from.appendChild(P);
         }
         if(方式.A == 対象のID){
             const P= document.createElement("p");
-            P.textContent= `${方式.Q} > ${方式.sentence}`;
+            P.textContent= `・${方式.Q} > ${方式.sentence}`;
+            P.style.color= "gray";
             field_method_to.appendChild(P);
         }
     }
+
     指定フィールドID= 対象のID;
+    指定フィールドセル= 対象セル;
     head_menu.dataset.selectedId= 対象のID;
     head_menu.classList.add("vertical");
     head_menu.style.left = `${event.clientX}px`;
@@ -93,6 +102,8 @@ card_table_body.addEventListener("click", (event)=>{
     const 対象のID= 対象カード.dataset.cardId;
     
     指定カードID= 対象のID;
+    指定カードセル= 対象セル;
+    指定カード行= 対象カード;
     body_menu.classList.add("vertical");
     body_menu.style.left = `${event.clientX}px`;
     body_menu.style.top = `${event.clientY}px`;
@@ -112,7 +123,22 @@ field_edit.addEventListener("click", ()=>{
     field_name_div.hidden= false;
     field_edit.hidden= true;
     field_confirm.hidden= false;
+    field_name_input.value= "";
 });
+field_confirm.addEventListener("click", ()=>{
+    const newName= field_name_input.value.trim();
+    if(newName=== ""){
+        return;
+    }
+    field_name.hidden= false;
+    field_name_div.hidden= true;
+    field_edit.hidden= false;
+    field_confirm.hidden= true;
+    const フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
+    フィールド.name= field_name_input.value;
+    指定フィールドセル.textContent= フィールド.name;
+    指定フィールドセル.style.backgroundColor= "yellow";
+})
 
 cards_import.addEventListener("click", ()=>{
     船頭.import(セットID);
