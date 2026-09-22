@@ -66,23 +66,24 @@ card_table_head.addEventListener("click", (event) =>{
     if(対象セル.dataset.fieldId === undefined){return;}
     const 対象のID= 対象セル.dataset.fieldId;
     const フィールド= カードセット.fields.find((ふ) => ふ.id === 対象のID);
+    const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 対象のID);
     
-    field_name.textContent= `表示名: ${フィールド.name}`;
+    field_name.textContent= `表示名: ${仮フィールド.name}`;
     field_id.textContent= `フィールドID: ${対象のID}`;
-    field_name_input.placeholder= フィールド.name;
+    field_name_input.placeholder= 仮フィールド.name;
     field_method_from.replaceChildren();
     field_method_to.replaceChildren();
     for(const 方式 of カードセット.methods){
         if(方式.Q == 対象のID){
             const P= document.createElement("p");
             P.textContent= `・${方式.sentence} > ${方式.A}`;
-            P.style.color= "gray";
+            P.style.color= "maroon";
             field_method_from.appendChild(P);
         }
         if(方式.A == 対象のID){
             const P= document.createElement("p");
             P.textContent= `・${方式.Q} > ${方式.sentence}`;
-            P.style.color= "gray";
+            P.style.color= "maroon";
             field_method_to.appendChild(P);
         }
     }
@@ -118,11 +119,13 @@ document.addEventListener("click", (event)=>{
         }
     }
 });
+
 field_edit.addEventListener("click", ()=>{
     field_name.hidden= true;
     field_name_div.hidden= false;
     field_edit.hidden= true;
     field_confirm.hidden= false;
+    field_reset.hidden= true;
     field_name_input.value= "";
 });
 field_confirm.addEventListener("click", ()=>{
@@ -134,10 +137,18 @@ field_confirm.addEventListener("click", ()=>{
     field_name_div.hidden= true;
     field_edit.hidden= false;
     field_confirm.hidden= true;
-    const フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
-    フィールド.name= field_name_input.value;
+    field_reset.hidden= false;
+    const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
+    仮フィールド.name= field_name_input.value;
+    指定フィールドセル.textContent= 仮フィールド.name;
+    指定フィールドセル.style.color= "brown";
+});
+field_reset.addEventListener("click", ()=>{
+    const フィールド= カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
+    const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
+    仮フィールド.name= フィールド.name;
     指定フィールドセル.textContent= フィールド.name;
-    指定フィールドセル.style.backgroundColor= "yellow";
+    指定フィールドセル.style.color= "black";
 })
 
 cards_import.addEventListener("click", ()=>{
