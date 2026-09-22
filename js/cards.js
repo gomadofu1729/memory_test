@@ -165,7 +165,7 @@ field_delete.addEventListener("click", ()=>{
 });
 field_undelete.addEventListener("click", ()=>{
     field_edit.disabled= false;
-    field_reset.disabled= true;
+    field_reset.disabled= false;
     field_delete.hidden= false;
     field_undelete.hidden= true;
     指定フィールドセル.style.textDecoration= "none";
