@@ -200,6 +200,22 @@ content_edit.addEventListener("click", ()=>{
     content_reset.hidden= true;
     card_delete.hidden= true;
 });
+content_confirm.addEventListener("click", ()=>{
+    const newName= content_input.value.trim();
+    if(newName=== ""){
+        return;
+    }
+    content_name.hidden= false;
+    content_div.hidden= true;
+    content_edit.hidden= false;
+    content_confirm.hidden= true;
+    content_reset.hidden= false;
+    card_delete.hidden= false;
+    const 仮カード= 仮カードセット.cards.find((か) => か.id === 指定カードID);
+    仮カード.data[指定カードセル.dataset.fieldId]= content_input.value;
+    指定カードセル.textContent= content_input.value;
+    指定カードセル.style.color= "brown";
+})
 
 cards_import.addEventListener("click", ()=>{
     船頭.import(セットID);
