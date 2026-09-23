@@ -27,9 +27,9 @@ const content_input= document.getElementById("content-input")
 const content_edit= document.getElementById("content-edit");
 const content_confirm= document.getElementById("content-confirm");
 const content_reset= document.getElementById("content-reset");
-const card_exclusion= document.getElementById("card-exclusion");
 const card_delete= document.getElementById("card-delete");
 const card_undelete= document.getElementById("card-undelete");
+const card_exclusion= document.getElementById("card-exclusion");
 
 let カードセット;
 let セットID;
@@ -159,37 +159,43 @@ field_confirm.addEventListener("click", ()=>{
     field_delete.hidden= false;
     const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
     仮フィールド.name= field_input.value;
-    指定フィールドセル.textContent= 仮フィールド.name;
-    指定フィールドセル.style.color= "brown";
+    指定フィールドセル.textContent= field_input.value;
+    指定フィールドセル.classList.remove("original");
+    指定フィールドセル.classList.add("changed");
+    field_name.textContent= `表示名: ${field_input.value}`;
 });
 field_reset.addEventListener("click", ()=>{
     const フィールド= カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
     const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
     仮フィールド.name= フィールド.name;
     指定フィールドセル.textContent= フィールド.name;
-    指定フィールドセル.style.color= "black";
+    指定フィールドセル.classList.remove("changed");
+    指定フィールドセル.classList.add("original");
+    field_name.textContent= `表示名: ${フィールド.name}`;
 });
 field_delete.addEventListener("click", ()=>{
-    field_edit.disabled= true;
-    field_reset.disabled= true;
+    field_edit.hidden= true;
+    field_reset.hidden= true;
     field_delete.hidden= true;
     field_undelete.hidden= false;
     削除予定フィールド.add(指定フィールドID);
-    指定フィールドセル.style.color= "gray";
+    指定フィールドセル.classList.remove("original", "changed")
+    指定フィールドセル.classList.add("for-delete");
     指定フィールドセル.style.textDecoration= "line-through";
 });
 field_undelete.addEventListener("click", ()=>{
-    field_edit.disabled= false;
-    field_reset.disabled= false;
+    field_edit.hidden= false;
+    field_reset.hidden= false;
     field_delete.hidden= false;
     field_undelete.hidden= true;
     指定フィールドセル.style.textDecoration= "none";
     削除予定フィールド.delete(指定フィールドID);
     const フィールド= カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
+    指定フィールドセル.classList.remove("for-delete")
     if(指定フィールドセル.textContent === フィールド.name){
-        指定フィールドセル.style.color= "black";
+        指定フィールドセル.classList.add("original");
     }else{
-        指定フィールドセル.style.color= "maroon";
+        指定フィールドセル.classList.add("changed");
     }
 });
 content_edit.addEventListener("click", ()=>{
@@ -199,6 +205,7 @@ content_edit.addEventListener("click", ()=>{
     content_confirm.hidden= false;
     content_reset.hidden= true;
     card_delete.hidden= true;
+    content_input.value="";
 });
 content_confirm.addEventListener("click", ()=>{
     const newName= content_input.value.trim();
@@ -214,9 +221,23 @@ content_confirm.addEventListener("click", ()=>{
     const 仮カード= 仮カードセット.cards.find((か) => か.id === 指定カードID);
     仮カード.data[指定カードセル.dataset.fieldId]= content_input.value;
     指定カードセル.textContent= content_input.value;
-    指定カードセル.style.color= "brown";
-})
+    指定カードセル.classList.remove("original");
+    指定カードセル.classList.add("changed");
+    content_name.textContent= `${仮フィールド.name}: ${content_input.value}`;
+});
+content_reset.addEventListener("click", ()=>{
+    const カード= カードセット.cards.find((か) => か.id === 指定カードID);
+    const 仮カード= 仮カードセット.cards.find((か) => か.id === 指定カードID);
+    仮カード.data[指定カードセル.dataset.fieldId]= カード.data[指定カードセル.dataset.fieldId];
+    指定カードセル.textContent= カード.data[指定カードセル.dataset.fieldId];
+    指定カードセル.classList.remove("changed");
+    指定カードセル.classList.add("original");
+    content_name.textContent= `${仮フィールド.name}: ${カード.data[指定カードセル.dataset.fieldId]}`;
+});
 
+card_exclusion.addEventListener("click", ()=>{
+    船頭.exclusion(セットID);
+});
 cards_import.addEventListener("click", ()=>{
     船頭.import(セットID);
 });

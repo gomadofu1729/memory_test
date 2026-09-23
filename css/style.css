@@ -27,6 +27,16 @@ th{
     background-color: white;
     border: 2px solid black;
 }
+.original{
+    color: black;
+}
+.changed{
+    color: brown;
+}
+.for-delete{
+    color: gray;
+}
+
 
 #file-port button{
     background-color: green;
