@@ -191,8 +191,15 @@ field_undelete.addEventListener("click", ()=>{
     }else{
         指定フィールドセル.style.color= "maroon";
     }
-})
-
+});
+content_edit.addEventListener("click", ()=>{
+    content_name.hidden= true;
+    content_div.hidden= false;
+    content_edit.hidden= true;
+    content_confirm.hidden= false;
+    content_reset.hidden= true;
+    card_delete.hidden= true;
+});
 
 cards_import.addEventListener("click", ()=>{
     船頭.import(セットID);
@@ -201,5 +208,5 @@ cards_export.addEventListener("click", ()=>{
     飛脚.data(セットID)
 });
 setting.addEventListener("click", ()=>{
-    船頭.import(セットID);
+    船頭.setting(セットID);
 });
