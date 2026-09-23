@@ -61,6 +61,7 @@ async function OP(){
         for(const フィールド of カードセット.fields){
             const セル=document.createElement("td");
             セル.textContent= カード.data[フィールド.id]
+            セル.dataset.fieldId= フィールド.id;
             行.appendChild(セル);
         }
         card_table_body.appendChild(行);
@@ -110,7 +111,14 @@ card_table_body.addEventListener("click", (event)=>{
     const 対象カード= event.target.closest(("tr"));
     if(!対象カード){return;}
     const 対象のID= 対象カード.dataset.cardId;
+    const 対象のフィールドID= 対象セル.dataset.fieldId;
+    const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 対象のフィールドID);
     
+    card_id.textContent= `カードID: ${対象のID}`;
+    content_name.textContent= `${仮フィールド.name}: ${対象セル.textContent}`;
+    content_label.textContent= `${仮フィールド.name}: `;
+    content_input.placeholder= 対象セル.textContent;
+
     指定カードID= 対象のID;
     指定カードセル= 対象セル;
     指定カード行= 対象カード;
