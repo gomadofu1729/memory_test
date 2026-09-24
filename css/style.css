@@ -27,10 +27,10 @@ th{
     background-color: white;
     border: 2px solid black;
 }
-:not(.for-delete) .original{
+:not(.for-delete)> .original{
     color: black;
 }
-:not(.for-delete) .changed{
+:not(.for-delete)> .changed{
     color: brown;
 }
 .for-delete{
