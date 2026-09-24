@@ -213,7 +213,7 @@ content_confirm.addEventListener("click", ()=>{
     指定カードセル.textContent= content_input.value;
     指定カードセル.classList.remove("original");
     指定カードセル.classList.add("changed");
-    content_name.textContent= `${仮カード.name}: ${content_input.value}`;
+    content_name.textContent= `${指定カードセル.dataset.fieldId}: ${content_input.value}`;
 });
 content_reset.addEventListener("click", ()=>{
     const カード= カードセット.cards.find((か) => か.id === 指定カードID);
