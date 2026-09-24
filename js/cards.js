@@ -181,14 +181,12 @@ field_delete.addEventListener("click", ()=>{
     削除予定フィールド.add(指定フィールドID);
     指定フィールドセル.classList.remove("original", "changed")
     指定フィールドセル.classList.add("for-delete");
-    指定フィールドセル.style.textDecoration= "line-through";
 });
 field_undelete.addEventListener("click", ()=>{
     field_edit.hidden= false;
     field_reset.hidden= false;
     field_delete.hidden= false;
     field_undelete.hidden= true;
-    指定フィールドセル.style.textDecoration= "none";
     削除予定フィールド.delete(指定フィールドID);
     const フィールド= カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
     指定フィールドセル.classList.remove("for-delete")
@@ -223,7 +221,7 @@ content_confirm.addEventListener("click", ()=>{
     指定カードセル.textContent= content_input.value;
     指定カードセル.classList.remove("original");
     指定カードセル.classList.add("changed");
-    content_name.textContent= `${仮フィールド.name}: ${content_input.value}`;
+    content_name.textContent= `${仮カード.name}: ${content_input.value}`;
 });
 content_reset.addEventListener("click", ()=>{
     const カード= カードセット.cards.find((か) => か.id === 指定カードID);
@@ -232,7 +230,30 @@ content_reset.addEventListener("click", ()=>{
     指定カードセル.textContent= カード.data[指定カードセル.dataset.fieldId];
     指定カードセル.classList.remove("changed");
     指定カードセル.classList.add("original");
-    content_name.textContent= `${仮フィールド.name}: ${カード.data[指定カードセル.dataset.fieldId]}`;
+    content_name.textContent= `${仮カード.name}: ${カード.data[指定カードセル.dataset.fieldId]}`;
+});
+card_delete.addEventListener("click", ()=>{
+    content_edit.hidden= true;
+    content_reset.hidden= true;
+    card_delete.hidden= true;
+    card_undelete.hidden= false;
+    削除予定カード.add(指定カードID);
+    指定カードセル.classList.remove("original", "changed");
+    指定カードセル.classList.add("for-delete");
+});
+card_undelete.addEventListener("click", ()=>{
+    content_edit.hidden= false;
+    content_reset.hidden= false;
+    card_delete.hidden= false;
+    card_undelete.hidden= true;
+    削除予定カード.delete(指定カードID);
+    const カード= カードセット.cards.find((か) => か.id === 指定カードID);
+    指定カードセル.classList.remove("for-delete")
+    if(指定カードセル.textContent === カード.data[指定カードセル.dataset.fieldId]){
+        指定カードセル.classList.add("original");
+    }else{
+        指定カードセル.classList.add("changed");
+    }
 });
 
 card_exclusion.addEventListener("click", ()=>{
