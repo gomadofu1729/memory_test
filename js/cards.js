@@ -239,7 +239,7 @@ card_undelete.addEventListener("click", ()=>{
     card_undelete.hidden= true;
     削除予定カード.delete(指定カードID);
     const カード= カードセット.cards.find((か) => か.id === 指定カードID);
-    指定カード行.classList.remove("for-delete")
+    指定カード行.classList.remove("for-delete");
 });
 
 card_exclusion.addEventListener("click", ()=>{
