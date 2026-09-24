@@ -27,10 +27,10 @@ th{
     background-color: white;
     border: 2px solid black;
 }
-.original{
+.original:not(.for-delete){
     color: black;
 }
-.changed{
+.changed:not(.for-delete){
     color: brown;
 }
 .for-delete{
@@ -55,4 +55,7 @@ th{
     background-color: red;
     color: white;
     font-size: 20px;
+}
+#field-method-from p, #field-method-to p{
+    color: maroon;
 }

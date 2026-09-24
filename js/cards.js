@@ -87,13 +87,11 @@ card_table_head.addEventListener("click", (event) =>{
         if(方式.Q == 対象のID){
             const P= document.createElement("p");
             P.textContent= `・${方式.sentence} > ${方式.A}`;
-            P.style.color= "maroon";
             field_method_from.appendChild(P);
         }
         if(方式.A == 対象のID){
             const P= document.createElement("p");
             P.textContent= `・${方式.Q} > ${方式.sentence}`;
-            P.style.color= "maroon";
             field_method_to.appendChild(P);
         }
     }
@@ -179,7 +177,6 @@ field_delete.addEventListener("click", ()=>{
     field_delete.hidden= true;
     field_undelete.hidden= false;
     削除予定フィールド.add(指定フィールドID);
-    指定フィールドセル.classList.remove("original", "changed")
     指定フィールドセル.classList.add("for-delete");
 });
 field_undelete.addEventListener("click", ()=>{
@@ -189,12 +186,7 @@ field_undelete.addEventListener("click", ()=>{
     field_undelete.hidden= true;
     削除予定フィールド.delete(指定フィールドID);
     const フィールド= カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
-    指定フィールドセル.classList.remove("for-delete")
-    if(指定フィールドセル.textContent === フィールド.name){
-        指定フィールドセル.classList.add("original");
-    }else{
-        指定フィールドセル.classList.add("changed");
-    }
+    指定フィールドセル.classList.remove("for-delete");
 });
 content_edit.addEventListener("click", ()=>{
     content_name.hidden= true;
@@ -238,8 +230,7 @@ card_delete.addEventListener("click", ()=>{
     card_delete.hidden= true;
     card_undelete.hidden= false;
     削除予定カード.add(指定カードID);
-    指定カードセル.classList.remove("original", "changed");
-    指定カードセル.classList.add("for-delete");
+    指定カード行.classList.add("for-delete");
 });
 card_undelete.addEventListener("click", ()=>{
     content_edit.hidden= false;
@@ -249,11 +240,6 @@ card_undelete.addEventListener("click", ()=>{
     削除予定カード.delete(指定カードID);
     const カード= カードセット.cards.find((か) => か.id === 指定カードID);
     指定カードセル.classList.remove("for-delete")
-    if(指定カードセル.textContent === カード.data[指定カードセル.dataset.fieldId]){
-        指定カードセル.classList.add("original");
-    }else{
-        指定カードセル.classList.add("changed");
-    }
 });
 
 card_exclusion.addEventListener("click", ()=>{
