@@ -20,21 +20,21 @@ const start= document.getElementById("start");
 let カードセット;
 let セットID;
 async function OP(){
-    const params= new URLSearchParams(location.search);
     const 初期化待ち達= document.querySelectorAll(".wait");
     for (const よ of 初期化待ち達) {
         よ.disabled = true;
     }
+    const params= new URLSearchParams(location.search);
     セットID= params.get("set");
     await 倉庫番.ready();
     カードセット= await 倉庫番.get(セットID);
-    for (const よ of 初期化待ち達) {
-        よ.disabled = false;
-    }
     set_name_display.textContent= `セット名: ${カードセット.name}`;
     cards_number.textContent= `${カードセット.cards.length}件`;
     methods_number.textContent= `${カードセット.methods.length}件`;
     exclusion_number.textContent= `${カードセット.exclusions.length}件`;
+    for (const よ of 初期化待ち達) {
+        よ.disabled = false;
+    }
 }
 OP();
 

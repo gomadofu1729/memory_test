@@ -44,9 +44,13 @@ let 指定カードセル;
 let 指定カード行;
 let 削除予定カード= new Set();
 async function OP(){
-    await 倉庫番.ready();
+    const 初期化待ち達= document.querySelectorAll(".wait");
+    for (const よ of 初期化待ち達) {
+        よ.disabled = true;
+    }
     const params= new URLSearchParams(location.search);
     セットID= params.get("set");
+    await 倉庫番.ready();
     カードセット= await 倉庫番.get(セットID);
     for(const フィールド of カードセット.fields){
         const 見出し= document.createElement("th");
@@ -69,6 +73,9 @@ async function OP(){
         card_table_body.appendChild(行);
     }
     仮カードセット= structuredClone(カードセット);
+    for (const よ of 初期化待ち達) {
+        よ.disabled = false;
+    }
 }
 OP();
 
