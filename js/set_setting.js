@@ -30,8 +30,8 @@ async function OP(){
     カードセット= await 倉庫番.get(セットID);
     set_name_display.textContent= `セット名: ${カードセット.name}`;
     cards_number.textContent= `${カードセット.cards.length}件`;
-    methods_number.textContent= `${カードセット.methods.length}件`;
-    exclusion_number.textContent= `${カードセット.exclusions.length}件`;
+    methods_number.textContent= `${Object.keys(カードセット.methods).length}件`;
+    exclusion_number.textContent= `${Object.keys(カードセット.exclusions).length}件`;
     for (const よ of 初期化待ち達) {
         よ.disabled = false;
     }

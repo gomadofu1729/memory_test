@@ -20,6 +20,7 @@ const confirm= document.getElementById("confirm");
 
 const ID形式 = /^[A-Za-z0-9_]+$/;
 let セットID;
+let カードセット;
 function display_section(番号){
     for(const セクション of sections){
         if(セクション.dataset.section== 番号){
@@ -88,10 +89,13 @@ next1.addEventListener("click", async ()=>{
             set_id_error.textContent= "このIDは既に使用されています。"
             return;
         }
+        カードセット= {}
     }else{
         if(existing_set.value== ""){
             return;
         }
+        セットID= existing_set.value;
+        await カードセット= 倉庫番.get(セットID);
     }
     display_section(2)
 });
