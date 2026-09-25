@@ -68,7 +68,7 @@ for(const ボタン of prev){
         display_section(ボタン.dataset.destiny);
     });
 }
-for(const せ of setMode){
+for(const せ of set_mode){
     せ.addEventListener("change", setMode_change);
 }
 next1.addEventListener("click", async ()=>{
