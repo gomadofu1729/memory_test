@@ -170,8 +170,6 @@ field_reset.addEventListener("click", ()=>{
 field_restore.addEventListener("click", ()=>{
     head_menu.classList.remove("menu-editing");
     head_menu.classList.add("menu-free");
-    指定フィールドセル.classList.remove("original");
-    指定フィールドセル.classList.add("changed");
 });
 field_confirm.addEventListener("click", ()=>{
     const newName= field_input.value.trim();
@@ -218,8 +216,6 @@ content_reset.addEventListener("click", ()=>{
 content_restore.addEventListener("click", ()=>{
     body_menu.classList.remove("menu-free");
     body_menu.classList.add("menu-editing");
-    指定カードセル.classList.remove("original");
-    指定カードセル.classList.add("changed");
 })
 content_confirm.addEventListener("click", ()=>{
     const newName= content_input.value.trim();
