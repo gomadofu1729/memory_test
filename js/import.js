@@ -63,7 +63,6 @@ async function OP(){
 }
 OP();
 
-display_section(1);
 for(const ボタン of prev){
     ボタン.addEventListener("click", ()=>{
         display_section(ボタン.dataset.destiny);
