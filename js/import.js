@@ -79,6 +79,10 @@ for(const せ of set_mode){
     せ.addEventListener("change", setMode_change);
 }
 next1.addEventListener("click", async ()=>{
+    const 初期化待ち達= document.querySelectorAll(".wait2");
+    for (const よ of 初期化待ち達) {
+        よ.disabled = true;
+    }
     const 選択= document.querySelector('input[name="setMode"]:checked').value;
     if(選択=== "new"){
         セットID= new_set_id.value;
@@ -111,6 +115,9 @@ next1.addEventListener("click", async ()=>{
         セットID= existing_set.value;
         カードセット= await 倉庫番.get(セットID);
     }
+    for (const よ of 初期化待ち達) {
+        よ.disabled = false;
+    }
     display_section(2);
 });
 
@@ -126,10 +133,24 @@ select_file.addEventListener("change", ()=>{
     const 読取= new FileReader();
     読取.addEventListener("load", ()=>{
         const テキスト= 読取.result;
-        const 表= テキスト.split("\n").map((も) => も.split("\t"));
-        const フィールド行= 表[0];
-        const カード行= 表.slice(1);
-        console.log(カード行);
+        const 表= テキスト.split(/\r?\n/).map((も) => も.split("\t"));
+        const 見出し= 表[0];
+        const フィールド数= 見出し.length;
+        const カードパック= 表.slice(1);
+        for(const フィールドID of 見出し.slice(1)){
+            const フィールド= カードセット.fields.find((ふ) => ふ.id === フィールドID);
+            if(フィールド=== undefined){
+                カードセット.fields.push({"id":フィールドID, "name":フィールドID});
+            }
+        }
+        for(const カード of カードパック){
+            スリーブ= {"id":カード[0], "data"={}};
+            for(let i=1; i<フィールド数; i++){
+                スリーブ.data[見出し[i]]= カード[i];
+            }
+            カードセット.cards.push(スリーブ);
+        }
+        console.log(カードセット);
     });
     読取.readAsText(select_file.files[0]);
 })
