@@ -21,6 +21,7 @@ const confirm= document.getElementById("confirm");
 const ID形式 = /^[A-Za-z0-9_]+$/;
 let セットID;
 let カードセット;
+
 function display_section(番号){
     for(const セクション of sections){
         if(セクション.dataset.section== 番号){
