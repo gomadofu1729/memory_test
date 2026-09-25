@@ -59,7 +59,7 @@ cards_edit.addEventListener("click", ()=>{
     船頭.cards(セットID);
 });
 cards_import.addEventListener("click", ()=>{
-    船頭.import();
+    船頭.importID(セットID);
 });
 cards_export.addEventListener("click", ()=>{
     飛脚.data(カードセット);

@@ -273,7 +273,7 @@ card_exclusion.addEventListener("click", ()=>{
     船頭.exclusion(セットID);
 });
 cards_import.addEventListener("click", ()=>{
-    船頭.import(セットID);
+    船頭.importID(セットID);
 });
 cards_export.addEventListener("click", ()=>{
     飛脚.data(カードセット);
