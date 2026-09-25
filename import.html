@@ -14,21 +14,7 @@
 <header><h1>カードデータをインポート</h1></header>
 <main>
     <section>
-        <h2>1. カードデータ</h2>
-        <select id="import-type">
-            <option value="user-file">ファイルを選択</option>
-            <option value="pref">sample: 都道府県庁住所</option>
-        </select><br>
-        <input
-            type="file"
-            id="select-file"
-            accept=".csv,.tsv,.txt"
-        >
-        <p id="file-info"></p>
-    </section>
-
-    <section>
-        <h2>2. カードセット</h2>
+        <h2>1. カードセットを選択</h2>
         <label>
             <input
                 type="radio"
@@ -59,26 +45,34 @@
             <option value="">既存セットを選択</option>
         </select>
     </section>
+    
+    <section>
+        <h2>2. カードデータを選択</h2>
+        <select id="import-type">
+            <option value="user-file">ファイルを選択</option>
+            <option value="pref">sample: 都道府県庁住所</option>
+        </select><br>
+        <input
+            type="file"
+            id="select-file"
+            accept=".csv,.tsv,.txt"
+        >
+        <p id="file-info"></p>
+    </section>
 
     <section>
         <h2>3. 出題方式</h2>
         <div id="methods">
             <!-- JavaScriptで生成 -->
         </div>
-        <button id="add-method">
-            ＋ 出題方式を追加
-        </button>
+        <button id="add-method">＋ 出題方式を追加</button>
     </section>
 
     <section>
         <h2>4. 確認</h2>
 
-        <div id="summary">
-            まだ設定されていません。
-        </div>
-        <button id="register">
-            登録
-        </button>
+        <div id="summary">まだ設定されていません。</div>
+        <button id="register">登録</button>
     </section>
 </main>
 </body>
