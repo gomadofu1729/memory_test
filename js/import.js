@@ -34,6 +34,7 @@ function setMode_change(){
     const 選択= document.querySelector('input[name="setMode"]:checked').value;
     new_set_id.disabled= 選択!=="new";
     existing_set.disabled= 選択!=="existing";
+    set_id_error.classList.add("hide");
 }
 async function OP(){
     const 初期化待ち達= document.querySelectorAll(".wait");
