@@ -46,7 +46,16 @@ set_file.addEventListener("change", ()=>{
     読取.readAsText(set_file.files[0]);
 });
 select_sets.addEventListener("change", async ()=>{
-    カードセット= await 倉庫番.get(select_sets.value)
+    if(!select_sets.value){
+        set_export.disabled= true;
+        setting.disabled= true;
+        start.disabled= true;
+        return;
+    }
+    set_export.disabled= false;
+    setting.disabled= false;
+    start.disabled= false;
+    カードセット= await 倉庫番.get(select_sets.value);
 })
 set_export.addEventListener("click", ()=>{
     飛脚.history(カードセット)
