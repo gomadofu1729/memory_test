@@ -10,7 +10,7 @@ const 船頭= {
     },
     importID(セットID){
         window.location.href= `import.html?set=${セットID}`;
-    }
+    },
     setting(セットID){
         window.location.href= `set_setting.html?set=${セットID}`;
     },
