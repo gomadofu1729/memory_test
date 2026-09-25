@@ -253,7 +253,7 @@ card_undelete.addEventListener("click", ()=>{
     指定カード行.classList.remove("for-delete");
 });
 
-confirm.addEventListener("click", ()=>{
+confirm.addEventListener("click", async ()=>{
     仮カードセット.cards= 仮カードセット.cards.filter(
         (か) => !削除予定カード.has(か.id)
     );
