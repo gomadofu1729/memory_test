@@ -214,16 +214,16 @@ content_reset.addEventListener("click", ()=>{
     content_name.textContent= `${仮フィールド.name}: ${カード.data[指定カードセル.dataset.fieldId]}`;
 });
 content_restore.addEventListener("click", ()=>{
-    body_menu.classList.remove("menu-free");
-    body_menu.classList.add("menu-editing");
+    body_menu.classList.remove("menu-editing");
+    body_menu.classList.add("menu-free");
 })
 content_confirm.addEventListener("click", ()=>{
     const newName= content_input.value.trim();
     if(newName=== ""){
         return;
     }
-    body_menu.classList.remove("menu-free");
-    body_menu.classList.add("menu-editing");
+    body_menu.classList.remove("menu-editing");
+    body_menu.classList.add("menu-free");
     const 仮カード= 仮カードセット.cards.find((か) => か.id === 指定カードID);
     仮カード.data[指定カードセル.dataset.fieldId]= content_input.value;
     指定カードセル.textContent= content_input.value;
