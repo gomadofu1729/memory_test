@@ -1,7 +1,7 @@
 const set_mode= document.getElementsByName("setMode");
 const set_mode_new= document.getElementById("setMode-new");
 const set_mode_existing= document.getElementById("setMode-existing");
-const new_set_name= document.getElementById("new-set-name");
+const new_set_id= document.getElementById("new-set-id");
 const existing_set= document.getElementById("existing-set");
 const import_type= document.getElementsByName("import-type");
 const select_file= document.getElementById("select-file");
@@ -24,7 +24,7 @@ function display_section(番号){
 }
 function setMode_change(){
     const 選択= document.querySelector('input[name="setMode"]:checked').value;
-    new_set_name.disabled= 選択!=="new";
+    new_set_id.disabled= 選択!=="new";
     existing_set.disabled= 選択!=="existing";
 }
 async function OP(){

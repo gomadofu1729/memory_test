@@ -20,8 +20,9 @@
             新しいセットを作成
         </label>
         <div>
-            <label for="new-set-name">　セット名</label>
-            <input type="text" id="new-set-name" placeholder="例: 日本の都道府県庁住所">
+            <label for="new-set-name">　セットID</label>
+            <input type="text" id="new-set-id" placeholder="例: pref_office">
+            <p id="set-id-error"></p>
         </div>
         <label>
             <input type="radio" id="setMode-existing" name="setMode" value="existing" class="wait">
@@ -44,7 +45,7 @@
         <input type="file" id="select-file" accept=".csv,.tsv,.txt" >
         <p id="file-info"></p>
         <div>
-            <button class="STB" data-destiny="1">&lt; previous</button>
+            <button class="STB" data-destiny="1">&lt; prev</button>
             <button class="STB" data-destiny="3">next &gt;</button>
         </div>
     </section>
@@ -56,7 +57,7 @@
         </div>
         <button id="add-method">＋ 出題方式を追加</button>
         <div>
-            <button class="STB" data-destiny="2">&lt; previous</button>
+            <button class="STB" data-destiny="2">&lt; prev</button>
             <button class="STB" data-destiny="4">next &gt;</button>
         </div>
     </section>
@@ -67,7 +68,7 @@
         <div id="summary">まだ設定されていません。</div>
         <button id="register">登録</button>
         <div>
-            <button class="STB" data-destiny="3">&lt; previous</button>
+            <button class="STB" data-destiny="3">&lt; prev</button>
         </div>
     </section>
 </main>
