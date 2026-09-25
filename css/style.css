@@ -70,5 +70,8 @@ h2, h3{
 }
 #set-id-error{
     color: red;
-    font-size: 8px;
+    font-size: 12px;
+}
+#under-setMode-new{
+    margin-left: 21px;
 }
