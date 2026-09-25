@@ -276,7 +276,7 @@ cards_import.addEventListener("click", ()=>{
     船頭.import(セットID);
 });
 cards_export.addEventListener("click", ()=>{
-    飛脚.data(セットID)
+    飛脚.data(カードセット);
 });
 setting.addEventListener("click", ()=>{
     船頭.setting(セットID);
