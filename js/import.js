@@ -126,9 +126,10 @@ select_file.addEventListener("change", ()=>{
     const 読取= new FileReader();
     読取.addEventListener("load", ()=>{
         const テキスト= 読取.result;
-        const 行別= テキスト.split("\n");
-        const 表式= 行別.map((も) => も.split("\t"));
-        console.log(表式); 
+        const 表= テキスト.split("\n").map((も) => も.split("\t"));
+        const フィールド行= 表[0];
+        const カード行= 表.slice(1);
+        console.log(カード行);
     });
     読取.readAsText(select_file.files[0]);
 })
