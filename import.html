@@ -30,8 +30,9 @@
         <select id="existing-set" disabled>
             <option value="">既存セットを選択</option>
         </select>
-
-        <button class="STB wait" data-destiny="2">next &gt;</button>
+        <div>
+            <button class="STB wait" data-destiny="2">next &gt;</button>
+        </div>
     </section>
 
     <section data-section="2">
@@ -42,9 +43,10 @@
         </select><br>
         <input type="file" id="select-file" accept=".csv,.tsv,.txt" >
         <p id="file-info"></p>
-
-        <button class="STB" data-destiny="1">&lt; previous</button>
-        <button class="STB" data-destiny="3">next &gt;</button>
+        <div>
+            <button class="STB" data-destiny="1">&lt; previous</button>
+            <button class="STB" data-destiny="3">next &gt;</button>
+        </div>
     </section>
 
     <section data-section="3">
@@ -53,9 +55,10 @@
             <!-- JavaScriptで生成 -->
         </div>
         <button id="add-method">＋ 出題方式を追加</button>
-
-        <button class="STB" data-destiny="2">&lt; previous</button>
-        <button class="STB" data-destiny="4">next &gt;</button>
+        <div>
+            <button class="STB" data-destiny="2">&lt; previous</button>
+            <button class="STB" data-destiny="4">next &gt;</button>
+        </div>
     </section>
 
     <section data-section="4">
@@ -63,8 +66,9 @@
 
         <div id="summary">まだ設定されていません。</div>
         <button id="register">登録</button>
-
-        <button class="STB" data-destiny="3">&lt; previous</button>
+        <div>
+            <button class="STB" data-destiny="3">&lt; previous</button>
+        </div>
     </section>
 </main>
 </body>

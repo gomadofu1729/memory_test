@@ -34,6 +34,7 @@ function display_section(番号){
         }
     }
 }
+display_section(1);
 for(const ボタン of Stb){
     ボタン.addEventListener("click", ()=>{
         display_section(ボタン.dataset.destiny);
