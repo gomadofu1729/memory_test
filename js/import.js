@@ -4,13 +4,17 @@ const set_mode_existing= document.getElementById("setMode-existing");
 const new_set_id= document.getElementById("new-set-id");
 const set_id_error= document.getElementById("set-id-error");
 const existing_set= document.getElementById("existing-set");
+
 const import_type= document.getElementsByName("import-type");
 const select_file= document.getElementById("select-file");
 const file_info= document.getElementById("file-info");
+
 const methods= document.getElementById("methods");
 const add_method= document.getElementById("add-method");
+
 const summary= document.getElementById("summary");
 const register= document.getElementById("register");
+
 const sections= document.getElementsByTagName("section");
 const prev= document.getElementsByClassName("prev");
 const next1= document.getElementById("next1");
@@ -21,7 +25,7 @@ const confirm= document.getElementById("confirm");
 const ID形式 = /^[A-Za-z0-9_]+$/;
 let セットID;
 let カードセット;
-
+let 使用ファイル;
 function display_section(番号){
     for(const セクション of sections){
         if(セクション.dataset.section== 番号){
@@ -37,6 +41,7 @@ function setMode_change(){
     existing_set.disabled= 選択!=="existing";
     set_id_error.classList.add("hide");
 }
+
 async function OP(){
     const 初期化待ち達= document.querySelectorAll(".wait");
     for (const よ of 初期化待ち達) {
@@ -77,7 +82,7 @@ next1.addEventListener("click", async ()=>{
     const 選択= document.querySelector('input[name="setMode"]:checked').value;
     if(選択=== "new"){
         セットID= new_set_id.value;
-        if(セットID== ""){
+        if(!セットID){
             set_id_error.classList.remove("hide");
             set_id_error.textContent= "セットIDを入力してください。";
             return;
@@ -102,11 +107,24 @@ next1.addEventListener("click", async ()=>{
             "exclusions":{}
         };
     }else{
-        if(existing_set.value== ""){
-            return;
-        }
+        if(!existing_set.value){return;}
         セットID= existing_set.value;
         カードセット= await 倉庫番.get(セットID);
     }
     display_section(2);
 });
+
+import_type.addEventListener("change", ()=>{
+    if(import_type.value !== "user-file"){
+        select_file.classList.add("hide");
+    }
+});
+select_file.addEventListener("change", ()=>{
+    if(!select_file.value){return;}
+    const 読取= new FileReader();
+    読取.addEventListener("load", ()=>{
+        const テキスト= 読取.result;
+        console.log(テキスト);
+    });
+    読取.readAsText(select_file.files[0]);
+})

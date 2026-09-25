@@ -33,9 +33,7 @@ set_import.addEventListener("click", ()=>{
     set_file.click();
 });
 set_file.addEventListener("change", ()=>{
-    if (!set_file.value){
-        return;
-    }
+    if (!set_file.value){return;}
     const 読取= new FileReader();
     読取.addEventListener("load", async ()=>{
         let D= JSON.parse(読取.result);

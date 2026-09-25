@@ -180,9 +180,7 @@ field_restore.addEventListener("click", ()=>{
 });
 field_confirm.addEventListener("click", ()=>{
     const newName= field_input.value.trim();
-    if(newName=== ""){
-        return;
-    }
+    if(newName=== ""){return;}
     head_menu.classList.remove("menu-editing");
     head_menu.classList.add("menu-free");
     const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
@@ -226,9 +224,7 @@ content_restore.addEventListener("click", ()=>{
 })
 content_confirm.addEventListener("click", ()=>{
     const newName= content_input.value.trim();
-    if(newName=== ""){
-        return;
-    }
+    if(newName=== ""){return;}
     body_menu.classList.remove("menu-editing");
     body_menu.classList.add("menu-free");
     const 仮カード= 仮カードセット.cards.find((か) => か.id === 指定カードID);
