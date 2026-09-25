@@ -16,18 +16,18 @@
     <section data-section="1">
         <h2>1. カードセットを選択</h2>
         <label>
-            <input type="radio" name="setMode" value="new" checked>
+            <input type="radio" id="setMode-new" name="setMode" value="new">
             新しいセットを作成
         </label>
         <div>
             <label for="new-set-name">　セット名</label>
-            <input type="text" id="new-set-name" placeholder="例: 日本の都道府県庁">
+            <input type="text" id="new-set-name" placeholder="例: 日本の都道府県庁住所">
         </div>
         <label>
-            <input type="radio" class="wait" name="setMode" value="existing">
+            <input type="radio" id="setMode-existing" name="setMode" value="existing" class="wait">
             既存のセットに追加
         </label>
-        <select id="existing-set" disabled>
+        <select id="existing-set">
             <option value="">既存セットを選択</option>
         </select>
         <div>

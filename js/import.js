@@ -1,4 +1,6 @@
 const set_mode= document.getElementsByName("setMode");
+const set_mode_new= document.getElementById("setMode-new");
+const set_mode_existing= document.getElementById("setMode-existing");
 const new_set_name= document.getElementById("new-set-name");
 const existing_set= document.getElementById("existing-set");
 const import_type= document.getElementsByName("import-type");
@@ -11,20 +13,6 @@ const register= document.getElementById("register");
 const sections= document.getElementsByTagName("section");
 const Stb= document.getElementsByClassName("STB");
 
-let カードセット;
-async function OP(){
-    const 初期化待ち達= document.querySelectorAll(".wait");
-    for (const よ of 初期化待ち達) {
-        よ.disabled = true;
-    }
-    await 倉庫番.ready();
-    const カードケース= await 倉庫番.enumerate();
-    for (const よ of 初期化待ち達) {
-        よ.disabled = false;
-    }
-}
-OP();
-
 function display_section(番号){
     for(const セクション of sections){
         if(セクション.dataset.section== 番号){
@@ -34,9 +22,43 @@ function display_section(番号){
         }
     }
 }
+function setMode_change(){
+    const 選択= document.querySelector('input[name="setMode"]:checked').value;
+    new_set_name.disabled= 選択!=="new";
+    existing_set.disabled= 選択!=="existing";
+}
+async function OP(){
+    const 初期化待ち達= document.querySelectorAll(".wait");
+    for (const よ of 初期化待ち達) {
+        よ.disabled = true;
+    }
+    await 倉庫番.ready();
+    const カードケース= await 倉庫番.enumerate();
+    for(const D of カードケース){
+        const 新選択肢= document.createElement("option");
+        新選択肢.value= D.id;
+        新選択肢.textContent= D.name;
+        existing_set.appendChild(新選択肢);
+    }
+    const params= new URLSearchParams(location.search);
+    const URLセット= params.get("set");
+    if(URLセット=== null){
+        set_mode_new.checked= true;
+    }else{
+        set_mode_existing.checked= true;
+        existing_set.value= URLセット;
+    }
+    setMode_change();
+    for (const よ of 初期化待ち達) {
+        よ.disabled = false;
+    }
+}
+OP();
+
 display_section(1);
 for(const ボタン of Stb){
     ボタン.addEventListener("click", ()=>{
         display_section(ボタン.dataset.destiny);
     });
 }
+
