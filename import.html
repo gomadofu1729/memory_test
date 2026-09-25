@@ -13,66 +13,58 @@
 <body>
 <header><h1>カードデータをインポート</h1></header>
 <main>
-    <section>
+    <section data-section="1">
         <h2>1. カードセットを選択</h2>
         <label>
-            <input
-                type="radio"
-                name="setMode"
-                value="new"
-                checked
-            >
+            <input type="radio" name="setMode" value="new" checked>
             新しいセットを作成
         </label>
         <div>
             <label for="new-set-name">　セット名</label>
-            <input
-                type="text"
-                id="new-set-name"
-                placeholder="例: 日本の都道府県庁"
-            >
+            <input type="text" id="new-set-name" placeholder="例: 日本の都道府県庁">
         </div>
         <label>
-            <input
-                type="radio"
-                name="setMode"
-                value="existing"
-            >
+            <input type="radio" class="wait" name="setMode" value="existing">
             既存のセットに追加
         </label>
-
-        <select id="existing" disabled>
+        <select id="existing-set" disabled>
             <option value="">既存セットを選択</option>
         </select>
+
+        <button class="Snext wait">next &gt;</button>
     </section>
-    
-    <section>
+
+    <section data-section="2">
         <h2>2. カードデータを選択</h2>
         <select id="import-type">
             <option value="user-file">ファイルを選択</option>
             <option value="pref">sample: 都道府県庁住所</option>
         </select><br>
-        <input
-            type="file"
-            id="select-file"
-            accept=".csv,.tsv,.txt"
-        >
+        <input type="file" id="select-file" accept=".csv,.tsv,.txt" >
         <p id="file-info"></p>
+
+        <button class="Spre">&lt; previous</button>
+        <button class="Snext">next &gt;</button>
     </section>
 
-    <section>
+    <section data-section="3">
         <h2>3. 出題方式</h2>
         <div id="methods">
             <!-- JavaScriptで生成 -->
         </div>
         <button id="add-method">＋ 出題方式を追加</button>
+
+        <button class="Spre">&lt; previous</button>
+        <button class="Snext">next &gt;</button>
     </section>
 
-    <section>
+    <section data-section="4">
         <h2>4. 確認</h2>
 
         <div id="summary">まだ設定されていません。</div>
         <button id="register">登録</button>
+
+        <button class="Spre">&lt; previous</button>
     </section>
 </main>
 </body>
