@@ -8,6 +8,10 @@ const start= document.getElementById("start");
 
 let カードセット;
 async function OP(){
+    const 初期化待ち達= document.querySelectorAll(".wait");
+    for (const よ of 初期化待ち達) {
+        よ.disabled = true;
+    }
     await 倉庫番.ready();
     const カードケース= await 倉庫番.enumerate();
     for(const D of カードケース){
@@ -15,6 +19,9 @@ async function OP(){
         新選択肢.value= D.id;
         新選択肢.textContent= D.name;
         select_sets.appendChild(新選択肢);
+    }
+    for (const よ of 初期化待ち達) {
+        よ.disabled = false;
     }
 }
 OP();
