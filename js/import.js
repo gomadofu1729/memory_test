@@ -114,8 +114,10 @@ next1.addEventListener("click", async ()=>{
     display_section(2);
 });
 
-import_type.addEventListener("change", ()=>{
-    if(import_type.value !== "user-file"){
+import_type.addEventListener("change", (event)=>{
+    if(import_type.value == "user-file"){
+        select_file.classList.remove("hide");
+    }else{
         select_file.classList.add("hide");
     }
 });
