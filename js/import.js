@@ -5,7 +5,7 @@ const new_set_id= document.getElementById("new-set-id");
 const set_id_error= document.getElementById("set-id-error");
 const existing_set= document.getElementById("existing-set");
 
-const import_type= document.getElementsByName("import-type");
+const import_type= document.getElementById("import-type");
 const select_file= document.getElementById("select-file");
 const file_info= document.getElementById("file-info");
 
@@ -114,7 +114,7 @@ next1.addEventListener("click", async ()=>{
     display_section(2);
 });
 
-import_type.addEventListener("change", (event)=>{
+import_type.addEventListener("change", ()=>{
     if(import_type.value == "user-file"){
         select_file.classList.remove("hide");
     }else{
