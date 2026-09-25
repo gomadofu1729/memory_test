@@ -89,7 +89,15 @@ next1.addEventListener("click", async ()=>{
             set_id_error.textContent= "このIDは既に使用されています。"
             return;
         }
-        カードセット= {}
+        カードセット= {
+            "id": セットID,
+            "name": セットID,
+            "fields":[],
+            "cards":[],
+            "methods":[],
+            "histories":{},
+            "exclusions":{}
+        }
     }else{
         if(existing_set.value== ""){
             return;
