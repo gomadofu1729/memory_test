@@ -69,7 +69,9 @@ for(const ボタン of prev){
         display_section(ボタン.dataset.destiny);
     });
 }
-
+for(const せ of setMode){
+    せ.addEventListener("change", setMode_change);
+}
 next1.addEventListener("click", async ()=>{
     const 選択= document.querySelector('input[name="setMode"]:checked').value;
     if(選択=== "new"){
@@ -97,13 +99,13 @@ next1.addEventListener("click", async ()=>{
             "methods":[],
             "histories":{},
             "exclusions":{}
-        }
+        };
     }else{
         if(existing_set.value== ""){
             return;
         }
         セットID= existing_set.value;
-        await カードセット= 倉庫番.get(セットID);
+        カードセット= await 倉庫番.get(セットID);
     }
-    display_section(2)
+    display_section(2);
 });
