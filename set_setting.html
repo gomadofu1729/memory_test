@@ -13,22 +13,22 @@
 <body>
 <header><h1>設定</h1></header>
 <h3>基本情報</h3>
-<div id="set-name">
+<div id="set-name" class="menu-free">
     <p id="set-name-display">セット名: </p>
     <div id="set-name-div" hidden>
         <label for="set-name-input">セット名: </label>
         <input type="text" id="set-name-input">
     </div>
-    <button id="set-name-edit" class="wait" disabled disabled>編集</button>
-    <button id="set-name-restore" hidden>やめる</button>
-    <button id="set-name-confirm" hidden>確定</button>
+    <button id="set-name-edit" class="wait when-free">編集</button>
+    <button id="set-name-restore" class="when-editing">やめる</button>
+    <button id="set-name-confirm" class="when-editing">確定</button>
 </div>
 <h3>カード</h3>
 <div id="cards" class="vertical">
     <p id="cards-number">0件</p>
-    <button id="cards-edit" class="wait" disabled>カードを管理</button>
+    <button id="cards-edit" class="wait">カードを管理</button>
     <button id="cards-import">カードをインポート</button>
-    <button id="cards-export" class="wait" disabled>カードをエクスポート</button>
+    <button id="cards-export" class="wait">カードをエクスポート</button>
 </div>
 <h3>出題方式</h3>
 <div id="methods" class="vertical">
@@ -42,7 +42,7 @@
 </div>
 <h3>データ</h3>
 <div id="buttons" class="vertical">
-    <button id="set-export" class="wait" disabled>カードセットをエクスポート</button>
+    <button id="set-export" class="wait">カードセットをエクスポート</button>
     <button id="delete">カードセットを削除</button>
 </div>
 <h4>他</h4>

@@ -30,33 +30,35 @@
 </div>
 <div id="head-menu" class="pop-up">
     <p id="field-id">フィールドID: </p>
-    <p id="field-name">表示名: </p>
-    <div id="field-div" hidden>
+    <p id="field-name" class="when-free">表示名: </p>
+    <div id="field-div" class="when-editing">
         <label for="field-input">表示名: </label>
         <input type="text" id="field-input">
     </div>
-    <button id="field-edit">編集</button>
-    <button id="field-confirm" hidden>確定</button>
-    <button id="field-reset">元に戻す</button>
+    <button id="field-edit" class="when-free">編集</button>
+    <button id="field-reset" class="when-free">元に戻す</button>
+    <button id="field-restore" class="when-editing">やめる</button>
+    <button id="field-confirm" class="when-editing">確定</button>
     <p>これから問う方式: </p>
     <div id="field-method-from"></div>
     <p>これを問われる方式: </p>
     <div id="field-method-to"></div>
-    <button id="field-delete">削除</button>
-    <button id="field-undelete" hidden>削除取り消し</button>
+    <button id="field-delete" class="when-free">削除</button>
+    <button id="field-undelete" class="when-deleted">削除取り消し</button>
 </div>
 <div id="body-menu" class="pop-up">
     <p id="card-id">カードID: </p>
-    <p id="content-name"></p>
-    <div id="content-div" hidden>
+    <p id="content-name" class="when-free"></p>
+    <div id="content-div" class="when-editing">
         <label for="content-input" id="content-label"></label>
         <input type="text" id="content-input">
     </div>
-    <button id="content-edit">編集</button>
-    <button id="content-confirm" hidden>確定</button>
-    <button id="content-reset">元に戻す</button>
-    <button id="card-delete">カード削除</button>
-    <button id="card-undelete" hidden>カード削除取り消し</button>
+    <button id="content-edit" class="when-free">編集</button>
+    <button id="content-reset" class="when-free">元に戻す</button>
+    <button id="content-restore" class="when-editing">やめる</button>
+    <button id="content-confirm" class="when-editing">確定</button>
+    <button id="card-delete" class="when-free">カード削除</button>
+    <button id="card-undelete" class="when-deleted">カード削除取り消し</button>
     <button id="card-exclusion">除外設定</button>
 </div>
 </body>

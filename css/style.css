@@ -27,10 +27,10 @@ th{
     background-color: white;
     border: 2px solid black;
 }
-:not(.for-delete)> .original{
+:not(.for-delete) >.original:not(.for-delete){
     color: black;
 }
-:not(.for-delete)> .changed{
+:not(.for-delete) >.changed:not(.for-delete){
     color: brown;
 }
 .for-delete{
@@ -38,6 +38,11 @@ th{
     text-decoration: line-through;
 }
 
+.menu-free .when-editing, .menu-free .when-deleted,
+.menu-editing .when-free, .menu-editing .when-deleted,
+.menu-deleted .when-free, .menu-deleted .when-editing{
+    display: none;
+}
 
 #file-port button{
     background-color: green;

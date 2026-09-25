@@ -12,8 +12,9 @@ const field_name= document.getElementById("field-name");
 const field_div= document.getElementById("field-div");
 const field_input= document.getElementById("field-input");
 const field_edit= document.getElementById("field-edit");
-const field_confirm= document.getElementById("field-confirm");
 const field_reset= document.getElementById("field-reset");
+const field_restore= document.getElementById("field-restore");
+const field_confirm= document.getElementById("field-confirm");
 const field_method_from= document.getElementById("field-method-from");
 const field_method_to= document.getElementById("field-method-to");
 const field_delete= document.getElementById("field-delete");
@@ -23,10 +24,11 @@ const card_id= document.getElementById("card-id");
 const content_name= document.getElementById("content-name");
 const content_div= document.getElementById("content-div");
 const content_label= document.getElementById("content-label");
-const content_input= document.getElementById("content-input")
+const content_input= document.getElementById("content-input");
+const content_reset= document.getElementById("content-reset");
+const content_restore= document.getElementById("content-restore");
 const content_edit= document.getElementById("content-edit");
 const content_confirm= document.getElementById("content-confirm");
-const content_reset= document.getElementById("content-reset");
 const card_delete= document.getElementById("card-delete");
 const card_undelete= document.getElementById("card-undelete");
 const card_exclusion= document.getElementById("card-exclusion");
@@ -95,6 +97,11 @@ card_table_head.addEventListener("click", (event) =>{
             field_method_to.appendChild(P);
         }
     }
+    if(対象セル.classList.contains("for-delete")){
+        head_menu.classList.add("menu-deleted");
+    }else{
+        head_menu.classList.add("menu-free");
+    }
 
     指定フィールドID= 対象のID;
     指定フィールドセル= 対象セル;
@@ -116,6 +123,11 @@ card_table_body.addEventListener("click", (event)=>{
     content_name.textContent= `${仮フィールド.name}: ${対象セル.textContent}`;
     content_label.textContent= `${仮フィールド.name}: `;
     content_input.placeholder= 対象セル.textContent;
+    if(対象カード.classList.contains("for-delete")){
+        body_menu.classList.add("menu-deleted");
+    }else{
+        body_menu.classList.add("menu-free");
+    }
 
     指定カードID= 対象のID;
     指定カードセル= 対象セル;
@@ -127,40 +139,24 @@ card_table_body.addEventListener("click", (event)=>{
 document.addEventListener("click", (event)=>{
     if(!event.target.closest(".pop-up")){
         if(!event.target.closest("#card-table-head")){
-            head_menu.classList.remove("vertical");
+            if(head_menu.classList.contains("menu-editing")){
+                field_restore.click();
+            }
+            head_menu.classList.remove("vertical", "menu-free", "menu-deleted");
         }
         if(!event.target.closest("#card-table-body")){
-            body_menu.classList.remove("vertical");
+            if(body_menu.classList.contains("menu-editing")){
+                content_restore.click();
+            }
+            body_menu.classList.remove("vertical", "menu-free", "menu-deleted");
         }
     }
 });
 
 field_edit.addEventListener("click", ()=>{
-    field_name.hidden= true;
-    field_div.hidden= false;
-    field_edit.hidden= true;
-    field_confirm.hidden= false;
-    field_reset.hidden= true;
-    field_delete.hidden= true;
+    head_menu.classList.remove("menu-free");
+    head_menu.classList.add("menu-editing");
     field_input.value= "";
-});
-field_confirm.addEventListener("click", ()=>{
-    const newName= field_input.value.trim();
-    if(newName=== ""){
-        return;
-    }
-    field_name.hidden= false;
-    field_div.hidden= true;
-    field_edit.hidden= false;
-    field_confirm.hidden= true;
-    field_reset.hidden= false;
-    field_delete.hidden= false;
-    const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
-    仮フィールド.name= field_input.value;
-    指定フィールドセル.textContent= field_input.value;
-    指定フィールドセル.classList.remove("original");
-    指定フィールドセル.classList.add("changed");
-    field_name.textContent= `表示名: ${field_input.value}`;
 });
 field_reset.addEventListener("click", ()=>{
     const フィールド= カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
@@ -171,50 +167,43 @@ field_reset.addEventListener("click", ()=>{
     指定フィールドセル.classList.add("original");
     field_name.textContent= `表示名: ${フィールド.name}`;
 });
+field_restore.addEventListener("click", ()=>{
+    head_menu.classList.remove("menu-editing");
+    head_menu.classList.add("menu-free");
+    指定フィールドセル.classList.remove("original");
+    指定フィールドセル.classList.add("changed");
+});
+field_confirm.addEventListener("click", ()=>{
+    const newName= field_input.value.trim();
+    if(newName=== ""){
+        return;
+    }
+    head_menu.classList.remove("menu-editing");
+    head_menu.classList.add("menu-free");
+    const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
+    仮フィールド.name= field_input.value;
+    指定フィールドセル.textContent= field_input.value;
+    指定フィールドセル.classList.remove("original");
+    指定フィールドセル.classList.add("changed");
+    field_name.textContent= `表示名: ${field_input.value}`;
+});
 field_delete.addEventListener("click", ()=>{
-    field_edit.hidden= true;
-    field_reset.hidden= true;
-    field_delete.hidden= true;
-    field_undelete.hidden= false;
+    head_menu.classList.remove("menu-free");
+    head_menu.classList.add("menu-deleted");
     削除予定フィールド.add(指定フィールドID);
     指定フィールドセル.classList.add("for-delete");
 });
 field_undelete.addEventListener("click", ()=>{
-    field_edit.hidden= false;
-    field_reset.hidden= false;
-    field_delete.hidden= false;
-    field_undelete.hidden= true;
+    head_menu.classList.remove("menu-deleted");
+    head_menu.classList.add("menu-free");
     削除予定フィールド.delete(指定フィールドID);
     const フィールド= カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
     指定フィールドセル.classList.remove("for-delete");
 });
 content_edit.addEventListener("click", ()=>{
-    content_name.hidden= true;
-    content_div.hidden= false;
-    content_edit.hidden= true;
-    content_confirm.hidden= false;
-    content_reset.hidden= true;
-    card_delete.hidden= true;
+    body_menu.classList.remove("menu-free");
+    body_menu.classList.add("menu-editing");
     content_input.value="";
-});
-content_confirm.addEventListener("click", ()=>{
-    const newName= content_input.value.trim();
-    if(newName=== ""){
-        return;
-    }
-    content_name.hidden= false;
-    content_div.hidden= true;
-    content_edit.hidden= false;
-    content_confirm.hidden= true;
-    content_reset.hidden= false;
-    card_delete.hidden= false;
-    const 仮カード= 仮カードセット.cards.find((か) => か.id === 指定カードID);
-    仮カード.data[指定カードセル.dataset.fieldId]= content_input.value;
-    指定カードセル.textContent= content_input.value;
-    指定カードセル.classList.remove("original");
-    指定カードセル.classList.add("changed");
-    const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定カードセル.dataset.fieldId);
-    content_name.textContent= `${仮フィールド.name}: ${content_input.value}`;
 });
 content_reset.addEventListener("click", ()=>{
     const カード= カードセット.cards.find((か) => か.id === 指定カードID);
@@ -226,19 +215,36 @@ content_reset.addEventListener("click", ()=>{
     const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定カードセル.dataset.fieldId);
     content_name.textContent= `${仮フィールド.name}: ${カード.data[指定カードセル.dataset.fieldId]}`;
 });
+content_restore.addEventListener("click", ()=>{
+    body_menu.classList.remove("menu-free");
+    body_menu.classList.add("menu-editing");
+    指定カードセル.classList.remove("original");
+    指定カードセル.classList.add("changed");
+})
+content_confirm.addEventListener("click", ()=>{
+    const newName= content_input.value.trim();
+    if(newName=== ""){
+        return;
+    }
+    body_menu.classList.remove("menu-free");
+    body_menu.classList.add("menu-editing");
+    const 仮カード= 仮カードセット.cards.find((か) => か.id === 指定カードID);
+    仮カード.data[指定カードセル.dataset.fieldId]= content_input.value;
+    指定カードセル.textContent= content_input.value;
+    指定カードセル.classList.remove("original");
+    指定カードセル.classList.add("changed");
+    const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定カードセル.dataset.fieldId);
+    content_name.textContent= `${仮フィールド.name}: ${content_input.value}`;
+});
 card_delete.addEventListener("click", ()=>{
-    content_edit.hidden= true;
-    content_reset.hidden= true;
-    card_delete.hidden= true;
-    card_undelete.hidden= false;
+    body_menu.classList.remove("menu-free");
+    body_menu.classList.add("menu-deleted");
     削除予定カード.add(指定カードID);
     指定カード行.classList.add("for-delete");
 });
 card_undelete.addEventListener("click", ()=>{
-    content_edit.hidden= false;
-    content_reset.hidden= false;
-    card_delete.hidden= false;
-    card_undelete.hidden= true;
+    head_menu.classList.remove("menu-deleted");
+    head_menu.classList.add("menu-free");
     削除予定カード.delete(指定カードID);
     const カード= カードセット.cards.find((か) => か.id === 指定カードID);
     指定カード行.classList.remove("for-delete");

@@ -21,10 +21,13 @@ let カードセット;
 let セットID;
 async function OP(){
     const params= new URLSearchParams(location.search);
+    const 初期化待ち達= document.querySelectorAll(".wait");
+    for (const よ of 初期化待ち達) {
+        よ.disabled = true;
+    }
     セットID= params.get("set");
     await 倉庫番.ready();
     カードセット= await 倉庫番.get(セットID);
-    const 初期化待ち達= document.querySelectorAll(".wait");
     for (const よ of 初期化待ち達) {
         よ.disabled = false;
     }
@@ -36,30 +39,21 @@ async function OP(){
 OP();
 
 set_name_edit.addEventListener("click", ()=>{
-    set_name_display.hidden= true;
-    set_name_div.hidden= false;
-    set_name_edit.hidden= true;
-    set_name_confirm.hidden= false;
-    set_name_restore.hidden= false;
+    set_name.classList.remove("menu-free");
+    set_name.classList.add("menu-editing");
     set_name_input.placeholder= カードセット.name;
     set_name_input.value= "";
 });
 set_name_confirm.addEventListener("click", async ()=>{
-    set_name_display.hidden= false;
-    set_name_div.hidden= true;
-    set_name_edit.hidden= false;
-    set_name_confirm.hidden= true;
-    set_name_restore.hidden= true;
+    set_name.classList.remove("menu-editing");
+    set_name.classList.add("menu-free");
     カードセット.name= set_name_input.value;
     await 倉庫番.store(カードセット);
     set_name_display.textContent =`セット名: ${カードセット.name}`;
 });
 set_name_restore.addEventListener("click", ()=>{
-    set_name_display.hidden= false;
-    set_name_div.hidden= true;
-    set_name_edit.hidden= false;
-    set_name_confirm.hidden= true;
-    set_name_restore.hidden= true;
+    set_name.classList.remove("menu-editing");
+    set_name.classList.add("menu-free");
 });
 cards_edit.addEventListener("click", ()=>{
     船頭.cards(セットID);
