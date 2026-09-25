@@ -253,6 +253,20 @@ card_undelete.addEventListener("click", ()=>{
     指定カード行.classList.remove("for-delete");
 });
 
+confirm.addEventListener("click", ()=>{
+    仮カードセット.cards= 仮カードセット.cards.filter(
+        (か) => !削除予定カード.has(か.id)
+    );
+    仮カードセット.fields= 仮カードセット.fields.filter(
+        (ふ) => !削除予定フィールド.has(ふ.id)
+    );
+    for(const カード of 仮カードセット.cards){
+        for(const フィールド of 削除予定フィールド){
+            delete カード.data[フィールド];
+        }
+    }
+});
+
 card_exclusion.addEventListener("click", ()=>{
     船頭.exclusion(セットID);
 });

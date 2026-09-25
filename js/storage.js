@@ -24,7 +24,7 @@ const 倉庫番= {
     store(カードセット){
         return new Promise((resolve,result)=>{
             const 処理= 倉庫番.db.transaction("カードケース","readwrite");
-            const 店= 処理.objectStore("カードケース");
+            const 店= 処理.objectStore("カードケース"); // 店(たな)
             const 注文= 店.put(カードセット);
             注文.addEventListener("success", ()=>{
                 resolve();
