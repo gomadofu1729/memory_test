@@ -79,7 +79,7 @@ async function OP(){
 }
 OP();
 
-card_table_head.addEventListener("click", (event) =>{
+card_table_head.addEventListener("click", (event)=>{
     const 対象セル= event.target.closest(("th"));
     if(!対象セル){return;}
     if(対象セル.dataset.fieldId === undefined){return;}
