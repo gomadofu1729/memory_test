@@ -224,7 +224,7 @@ content_reset.addEventListener("click", ()=>{
     指定カードセル.classList.remove("changed");
     指定カードセル.classList.add("original");
     const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定カードセル.dataset.fieldId);
-    content_name.textContent= `${仮カード.name}: ${カード.data[指定カードセル.dataset.fieldId]}`;
+    content_name.textContent= `${仮フィールド.name}: ${カード.data[指定カードセル.dataset.fieldId]}`;
 });
 card_delete.addEventListener("click", ()=>{
     content_edit.hidden= true;
