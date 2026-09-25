@@ -265,6 +265,8 @@ confirm.addEventListener("click", ()=>{
             delete カード.data[フィールド];
         }
     }
+    await 倉庫番.store(仮カードセット);
+    location.reload();
 });
 
 card_exclusion.addEventListener("click", ()=>{
