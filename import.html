@@ -20,8 +20,8 @@
             新しいセットを作成
         </label>
         <div>
-            <label for="new-set-name">　セットID</label>
-            <input type="text" id="new-set-id" placeholder="例: pref_office">
+            <label for="new-set-id">　セットID</label>
+            <input type="text" id="new-set-id" class="hide" placeholder="例: pref_office">
             <p id="set-id-error"></p>
         </div>
         <label>
@@ -32,7 +32,7 @@
             <option value="">既存セットを選択</option>
         </select>
         <div>
-            <button class="STB wait" data-destiny="2">next &gt;</button>
+            <button id="next1" class="wait">next &gt;</button>
         </div>
     </section>
 
@@ -45,8 +45,8 @@
         <input type="file" id="select-file" accept=".csv,.tsv,.txt" >
         <p id="file-info"></p>
         <div>
-            <button class="STB" data-destiny="1">&lt; prev</button>
-            <button class="STB" data-destiny="3">next &gt;</button>
+            <button class="prev" data-destiny="1">&lt; prev</button>
+            <button id="next2">next &gt;</button>
         </div>
     </section>
 
@@ -57,8 +57,8 @@
         </div>
         <button id="add-method">＋ 出題方式を追加</button>
         <div>
-            <button class="STB" data-destiny="2">&lt; prev</button>
-            <button class="STB" data-destiny="4">next &gt;</button>
+            <button class="prev" data-destiny="2">&lt; prev</button>
+            <button id="next3">next &gt;</button>
         </div>
     </section>
 
@@ -68,7 +68,8 @@
         <div id="summary">まだ設定されていません。</div>
         <button id="register">登録</button>
         <div>
-            <button class="STB" data-destiny="3">&lt; prev</button>
+            <button class="prev" data-destiny="3">&lt; prev</button>
+            <button id="confirm">確定</button>
         </div>
     </section>
 </main>

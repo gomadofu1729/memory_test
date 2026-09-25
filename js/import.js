@@ -2,6 +2,7 @@ const set_mode= document.getElementsByName("setMode");
 const set_mode_new= document.getElementById("setMode-new");
 const set_mode_existing= document.getElementById("setMode-existing");
 const new_set_id= document.getElementById("new-set-id");
+const set_id_error= document.getElementById("set-id-error");
 const existing_set= document.getElementById("existing-set");
 const import_type= document.getElementsByName("import-type");
 const select_file= document.getElementById("select-file");
@@ -11,8 +12,14 @@ const add_method= document.getElementById("add-method");
 const summary= document.getElementById("summary");
 const register= document.getElementById("register");
 const sections= document.getElementsByTagName("section");
-const Stb= document.getElementsByClassName("STB");
+const prev= document.getElementsByClassName("prev");
+const next1= document.getElementById("next1");
+const next2= document.getElementById("next2");
+const next3= document.getElementById("next3");
+const confirm= document.getElementById("confirm");
 
+const ID形式 = /^[A-Za-z0-9_]+$/;
+let セットID;
 function display_section(番号){
     for(const セクション of sections){
         if(セクション.dataset.section== 番号){
@@ -56,9 +63,35 @@ async function OP(){
 OP();
 
 display_section(1);
-for(const ボタン of Stb){
+for(const ボタン of prev){
     ボタン.addEventListener("click", ()=>{
         display_section(ボタン.dataset.destiny);
     });
 }
 
+next1.addEventListener("click", async ()=>{
+    const 選択= document.querySelector('input[name="setMode"]:checked').value;
+    if(選択=== "new"){
+        セットID= new_set_id.value;
+        if(セットID== ""){
+            set_id_error.classList.remove("hide");
+            set_id_error.textContent= "セットIDを入力してください。";
+            return;
+        }
+        if(!ID形式.test(セットID)){
+            set_id_error.classList.remove("hide");
+            set_id_error.textContent= "IDに使用できるのは、英数字、アンダースコア(_)のみです。";
+            return;
+        }
+        if(await 倉庫番.get(セットID) !== undefined){
+            set_id_error.classList.remove("hide");
+            set_id_error.textContent= "このIDは既に使用されています。"
+            return;
+        }
+    }else{
+        if(existing_set.value== ""){
+            return;
+        }
+    }
+    display_section(2)
+});

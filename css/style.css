@@ -68,3 +68,7 @@ h2, h3{
 #field-method-from p, #field-method-to p{
     color: maroon;
 }
+#set-id-error{
+    color: red;
+    font-size: 8px;
+}
