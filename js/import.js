@@ -144,7 +144,7 @@ select_file.addEventListener("change", ()=>{
             }
         }
         for(const カード of カードパック){
-            スリーブ= {"id":カード[0], "data"={}};
+            スリーブ= {"id":カード[0], "data":{}};
             for(let i=1; i<フィールド数; i++){
                 スリーブ.data[見出し[i]]= カード[i];
             }
