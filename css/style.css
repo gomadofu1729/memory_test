@@ -43,7 +43,8 @@ h2, h3{
 
 .menu-free .when-editing, .menu-free .when-deleted,
 .menu-editing .when-free, .menu-editing .when-deleted,
-.menu-deleted .when-free, .menu-deleted .when-editing{
+.menu-deleted .when-free, .menu-deleted .when-editing,
+.hide{
     display: none;
 }
 

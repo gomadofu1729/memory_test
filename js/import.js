@@ -9,8 +9,7 @@ const add_method= document.getElementById("add-method");
 const summary= document.getElementById("summary");
 const register= document.getElementById("register");
 const sections= document.getElementsByTagName("section");
-const Spre= document.getElementsByClassName("Spre");
-const Snext= document.getElementsByClassName("Snext");
+const Stb= document.getElementsByClassName("STB");
 
 let カードセット;
 async function OP(){
@@ -26,3 +25,17 @@ async function OP(){
 }
 OP();
 
+function display_section(番号){
+    for(const セクション of sections){
+        if(セクション.dataset.section== 番号){
+            セクション.classList.remove("hide");
+        }else{
+            セクション.classList.add("hide");
+        }
+    }
+}
+for(const ボタン of Stb){
+    ボタン.addEventListener("click", ()=>{
+        display_section(ボタン.dataset.destiny);
+    });
+}
