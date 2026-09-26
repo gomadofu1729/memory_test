@@ -137,20 +137,39 @@ select_file.addEventListener("change", ()=>{
         const 見出し= 表[0];
         const フィールド数= 見出し.length;
         const カードパック= 表.slice(1);
+        let フィールド重複= false;
+        let 重複数= 0;
+        let 上書き= false;
         for(const フィールドID of 見出し.slice(1)){
             const フィールド= カードセット.fields.find((ふ) => ふ.id === フィールドID);
             if(フィールド=== undefined){
                 カードセット.fields.push({"id":フィールドID, "name":フィールドID});
+            }else{
+                フィールド重複= true;
             }
         }
         for(const カード of カードパック){
-            スリーブ= {"id":カード[0], "data":{}};
-            for(let i=1; i<フィールド数; i++){
-                スリーブ.data[見出し[i]]= カード[i];
+            const 既存= カードセット.cards.find((か) => か.id === カード[0]);
+            if(既存 !== undefined){
+                重複数++;
             }
-            カードセット.cards.push(スリーブ);
+        }
+        if(重複数){
+            上書き= confirm(`既存のカードが${重複数}件あります。\n上書きしますか？`);
+        }
+        for(const カード of カードパック){
+            const 既存= カードセット.cards.find((か) => か.id === カード[0]);
+            const 初出= 既存===undefined;
+            const スリーブ= {"id":カード[0], "data":{}};
+            for(let i=1; i<フィールド数; i++){
+                if(初出 || 上書き || 既存.data[見出し[i]]===undefined){
+                    スリーブ.data[見出し[i]]= カード[i];
+                }
+            }
+            if(初出){カードセット.cards.push(スリーブ);}
+            else{Object.assign(既存, スリーブ);}
         }
         console.log(カードセット);
     });
     読取.readAsText(select_file.files[0]);
-})
+});
