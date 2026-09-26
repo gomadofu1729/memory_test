@@ -20,7 +20,7 @@ const prev= document.getElementsByClassName("prev");
 const next1= document.getElementById("next1");
 const next2= document.getElementById("next2");
 const next3= document.getElementById("next3");
-const confirm= document.getElementById("confirm");
+const settle= document.getElementById("settle");
 
 const ID形式 = /^[A-Za-z0-9_]+$/;
 let セットID;
