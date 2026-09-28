@@ -25,6 +25,7 @@ const settle= document.getElementById("settle");
 const ID形式 = /^[A-Za-z0-9_]+$/;
 let セットID;
 let カードセット;
+let 仮カードセット;
 let 使用ファイル;
 function display_section(番号){
     for(const セクション of sections){
@@ -132,6 +133,7 @@ select_file.addEventListener("change", ()=>{
     if(!select_file.value){return;}
     const 読取= new FileReader();
     読取.addEventListener("load", ()=>{
+        仮カードセット= structuredClone(カードセット);
         const テキスト= 読取.result;
         const 表= テキスト.split(/\r?\n/).map((も) => も.split("\t"));
         const 見出し= 表[0];
@@ -141,15 +143,15 @@ select_file.addEventListener("change", ()=>{
         let 重複数= 0;
         let 上書き= false;
         for(const フィールドID of 見出し.slice(1)){
-            const フィールド= カードセット.fields.find((ふ) => ふ.id === フィールドID);
+            const フィールド= 仮カードセット.fields.find((ふ) => ふ.id === フィールドID);
             if(フィールド=== undefined){
-                カードセット.fields.push({"id":フィールドID, "name":フィールドID});
+                仮カードセット.fields.push({"id":フィールドID, "name":フィールドID});
             }else{
                 フィールド重複= true;
             }
         }
         for(const カード of カードパック){
-            const 既存= カードセット.cards.find((か) => か.id === カード[0]);
+            const 既存= 仮カードセット.cards.find((か) => か.id === カード[0]);
             if(既存 !== undefined){
                 重複数++;
             }
@@ -158,7 +160,7 @@ select_file.addEventListener("change", ()=>{
             上書き= confirm(`既存のカードが${重複数}件あります。\n上書きしますか？`);
         }
         for(const カード of カードパック){
-            const 既存= カードセット.cards.find((か) => か.id === カード[0]);
+            const 既存= 仮カードセット.cards.find((か) => か.id === カード[0]);
             const 初出= 既存===undefined;
             const スリーブ= {"id":カード[0], "data":{}};
             for(let i=1; i<フィールド数; i++){
@@ -166,10 +168,25 @@ select_file.addEventListener("change", ()=>{
                     スリーブ.data[見出し[i]]= カード[i];
                 }
             }
-            if(初出){カードセット.cards.push(スリーブ);}
-            else{Object.assign(既存, スリーブ);}
+            if(初出){
+                仮カードセット.cards.push(スリーブ);
+            }else{
+                Object.assign(既存, スリーブ);
+            }
         }
-        console.log(カードセット);
     });
     読取.readAsText(select_file.files[0]);
+});
+next2.addEventListener("click", async ()=>{
+    if(仮カードセット=== undefined){return;}
+    await 倉庫番.store(仮カードセット);
+    const 初期化待ち達= document.querySelectorAll(".wait3");
+    for (const よ of 初期化待ち達) {
+        よ.disabled = true;
+    }
+    display_section(3);
+
+    for (const よ of 初期化待ち達) {
+        よ.disabled = false;
+    }
 });
