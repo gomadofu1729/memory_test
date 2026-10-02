@@ -7,16 +7,12 @@ const existing_set= document.getElementById("existing-set");
 
 const import_type= document.getElementById("import-type");
 const select_file= document.getElementById("select-file");
-const file_info= document.getElementById("file-info");
-
-const methods= document.getElementById("methods");
-const add_method= document.getElementById("add-method");
+const file_error= document.getElementById("file-error");
 
 const summary= document.getElementById("summary");
 const register= document.getElementById("register");
 
 const sections= document.getElementsByTagName("section");
-const prev= document.getElementsByClassName("prev");
 const next1= document.getElementById("next1");
 const next2= document.getElementById("next2");
 const next3= document.getElementById("next3");
@@ -71,11 +67,6 @@ async function OP(){
 }
 OP();
 
-for(const ボタン of prev){
-    ボタン.addEventListener("click", ()=>{
-        display_section(ボタン.dataset.destiny);
-    });
-}
 for(const せ of set_mode){
     せ.addEventListener("change", setMode_change);
 }
@@ -130,13 +121,20 @@ import_type.addEventListener("change", ()=>{
     }
 });
 select_file.addEventListener("change", ()=>{
-    if(!select_file.value){return;}
+    if(!select_file.value){
+        file_error.textContent= "ファイルを選択してください。"
+        return;
+    }
+
     const 読取= new FileReader();
     読取.addEventListener("load", ()=>{
         仮カードセット= structuredClone(カードセット);
         const テキスト= 読取.result;
         const 表= テキスト.split(/\r?\n/).map((も) => も.split("\t"));
         const 見出し= 表[0];
+        if(見出し[0] != "id"){
+
+        }
         const フィールド数= 見出し.length;
         const カードパック= 表.slice(1);
         let フィールド重複= false;

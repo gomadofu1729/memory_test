@@ -31,9 +31,7 @@
         <select id="existing-set">
             <option value="">既存セットを選択</option>
         </select>
-        <div>
-            <button id="next1" class="wait">next &gt;</button>
-        </div>
+        <button id="next1" class="wait">next &gt;</button>
     </section>
 
     <section data-section="2" class="hide">
@@ -43,32 +41,16 @@
             <option value="pref">sample: 都道府県庁住所</option>
         </select>
         <input type="file" class="wait2" id="select-file" accept=".csv,.tsv,.txt" >
-        <p id="file-info"></p>
-        <div>
-            <button class="prev" data-destiny="1">&lt; prev</button>
-            <button id="next2" class="wait2">next &gt;</button>
-        </div>
+        <p id="file-error" class="error hide"></p>
+        <button id="next2" class="wait2">next &gt;</button>
     </section>
 
     <section data-section="3" class="hide">
-        <h2>3. 出題方式</h2>
-        <div id="methods"></div>
-        <button id="add-method" class="wait3">＋ 出題方式を追加</button>
-        <div>
-            <button class="prev" data-destiny="2">&lt; prev</button>
-            <button id="next3" class="wait3">next &gt;</button>
-        </div>
-    </section>
-
-    <section data-section="4" class="hide">
         <h2>4. 確認</h2>
 
         <div id="summary">まだ設定されていません。</div>
         <button id="register">登録</button>
-        <div>
-            <button class="prev" data-destiny="3">&lt; prev</button>
-            <button id="settle">確定</button>
-        </div>
+        <button id="settle">確定</button>
     </section>
 </main>
 </body>
