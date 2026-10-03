@@ -139,17 +139,24 @@ select_file.addEventListener("change", ()=>{
             return;
         }
         const フィールド数= 見出し.length;
+        const フィールド総覧= new Set(["id"]);
         const カードパック= 表.slice(1);
         let フィールド重複= false;
         let 重複数= 0;
         let 上書き= false;
         for(const フィールドID of 見出し.slice(1)){
+            if(フィールド総覧.has(フィールドID)){
+                file_error.textContent= "1行目の形式が不正です。";
+                file_error.classList.remove("hide");
+                return;
+            }
             const フィールド= 仮カードセット.fields.find((ふ) => ふ.id === フィールドID);
             if(フィールド=== undefined){
                 仮カードセット.fields.push({"id":フィールドID, "name":フィールドID});
             }else{
                 フィールド重複= true;
             }
+            フィールド総覧.add(フィールドID);
         }
         for(const カード of カードパック){
             const 既存= 仮カードセット.cards.find((か) => か.id === カード[0]);
