@@ -199,6 +199,7 @@ select_file.addEventListener("change", ()=>{
 });
 next2.addEventListener("click", async ()=>{
     if(仮カードセット=== undefined){return;}
+    if(!file_error.classList.contains("hide")){return;}
     await 倉庫番.store(仮カードセット);
     const 初期化待ち達= document.querySelectorAll(".wait3");
     for (const よ of 初期化待ち達) {
