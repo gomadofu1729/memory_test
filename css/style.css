@@ -2,8 +2,8 @@ p{
     margin-top: auto;
     margin-bottom: auto;
 }
-table, tr{
-    border: 2px solid dimgray;
+table{
+    border-left: 2px solid dimgray;
     border-collapse: collapse;
 }
 th{
@@ -14,6 +14,9 @@ tbody tr:nth-child(odd) {
 }
 tbody tr:nth-child(even) {
     background-color: lightgray;
+}
+th, tr{
+    border-right: 2px solid dimgray;
 }
 h2, h3{
     margin-bottom: 2px;
