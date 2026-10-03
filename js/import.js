@@ -207,7 +207,7 @@ select_file.addEventListener("change", ()=>{
     });
     読取.readAsText(select_file.files[0]);
 });
-next2.addEventListener("click", async ()=>{
+next2.addEventListener("click", ()=>{
     if(仮カードセット=== undefined){return;}
     if(!file_error.classList.contains("hide")){return;}
     const 初期化待ち達= document.querySelectorAll(".wait3");
@@ -225,7 +225,7 @@ next2.addEventListener("click", async ()=>{
     }
 });
 
-settle.addEventListener("click", ()=>{
+settle.addEventListener("click", async ()=>{
     try{
         await 倉庫番.store(仮カードセット);
     }catch(error){
