@@ -122,7 +122,8 @@ import_type.addEventListener("change", ()=>{
 });
 select_file.addEventListener("change", ()=>{
     if(!select_file.value){
-        file_error.textContent= "ファイルを選択してください。"
+        file_error.textContent= "ファイルを選択してください。";
+        file_error.classList.remove("hide");
         return;
     }
 
@@ -133,7 +134,9 @@ select_file.addEventListener("change", ()=>{
         const 表= テキスト.split(/\r?\n/).map((も) => も.split("\t"));
         const 見出し= 表[0];
         if(見出し[0] != "id"){
-
+            file_error.textContent= "1行目の形式が不正です。";
+            file_error.classList.remove("hide");
+            return;
         }
         const フィールド数= 見出し.length;
         const カードパック= 表.slice(1);
