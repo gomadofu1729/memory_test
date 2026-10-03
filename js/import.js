@@ -8,9 +8,7 @@ const existing_set= document.getElementById("existing-set");
 const import_type= document.getElementById("import-type");
 const select_file= document.getElementById("select-file");
 const file_error= document.getElementById("file-error");
-
 const summary= document.getElementById("summary");
-const register= document.getElementById("register");
 
 const sections= document.getElementsByTagName("section");
 const next1= document.getElementById("next1");
@@ -212,14 +210,28 @@ select_file.addEventListener("change", ()=>{
 next2.addEventListener("click", async ()=>{
     if(仮カードセット=== undefined){return;}
     if(!file_error.classList.contains("hide")){return;}
-    await 倉庫番.store(仮カードセット);
     const 初期化待ち達= document.querySelectorAll(".wait3");
     for (const よ of 初期化待ち達) {
         よ.disabled = true;
     }
     display_section(3);
+    summary.textContent=
+        ((重複数 && 上書き)?`${重複数}枚のカードを更新しました。`:"")+
+        ((重複数 && 上書き && (カードパック.length-重複数))?"\n":"")+
+        ((カードパック.length-重複数)?`${カードパック.length-重複数}枚のカードを追加しました。`:"");
 
     for (const よ of 初期化待ち達) {
         よ.disabled = false;
     }
 });
+
+settle.addEventListener("click", ()=>{
+    try{
+        await 倉庫番.store(仮カードセット);
+    }catch(error){
+        console.error(error);
+        file_error.textContent= "データの保存に失敗しました。(>人<;)";
+        file_error.classList.remove("hide");
+        return;
+    }
+})
