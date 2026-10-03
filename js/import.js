@@ -183,6 +183,7 @@ select_file.addEventListener("change", ()=>{
             if(既存 !== undefined){
                 重複数++;
             }
+            カード総覧.add(カード[0]);
         }
         if(重複数){
             上書き= confirm(`既存のカードが${重複数}件あります。\n上書きしますか？`);
