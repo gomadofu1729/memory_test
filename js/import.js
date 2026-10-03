@@ -8,7 +8,8 @@ const existing_set= document.getElementById("existing-set");
 const import_type= document.getElementById("import-type");
 const select_file= document.getElementById("select-file");
 const file_error= document.getElementById("file-error");
-const summary= document.getElementById("summary");
+
+const last_error= document.getElementById("last-error");
 
 const sections= document.getElementsByTagName("section");
 const next1= document.getElementById("next1");
@@ -21,6 +22,7 @@ let セットID;
 let カードセット;
 let 仮カードセット;
 let 使用ファイル;
+let URLセット;
 function display_section(番号){
     for(const セクション of sections){
         if(セクション.dataset.section== 番号){
@@ -51,7 +53,7 @@ async function OP(){
         existing_set.appendChild(新選択肢);
     }
     const params= new URLSearchParams(location.search);
-    const URLセット= params.get("set");
+    URLセット= params.get("set");
     if(URLセット=== null){
         set_mode_new.checked= true;
     }else{
@@ -215,11 +217,6 @@ next2.addEventListener("click", ()=>{
         よ.disabled = true;
     }
     display_section(3);
-    summary.textContent=
-        ((重複数 && 上書き)?`${重複数}枚のカードを更新しました。`:"")+
-        ((重複数 && 上書き && (カードパック.length-重複数))?"\n":"")+
-        ((カードパック.length-重複数)?`${カードパック.length-重複数}枚のカードを追加しました。`:"");
-
     for (const よ of 初期化待ち達) {
         よ.disabled = false;
     }
@@ -227,11 +224,17 @@ next2.addEventListener("click", ()=>{
 
 settle.addEventListener("click", async ()=>{
     try{
+        throw new Error("テスト用の保存失敗");
         await 倉庫番.store(仮カードセット);
     }catch(error){
         console.error(error);
-        file_error.textContent= "データの保存に失敗しました。(>人<;)";
-        file_error.classList.remove("hide");
+        last_error.textContent= "データの保存に失敗しました。(>人<;)";
+        last_error.classList.remove("hide");
         return;
+    }
+    if(URLセット=== null){
+        船頭.index();
+    }else{
+        船頭.setting(URLセット);
     }
 })
