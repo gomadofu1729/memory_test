@@ -190,13 +190,16 @@ next1.addEventListener("click", async ()=>{
     display_section(2);
 });
 
-import_type.addEventListener("change", ()=>{
+import_type.addEventListener("change", async ()=>{
     if(import_type.value == "user-file"){
         select_file.classList.remove("hide");
     }else{
         select_file.classList.add("hide");
         if(import_type.value == "sample-pref"){
+            const response = await fetch("pref.tsv");
         }
+        const 文字列 = await response.text();
+        tsv_loading(文字列);
     }
 });
 select_file.addEventListener("change", ()=>{
