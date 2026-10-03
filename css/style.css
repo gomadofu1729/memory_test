@@ -3,7 +3,7 @@ p{
     margin-bottom: auto;
 }
 table{
-    border-left: 2px solid dimgray;
+    border: 2px solid dimgray;
     border-collapse: collapse;
 }
 th{
