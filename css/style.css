@@ -2,7 +2,7 @@ p{
     margin-top: auto;
     margin-bottom: auto;
 }
-table{
+tabl, th{
     border: 2px solid dimgray;
     border-collapse: collapse;
 }
@@ -15,7 +15,7 @@ tbody tr:nth-child(odd) {
 tbody tr:nth-child(even) {
     background-color: lightgray;
 }
-th, td{
+td{
     border-right: 2px solid dimgray;
 }
 h2, h3{
