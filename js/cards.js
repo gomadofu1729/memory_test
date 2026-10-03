@@ -242,8 +242,8 @@ card_delete.addEventListener("click", ()=>{
     指定カード行.classList.add("for-delete");
 });
 card_undelete.addEventListener("click", ()=>{
-    head_menu.classList.remove("menu-deleted");
-    head_menu.classList.add("menu-free");
+    body_menu.classList.remove("menu-deleted");
+    body_menu.classList.add("menu-free");
     削除予定カード.delete(指定カードID);
     const カード= カードセット.cards.find((か) => か.id === 指定カードID);
     指定カード行.classList.remove("for-delete");
