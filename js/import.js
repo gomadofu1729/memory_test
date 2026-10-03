@@ -195,7 +195,7 @@ import_type.addEventListener("change", async ()=>{
         select_file.classList.remove("hide");
     }else{
         select_file.classList.add("hide");
-        const response;
+        let response;
         if(import_type.value == "sample-pref"){
             response = await fetch("pref.tsv");
         }
