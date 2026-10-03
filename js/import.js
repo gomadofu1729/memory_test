@@ -38,6 +38,83 @@ function setMode_change(){
     existing_set.disabled= 選択!=="existing";
     set_id_error.classList.add("hide");
 }
+function tsv_loading(テキスト){
+    仮カードセット= structuredClone(カードセット);
+    const 表= テキスト.split(/\r?\n/).map((も) => も.split("\t"));
+    const 見出し= 表[0];
+    if(見出し[0] != "id"){
+        file_error.textContent= "1行目の形式が不正です。";
+        file_error.classList.remove("hide");
+        return;
+    }
+    const フィールド数= 見出し.length;
+    const フィールド総覧= new Set(["id"]);
+    const カードパック= 表.slice(1);
+    let フィールド重複= false;
+    let 重複数= 0;
+    let 上書き= false;
+    for(const フィールドID of 見出し.slice(1)){
+        if(フィールド総覧.has(フィールドID)){
+            file_error.textContent= "1行目の形式が不正です。";
+            file_error.classList.remove("hide");
+            return;
+        }
+        const フィールド= 仮カードセット.fields.find((ふ) => ふ.id === フィールドID);
+        if(フィールド=== undefined){
+            仮カードセット.fields.push({"id":フィールドID, "name":フィールドID});
+        }else{
+            フィールド重複= true;
+        }
+        フィールド総覧.add(フィールドID);
+    }
+    const カード総覧= new Set();
+    for(const カード of カードパック){
+        if(カード.every(セル => セル === "")){
+            continue;
+        }
+        if(カード[0]==""){
+            file_error.textContent= "IDが指定されていないカードがあります。";
+            file_error.classList.remove("hide");
+            return;
+        }
+        if(カード総覧.has(カード[0])){
+            file_error.textContent= `ID${カード[0]}のカードが複数あります。`;
+            file_error.classList.remove("hide");
+            return;
+        }
+        if(カード.length > フィールド数){
+            file_error.textContent= `ID${カード[0]}のカードの形式が不正です。`;
+            file_error.classList.remove("hide");
+            return;
+        }
+        const 既存= 仮カードセット.cards.find((か) => か.id === カード[0]);
+        if(既存 !== undefined){
+            重複数++;
+        }
+        カード総覧.add(カード[0]);
+    }
+    if(重複数){
+        上書き= confirm(`既存のカードが${重複数}件あります。\n上書きしますか？`);
+    }
+    for(const カード of カードパック){
+        if (カード.every(セル => セル === "")){
+            continue;
+        }
+        const 既存= 仮カードセット.cards.find((か) => か.id === カード[0]);
+        const 初出= 既存===undefined;
+        const スリーブ= {"id":カード[0], "data":{}};
+        for(let i=1; i<フィールド数; i++){
+            if(初出 || 上書き || 既存.data[見出し[i]]===undefined){
+                スリーブ.data[見出し[i]]= カード[i];
+            }
+        }
+        if(初出){
+            仮カードセット.cards.push(スリーブ);
+        }else{
+            Object.assign(既存, スリーブ);
+        }
+    }
+}
 
 async function OP(){
     const 初期化待ち達= document.querySelectorAll(".wait");
@@ -118,6 +195,8 @@ import_type.addEventListener("change", ()=>{
         select_file.classList.remove("hide");
     }else{
         select_file.classList.add("hide");
+        if(import_type.value == "sample-pref"){
+        }
     }
 });
 select_file.addEventListener("change", ()=>{
@@ -129,84 +208,7 @@ select_file.addEventListener("change", ()=>{
     }
 
     const 読取= new FileReader();
-    読取.addEventListener("load", ()=>{
-        仮カードセット= structuredClone(カードセット);
-        const テキスト= 読取.result;
-        const 表= テキスト.split(/\r?\n/).map((も) => も.split("\t"));
-        const 見出し= 表[0];
-        if(見出し[0] != "id"){
-            file_error.textContent= "1行目の形式が不正です。";
-            file_error.classList.remove("hide");
-            return;
-        }
-        const フィールド数= 見出し.length;
-        const フィールド総覧= new Set(["id"]);
-        const カードパック= 表.slice(1);
-        let フィールド重複= false;
-        let 重複数= 0;
-        let 上書き= false;
-        for(const フィールドID of 見出し.slice(1)){
-            if(フィールド総覧.has(フィールドID)){
-                file_error.textContent= "1行目の形式が不正です。";
-                file_error.classList.remove("hide");
-                return;
-            }
-            const フィールド= 仮カードセット.fields.find((ふ) => ふ.id === フィールドID);
-            if(フィールド=== undefined){
-                仮カードセット.fields.push({"id":フィールドID, "name":フィールドID});
-            }else{
-                フィールド重複= true;
-            }
-            フィールド総覧.add(フィールドID);
-        }
-        const カード総覧= new Set();
-        for(const カード of カードパック){
-            if(カード.every(セル => セル === "")){
-                continue;
-            }
-            if(カード[0]==""){
-                file_error.textContent= "IDが指定されていないカードがあります。";
-                file_error.classList.remove("hide");
-                return;
-            }
-            if(カード総覧.has(カード[0])){
-                file_error.textContent= `ID${カード[0]}のカードが複数あります。`;
-                file_error.classList.remove("hide");
-                return;
-            }
-            if(カード.length > フィールド数){
-                file_error.textContent= `ID${カード[0]}のカードの形式が不正です。`;
-                file_error.classList.remove("hide");
-                return;
-            }
-            const 既存= 仮カードセット.cards.find((か) => か.id === カード[0]);
-            if(既存 !== undefined){
-                重複数++;
-            }
-            カード総覧.add(カード[0]);
-        }
-        if(重複数){
-            上書き= confirm(`既存のカードが${重複数}件あります。\n上書きしますか？`);
-        }
-        for(const カード of カードパック){
-            if (カード.every(セル => セル === "")){
-                continue;
-            }
-            const 既存= 仮カードセット.cards.find((か) => か.id === カード[0]);
-            const 初出= 既存===undefined;
-            const スリーブ= {"id":カード[0], "data":{}};
-            for(let i=1; i<フィールド数; i++){
-                if(初出 || 上書き || 既存.data[見出し[i]]===undefined){
-                    スリーブ.data[見出し[i]]= カード[i];
-                }
-            }
-            if(初出){
-                仮カードセット.cards.push(スリーブ);
-            }else{
-                Object.assign(既存, スリーブ);
-            }
-        }
-    });
+    読取.addEventListener("load", ()=>{tsv_loading(読取.result)});
     読取.readAsText(select_file.files[0]);
 });
 next2.addEventListener("click", ()=>{
