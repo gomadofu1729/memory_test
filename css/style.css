@@ -2,7 +2,7 @@ p{
     margin-top: auto;
     margin-bottom: auto;
 }
-tabl, th{
+table, th{
     border: 2px solid dimgray;
     border-collapse: collapse;
 }
