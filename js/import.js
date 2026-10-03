@@ -224,7 +224,6 @@ next2.addEventListener("click", ()=>{
 
 settle.addEventListener("click", async ()=>{
     try{
-        throw new Error("テスト用の保存失敗");
         await 倉庫番.store(仮カードセット);
     }catch(error){
         console.error(error);
