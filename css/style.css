@@ -2,8 +2,8 @@ p{
     margin-top: auto;
     margin-bottom: auto;
 }
-tr{
-    border: 2px solid darkgray;
+table, tr{
+    border: 2px solid dimgray;
     border-collapse: collapse;
 }
 th{
