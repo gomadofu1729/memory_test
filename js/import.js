@@ -121,6 +121,7 @@ import_type.addEventListener("change", ()=>{
     }
 });
 select_file.addEventListener("change", ()=>{
+    file_error.classList.add("hide");
     if(!select_file.value){
         file_error.textContent= "ファイルを選択してください。";
         file_error.classList.remove("hide");
@@ -159,6 +160,14 @@ select_file.addEventListener("change", ()=>{
             フィールド総覧.add(フィールドID);
         }
         for(const カード of カードパック){
+            if (カード.every(セル => セル === "")){
+                continue;
+            }
+            if (カード.length > フィールド数){
+                file_error.textContent= `ID${カード[0]}のカードの形式が不正です。`;
+                file_error.classList.remove("hide");
+                return;
+            }
             const 既存= 仮カードセット.cards.find((か) => か.id === カード[0]);
             if(既存 !== undefined){
                 重複数++;
@@ -168,6 +177,9 @@ select_file.addEventListener("change", ()=>{
             上書き= confirm(`既存のカードが${重複数}件あります。\n上書きしますか？`);
         }
         for(const カード of カードパック){
+            if (カード.every(セル => セル === "")){
+                continue;
+            }
             const 既存= 仮カードセット.cards.find((か) => か.id === カード[0]);
             const 初出= 既存===undefined;
             const スリーブ= {"id":カード[0], "data":{}};
