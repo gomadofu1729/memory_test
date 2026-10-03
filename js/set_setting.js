@@ -1,3 +1,4 @@
+const set_id= document.getElementById("set-id");
 const set_name_display= document.getElementById("set-name-display");
 const set_name_div= document.getElementById("set-name-div");
 const set_name_input= document.getElementById("set-name-input");
@@ -28,6 +29,7 @@ async function OP(){
     セットID= params.get("set");
     await 倉庫番.ready();
     カードセット= await 倉庫番.get(セットID);
+    set_id.textContent= `セットID: ${カードセット.id}`;
     set_name_display.textContent= `セット名: ${カードセット.name}`;
     cards_number.textContent= `${カードセット.cards.length}件`;
     methods_number.textContent= `${カードセット.methods.length}件`;
