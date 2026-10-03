@@ -159,11 +159,22 @@ select_file.addEventListener("change", ()=>{
             }
             フィールド総覧.add(フィールドID);
         }
+        const カード総覧= new Set();
         for(const カード of カードパック){
-            if (カード.every(セル => セル === "")){
+            if(カード.every(セル => セル === "")){
                 continue;
             }
-            if (カード.length > フィールド数){
+            if(カード[0]==""){
+                file_error.textContent= "IDが指定されていないカードがあります。";
+                file_error.classList.remove("hide");
+                return;
+            }
+            if(カード総覧.has(カード[0])){
+                file_error.textContent= `ID${カード[0]}のカードが複数あります。`;
+                file_error.classList.remove("hide");
+                return;
+            }
+            if(カード.length > フィールド数){
                 file_error.textContent= `ID${カード[0]}のカードの形式が不正です。`;
                 file_error.classList.remove("hide");
                 return;
