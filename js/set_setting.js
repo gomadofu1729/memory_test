@@ -1,6 +1,6 @@
 const set_id= document.getElementById("set-id");
 const set_name_display= document.getElementById("set-name-display");
-const set_name_div= document.getElementById("set-name-div");
+const set_name= document.getElementById("set-name");
 const set_name_input= document.getElementById("set-name-input");
 const set_name_edit= document.getElementById("set-name-edit");
 const set_name_confirm= document.getElementById("set-name-confirm");
