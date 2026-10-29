@@ -52,6 +52,7 @@ async function OP(){
     セットID= params.get("set");
     await 倉庫番.ready();
     カードセット= await 倉庫番.get(セットID);
+    set_name.textContent= カードセット.name;
     for(const フィールド of カードセット.fields){
         const 見出し= document.createElement("th");
         見出し.textContent= フィールド.name;
