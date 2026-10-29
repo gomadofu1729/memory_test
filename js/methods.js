@@ -47,6 +47,7 @@ async function OP() {
         const 問題文セル= document.createElement("td");
         問題文セル.textContent= 方式.Qtext;
         行.appendChild(問題文セル);
+        method_table.appendChild(行);
     }
     仮カードセット= structuredClone(カードセット);
     for (const よ of 初期化待ち達) {
