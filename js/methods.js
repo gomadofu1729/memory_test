@@ -1,0 +1,15 @@
+const set_name= document.getElementById("set-name");
+const confirm= document.getElementById("confirm");
+const add= document.getElementById("add");
+const setting= document.getElementById("setting");
+const method_table= document.getElementById("method-table");
+const method_id= document.getElementById("method-id");
+const Qtext= document.getElementById("Qtext");
+const Qtext_div= document.getElementById("Qtext-div");
+const Qtext_input= document.getElementById("Qtext-input");
+const Qtext_edit= document.getElementById("Qtext-edit");
+const Qtext_reset= document.getElementById("Qtext-reset");
+const Qtext_restore= document.getElementById("Qtext-restore");
+const Qtext_confirm= document.getElementById("Qtext-confirm");
+const method_delete= document.getElementById("method-delete");
+const method_undelete= document.getElementById("method-undelete");
