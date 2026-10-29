@@ -36,9 +36,6 @@ async function OP() {
         const IDセル= document.createElement("td");
         IDセル.textContent= 方式.id;
         行.appendChild(IDセル);
-        const 問題文セル= document.createElement("td");
-        問題文セル.textContent= 方式.Qtext;
-        行.appendChild(問題文セル);
         const 出題フィールドセル= document.createElement("td");
         const 出題フィールド= カードセット.fields.find((ふ) => ふ.id === 方式.Qfield);
         出題フィールドセル.textContent= 出題フィールド.name;
@@ -47,6 +44,9 @@ async function OP() {
         const 解答フィールド= カードセット.fields.find((ふ) => ふ.id === 方式.Qfield);
         出題フィールドセル.textContent= 解答フィールド.name;
         行.appendChild(解答フィールドセル);
+        const 問題文セル= document.createElement("td");
+        問題文セル.textContent= 方式.Qtext;
+        行.appendChild(問題文セル);
     }
     仮カードセット= structuredClone(カードセット);
     for (const よ of 初期化待ち達) {
@@ -54,3 +54,31 @@ async function OP() {
     }
 }
 OP();
+
+method_table.addEventListener("click", (event)=>{
+    const 対象方式= event.target.closest(("tr"));
+    if(!対象方式){return;}
+    const 対象のID= 対象方式.dataset.methodId;
+    
+    method_id.textContent= `方式ID: ${対象のID}`;
+    Qtext.textContent= `問題文: ${対象方式[1].textContent}`;
+    
+    if(対象方式.classList.contains("for-delete")){
+        body_menu.classList.add("menu-deleted");
+    }else{
+        body_menu.classList.add("menu-free");
+    }
+    指定方式ID= 対象のID;
+    指定方式行= 対象方式;
+    body_menu.classList.add("vertical");
+    body_menu.style.left = `${event.clientX}px`;
+    body_menu.style.top = `${event.clientY}px`;
+});
+document.addEventListener("click", (event)=>{
+    if(!event.target.closest(".pop-up") && !event.target.closest("#method-table")){
+        if(body_menu.classList.contains("menu-editing")){
+            content_restore.click();
+        }
+        body_menu.classList.remove("vertical", "menu-free", "menu-deleted");
+    }
+});

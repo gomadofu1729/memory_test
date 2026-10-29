@@ -105,12 +105,12 @@ card_table_head.addEventListener("click", (event)=>{
             field_method_to.appendChild(P);
         }
     }
+
     if(対象セル.classList.contains("for-delete")){
         head_menu.classList.add("menu-deleted");
     }else{
         head_menu.classList.add("menu-free");
     }
-
     指定フィールドID= 対象のID;
     指定フィールドセル= 対象セル;
     head_menu.dataset.selectedId= 対象のID;
@@ -131,12 +131,12 @@ card_table_body.addEventListener("click", (event)=>{
     content_name.textContent= `${仮フィールド.name}: ${対象セル.textContent}`;
     content_label.textContent= `${仮フィールド.name}: `;
     content_input.placeholder= 対象セル.textContent;
+
     if(対象カード.classList.contains("for-delete")){
         body_menu.classList.add("menu-deleted");
     }else{
         body_menu.classList.add("menu-free");
     }
-
     指定カードID= 対象のID;
     指定カードセル= 対象セル;
     指定カード行= 対象カード;
