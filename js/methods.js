@@ -41,7 +41,7 @@ async function OP() {
         出題フィールドセル.textContent= 出題フィールド.name;
         行.appendChild(出題フィールドセル);
         const 解答フィールドセル= document.createElement("td");
-        const 解答フィールド= カードセット.fields.find((ふ) => ふ.id === 方式.Qfield);
+        const 解答フィールド= カードセット.fields.find((ふ) => ふ.id === 方式.Afield);
         解答フィールドセル.textContent= 解答フィールド.name;
         行.appendChild(解答フィールドセル);
         const 問題文セル= document.createElement("td");
