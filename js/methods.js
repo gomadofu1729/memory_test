@@ -30,7 +30,24 @@ async function OP() {
     await 倉庫番.ready();
     カードセット= await 倉庫番.get(セットID);
     set_name.textContent= カードセット.name;
-    
+    for(const 方式 of カードセット.methods){
+        const 行= document.createElement("tr");
+        行.dataset.methodId= 方式.id;
+        const IDセル= document.createElement("td");
+        IDセル.textContent= 方式.id;
+        行.appendChild(IDセル);
+        const 問題文セル= document.createElement("td");
+        問題文セル.textContent= 方式.Qtext;
+        行.appendChild(問題文セル);
+        const 出題フィールドセル= document.createElement("td");
+        const 出題フィールド= カードセット.fields.find((ふ) => ふ.id === 方式.Qfield);
+        出題フィールドセル.textContent= 出題フィールド.name;
+        行.appendChild(出題フィールドセル);
+        const 解答フィールドセル= document.createElement("td");
+        const 解答フィールド= カードセット.fields.find((ふ) => ふ.id === 方式.Qfield);
+        出題フィールドセル.textContent= 解答フィールド.name;
+        行.appendChild(解答フィールドセル);
+    }
     仮カードセット= structuredClone(カードセット);
     for (const よ of 初期化待ち達) {
         よ.disabled = false;
