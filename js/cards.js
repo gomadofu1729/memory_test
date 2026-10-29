@@ -1,11 +1,11 @@
 const set_name= document.getElementById("set-name");
-const card_table_head= document.getElementById("card-table-head");
-const head_row= document.getElementById("head-row");
-const card_table_body= document.getElementById("card-table-body");
 const confirm= document.getElementById("confirm");
 const cards_import= document.getElementById("cards-import");
 const cards_export= document.getElementById("cards-export");
 const setting= document.getElementById("setting");
+const card_table_head= document.getElementById("card-table-head");
+const head_row= document.getElementById("head-row");
+const card_table_body= document.getElementById("card-table-body");
 const head_menu= document.getElementById("head-menu");
 const field_id= document.getElementById("field-id");
 const field_name= document.getElementById("field-name");
