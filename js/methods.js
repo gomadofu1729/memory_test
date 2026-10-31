@@ -84,3 +84,47 @@ document.addEventListener("click", (event)=>{
         body_menu.classList.remove("vertical", "menu-free", "menu-deleted");
     }
 });
+
+Qtext_edit.addEventListener("click", ()=>{
+    body_menu.classList.remove("menu-free");
+    body_menu.classList.add("menu-editing");
+    Qtext_input.value="";
+});
+Qtext_reset.addEventListener("click", ()=>{
+    const 方式= カードセット.methods.find((ほ) => ほ.id === 指定方式ID);
+    const 仮方式= 仮カードセット.methods.find((ほ) => ほ.id === 指定方式ID);
+    仮方式.Qtext= 方式.Qtext;
+    指定方式行.children[1].textContent= 方式.Qtext;
+    指定方式行.children[1].classList.remove("changed");
+    指定方式行.children[1].classList.add("original");
+    Qtext.textContent= 方式.Qtext;
+});
+Qtext_restore.addEventListener("click", ()=>{
+    body_menu.classList.remove("menu-editing");
+    body_menu.classList.add("menu-free");
+});
+Qtext_confirm.addEventListener("click", ()=>{
+    const newName= Qtext_input.value.trim();
+    if(newName== ""){return;}
+    body_menu.classList.remove("menu-editing");
+    body_menu.classList.add("menu-free");
+    const 仮方式= 仮カードセット.methods.find((ほ) => ほ.id === 指定方式ID);
+    仮方式.Qtext= 方式.Qtext;
+    指定方式行.children[1].textContent= 方式.Qtext;
+    指定方式行.children[1].classList.remove("original");
+    指定方式行.children[1].classList.add("editing");
+    Qtext.textContent= 方式.Qtext;
+});
+method_delete.addEventListener("click", ()=>{
+    body_menu.classList.remove("menu-free");
+    body_menu.classList.add("menu-deleted");
+    削除予定方式.add(指定方式ID);
+    指定方式行.classList.add("for-delete");
+});
+method_undelete.addEventListener("click", ()=>{
+    body_menu.classList.remove("menu-deleted");
+    body_menu.classList.add("menu-free");
+    削除予定方式.delete(指定方式ID);
+    指定方式行.classList.remove("for-delete");
+
+})

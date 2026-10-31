@@ -181,7 +181,7 @@ field_restore.addEventListener("click", ()=>{
 });
 field_confirm.addEventListener("click", ()=>{
     const newName= field_input.value.trim();
-    if(newName=== ""){return;}
+    if(newName== ""){return;}
     head_menu.classList.remove("menu-editing");
     head_menu.classList.add("menu-free");
     const 仮フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
@@ -201,7 +201,6 @@ field_undelete.addEventListener("click", ()=>{
     head_menu.classList.remove("menu-deleted");
     head_menu.classList.add("menu-free");
     削除予定フィールド.delete(指定フィールドID);
-    const フィールド= カードセット.fields.find((ふ) => ふ.id === 指定フィールドID);
     指定フィールドセル.classList.remove("for-delete");
 });
 content_edit.addEventListener("click", ()=>{
@@ -225,7 +224,7 @@ content_restore.addEventListener("click", ()=>{
 })
 content_confirm.addEventListener("click", ()=>{
     const newName= content_input.value.trim();
-    if(newName=== ""){return;}
+    if(newName== ""){return;}
     body_menu.classList.remove("menu-editing");
     body_menu.classList.add("menu-free");
     const 仮カード= 仮カードセット.cards.find((か) => か.id === 指定カードID);
@@ -246,7 +245,6 @@ card_undelete.addEventListener("click", ()=>{
     body_menu.classList.remove("menu-deleted");
     body_menu.classList.add("menu-free");
     削除予定カード.delete(指定カードID);
-    const カード= カードセット.cards.find((か) => か.id === 指定カードID);
     指定カード行.classList.remove("for-delete");
 });
 
