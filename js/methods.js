@@ -79,7 +79,7 @@ method_table.addEventListener("click", (event)=>{
 document.addEventListener("click", (event)=>{
     if(!event.target.closest(".pop-up") && !event.target.closest("#method-table")){
         if(body_menu.classList.contains("menu-editing")){
-            content_restore.click();
+            Qtext_restore.click();
         }
         body_menu.classList.remove("vertical", "menu-free", "menu-deleted");
     }
