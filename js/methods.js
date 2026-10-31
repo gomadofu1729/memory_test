@@ -62,7 +62,7 @@ method_table.addEventListener("click", (event)=>{
     const 対象のID= 対象方式.dataset.methodId;
     
     method_id.textContent= `方式ID: ${対象のID}`;
-    Qtext.textContent= `問題文: ${対象方式[1].textContent}`;
+    Qtext.textContent= `問題文: ${対象方式.children[1].textContent}`;
     
     if(対象方式.classList.contains("for-delete")){
         body_menu.classList.add("menu-deleted");
