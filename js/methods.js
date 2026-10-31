@@ -3,6 +3,7 @@ const confirm= document.getElementById("confirm");
 const add= document.getElementById("add");
 const setting= document.getElementById("setting");
 const method_table= document.getElementById("method-table");
+const body_menu= document.getElementById("body-menu");
 const method_id= document.getElementById("method-id");
 const Qtext= document.getElementById("Qtext");
 const Qtext_div= document.getElementById("Qtext-div");
