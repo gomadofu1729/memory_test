@@ -126,5 +126,16 @@ method_undelete.addEventListener("click", ()=>{
     body_menu.classList.add("menu-free");
     削除予定方式.delete(指定方式ID);
     指定方式行.classList.remove("for-delete");
+});
 
-})
+confirm.addEventListener("click", ()=>{
+    仮カードセット.methods= 仮カードセット.methods.filter(
+        (ほ) => !削除予定方式.has(ほ.id)
+    );
+    await 倉庫番.store(仮カードセット);
+    location.reload();
+});
+
+setting.addEventListener("click", ()=>{
+    船頭.setting(セットID);
+});
