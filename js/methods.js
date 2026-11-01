@@ -128,7 +128,7 @@ method_undelete.addEventListener("click", ()=>{
     指定方式行.classList.remove("for-delete");
 });
 
-confirm.addEventListener("click", ()=>{
+confirm.addEventListener("click", async ()=>{
     仮カードセット.methods= 仮カードセット.methods.filter(
         (ほ) => !削除予定方式.has(ほ.id)
     );
