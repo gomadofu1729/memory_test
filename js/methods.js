@@ -63,7 +63,7 @@ method_table.addEventListener("click", (event)=>{
     const 対象のID= 対象方式.dataset.methodId;
     
     method_id.textContent= `方式ID: ${対象のID}`;
-    Qtext.textContent= `問題文: ${対象方式.children[1].textContent}`;
+    Qtext.textContent= `問題文: ${対象方式.children[3].textContent}`;
     
     if(対象方式.classList.contains("for-delete")){
         body_menu.classList.add("menu-deleted");
@@ -94,9 +94,9 @@ Qtext_reset.addEventListener("click", ()=>{
     const 方式= カードセット.methods.find((ほ) => ほ.id === 指定方式ID);
     const 仮方式= 仮カードセット.methods.find((ほ) => ほ.id === 指定方式ID);
     仮方式.Qtext= 方式.Qtext;
-    指定方式行.children[1].textContent= 方式.Qtext;
-    指定方式行.children[1].classList.remove("changed");
-    指定方式行.children[1].classList.add("original");
+    指定方式行.children[3].textContent= 方式.Qtext;
+    指定方式行.children[3].classList.remove("changed");
+    指定方式行.children[3].classList.add("original");
     Qtext.textContent= 方式.Qtext;
 });
 Qtext_restore.addEventListener("click", ()=>{
@@ -110,9 +110,9 @@ Qtext_confirm.addEventListener("click", ()=>{
     body_menu.classList.add("menu-free");
     const 仮方式= 仮カードセット.methods.find((ほ) => ほ.id === 指定方式ID);
     仮方式.Qtext= 方式.Qtext;
-    指定方式行.children[1].textContent= 方式.Qtext;
-    指定方式行.children[1].classList.remove("original");
-    指定方式行.children[1].classList.add("editing");
+    指定方式行.children[3].textContent= 方式.Qtext;
+    指定方式行.children[3].classList.remove("original");
+    指定方式行.children[3].classList.add("editing");
     Qtext.textContent= 方式.Qtext;
 });
 method_delete.addEventListener("click", ()=>{
