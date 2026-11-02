@@ -109,11 +109,11 @@ Qtext_confirm.addEventListener("click", ()=>{
     body_menu.classList.remove("menu-editing");
     body_menu.classList.add("menu-free");
     const 仮方式= 仮カードセット.methods.find((ほ) => ほ.id === 指定方式ID);
-    仮方式.Qtext= 方式.Qtext;
-    指定方式行.children[3].textContent= 方式.Qtext;
+    仮方式.Qtext= Qtext_input.value;
+    指定方式行.children[3].textContent= Qtext_input.value;
     指定方式行.children[3].classList.remove("original");
     指定方式行.children[3].classList.add("editing");
-    Qtext.textContent= 方式.Qtext;
+    Qtext.textContent= Qtext_input.value;
 });
 method_delete.addEventListener("click", ()=>{
     body_menu.classList.remove("menu-free");
