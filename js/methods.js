@@ -112,7 +112,7 @@ Qtext_confirm.addEventListener("click", ()=>{
     仮方式.Qtext= Qtext_input.value;
     指定方式行.children[3].textContent= Qtext_input.value;
     指定方式行.children[3].classList.remove("original");
-    指定方式行.children[3].classList.add("editing");
+    指定方式行.children[3].classList.add("changed");
     Qtext.textContent= Qtext_input.value;
 });
 method_delete.addEventListener("click", ()=>{
