@@ -205,12 +205,14 @@ add.addEventListener("click", ()=>{
 add_Qfield_select.addEventListener("change", success_Qop);
 add_Qfield_reset.addEventListener("click", ()=>{
     add_Qfield_select.selectedIndex = -1;
+    success_Qop();
 });
 add_Afield_select.addEventListener("change", success_Aop);
 add_Afield_reset.addEventListener("click", ()=>{
     add_Afield_select.selectedIndex = -1;
+    success_Aop();
 });
-add_QA_swap.addEventListener("click",()=>{
+add_QA_swap.addEventListener("click", ()=>{
     const 選択済_Q= new Set(
         [...add_Qfield_select.selectedOptions].map((せ) => せ.value)
     );
