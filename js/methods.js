@@ -34,7 +34,8 @@ function success_Qop(){
     const 選択済_Q= new Set(
         [...add_Qfield_select.selectedOptions].map((せ) => せ.value)
     );
-    for(const 選択肢 of add_Afield_select){
+    for(const 選択肢 of add_Afield_select.options){
+        選択肢.selected&= !選択済_Q.has(選択肢.value);
         選択肢.disabled= 選択済_Q.has(選択肢.value);
     }
 }
@@ -42,7 +43,8 @@ function success_Aop(){
     const 選択済_A= new Set(
         [...add_Afield_select.selectedOptions].map((せ) => せ.value)
     );
-    for(const 選択肢 of add_Qfield_select){
+    for(const 選択肢 of add_Qfield_select.options){
+        選択肢.selected&= !選択済_A.has(選択肢.value);
         選択肢.disabled= 選択済_A.has(選択肢.value);
     }
 }
