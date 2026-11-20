@@ -212,7 +212,37 @@ add_QA_swap.addEventListener("click",()=>{
         選択肢.selected= 選択済_Q.has(選択肢.value);
         選択肢.disabled= 選択済_A.has(選択肢.value);
     }
-})
+});
+add_confirm.addEventListener("click", ()=>{
+    if(
+        add_Qfield_select.selectedOptions.length ==0 ||
+        add_Afield_select.selectedOptions.length ==0
+    ){return;}
+    if(add_Qtext.value==""){
+        add_Qtext.value="{解答}は何?";
+    }
+    for(Q選択肢 of add_Qfield_select.selectedOptions){
+        for(A選択肢 of add_Afield_select.selectedOptions){
+            追加予定ID= `${Q選択肢.value}-to-${A選択肢.value}`;
+            const 重複= 仮カードセット.methods.some((ほ) => ほ.id === 追加予定ID);
+            if(重複){continue;}
+
+            const 問題フィールド名= 仮カードセット.fields.find((ふ) => ふ.id= Q選択肢.value);
+            const 解答フィールド名= 仮カードセット.fields.find((ふ) => ふ.id= A選択肢.value);
+            const 追加方式= {
+                id: 追加予定ID,
+                Qfield: Q選択肢.value,
+                Afield: A選択肢.value,
+                Qtext: add_Qtext.value
+                    .replaceAll("{問題}", 問題フィールド名)
+                    .replaceAll("{解答}", 解答フィールド名);
+            };
+            仮カードセット.methods.push(追加方式);
+
+
+        }
+    }
+});
 add_close.addEventListener("click", ()=>{
     add_menu.classList.remove("vertical");
 });
