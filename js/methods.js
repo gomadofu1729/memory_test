@@ -14,6 +14,15 @@ const Qtext_restore= document.getElementById("Qtext-restore");
 const Qtext_confirm= document.getElementById("Qtext-confirm");
 const method_delete= document.getElementById("method-delete");
 const method_undelete= document.getElementById("method-undelete");
+const add_menu= document.getElementById("add-menu");
+const add_Qfield_select= document.getElementById("add-Qfield-select");
+const add_Qfield_reset= document.getElementById("add-Qfield-reset");
+const add_QA_swap= document.getElementById("add-QA-swap");
+const add_Afield_select= document.getElementById("add-Afield-select");
+const add_Afield_reset= document.getElementById("add-Afield-reset");
+const add_Qtext= document.getElementById("add-Qtext");
+const add_confirm= document.getElementById("add-confirm");
+const add_close= document.getElementById("add-close");
 
 let カードセット;
 let セットID;
@@ -138,4 +147,10 @@ confirm.addEventListener("click", async ()=>{
 
 setting.addEventListener("click", ()=>{
     船頭.setting(セットID);
+});
+add.addEventListener("click", ()=>{
+    add_menu.classList.add("vertical");
+});
+add_close.addEventListener("click", ()=>{
+    add_menu.classList.remove("vertical");
 });
