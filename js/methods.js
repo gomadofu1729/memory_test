@@ -251,10 +251,9 @@ add_confirm.addEventListener("click", ()=>{
                     .replaceAll("{解答}", 解答フィールド名);
             };
             仮カードセット.methods.push(追加方式);
-
-
         }
     }
+    construct_table();
 });
 add_close.addEventListener("click", ()=>{
     add_menu.classList.remove("vertical");
