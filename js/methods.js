@@ -48,26 +48,18 @@ function success_Aop(){
         選択肢.disabled= 選択済_A.has(選択肢.value);
     }
 }
-async function OP() {
-    const 初期化待ち達= document.querySelectorAll(".wait");
-    for (const よ of 初期化待ち達) {
-        よ.disabled = true;
-    }
-    const params= new URLSearchParams(location.search);
-    セットID= params.get("set");
-    await 倉庫番.ready();
-    カードセット= await 倉庫番.get(セットID);
-    set_name.textContent= カードセット.name;
-
-    for(const 方式 of カードセット.methods){
+function construct_table(){
+    method_table.innerHTML="";
+    for(const 方式 of 仮カードセット.methods){
         const 行= document.createElement("tr");
         行.dataset.methodId= 方式.id;
+        
         const IDセル= document.createElement("td");
         IDセル.textContent= 方式.id;
         行.appendChild(IDセル);
 
         const 出題フィールドセル= document.createElement("td");
-        const 出題フィールド= カードセット.fields.find((ふ) => ふ.id === 方式.Qfield);
+        const 出題フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 方式.Qfield);
         出題フィールドセル.textContent= 出題フィールド.name;
         行.appendChild(出題フィールドセル);
 
@@ -82,6 +74,18 @@ async function OP() {
 
         method_table.appendChild(行);
     }
+}
+async function OP() {
+    const 初期化待ち達= document.querySelectorAll(".wait");
+    for (const よ of 初期化待ち達) {
+        よ.disabled = true;
+    }
+    const params= new URLSearchParams(location.search);
+    セットID= params.get("set");
+    await 倉庫番.ready();
+    カードセット= await 倉庫番.get(セットID);
+    set_name.textContent= カードセット.name;
+    
     for(const フィールド of カードセット.fields){
         const Q選択肢= document.createElement("option");
         Q選択肢.textContent= フィールド.name;
@@ -94,6 +98,7 @@ async function OP() {
         add_Afield_select.appendChild(A選択肢);
     }
     仮カードセット= structuredClone(カードセット);
+    construct_table();
     for (const よ of 初期化待ち達) {
         よ.disabled = false;
     }
