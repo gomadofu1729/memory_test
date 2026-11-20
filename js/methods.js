@@ -197,6 +197,22 @@ add_Afield_select.addEventListener("change", success_Aop);
 add_Afield_reset.addEventListener("click", ()=>{
     add_Afield_select.selectedIndex = -1;
 });
+add_QA_swap.addEventListener("click",()=>{
+    const 選択済_Q= new Set(
+        [...add_Qfield_select.selectedOptions].map((せ) => せ.value)
+    );
+    const 選択済_A= new Set(
+        [...add_Afield_select.selectedOptions].map((せ) => せ.value)
+    );
+    for(const 選択肢 of add_Qfield_select.options){
+        選択肢.selected= 選択済_A.has(選択肢.value);
+        選択肢.disabled= 選択済_Q.has(選択肢.value);
+    }
+    for(const 選択肢 of add_Afield_select.options){
+        選択肢.selected= 選択済_Q.has(選択肢.value);
+        選択肢.disabled= 選択済_A.has(選択肢.value);
+    }
+})
 add_close.addEventListener("click", ()=>{
     add_menu.classList.remove("vertical");
 });
