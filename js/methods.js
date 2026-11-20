@@ -166,6 +166,15 @@ setting.addEventListener("click", ()=>{
 });
 add.addEventListener("click", ()=>{
     add_menu.classList.add("vertical");
+    add_Qfield_reset.click();
+    add_Afield_reset.click();
+});
+
+add_Qfield_reset.addEventListener("click", ()=>{
+    add_Qfield_select.selectedIndex = -1;
+});
+add_Afield_reset.addEventListener("click", ()=>{
+    add_Afield_select.selectedIndex = -1;
 });
 add_close.addEventListener("click", ()=>{
     add_menu.classList.remove("vertical");
