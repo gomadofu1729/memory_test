@@ -40,7 +40,7 @@ async function OP() {
     await 倉庫番.ready();
     カードセット= await 倉庫番.get(セットID);
     set_name.textContent= カードセット.name;
-    
+
     for(const 方式 of カードセット.methods){
         const 行= document.createElement("tr");
         行.dataset.methodId= 方式.id;
@@ -63,6 +63,17 @@ async function OP() {
         行.appendChild(問題文セル);
 
         method_table.appendChild(行);
+    }
+    for(const フィールド of カードセット.fields){
+        const Q選択肢= document.createElement("option");
+        Q選択肢.textContent= フィールド.name;
+        Q選択肢.value= フィールド.id;
+        add_Qfield_select.appendChild(Q選択肢);
+
+        const A選択肢= document.createElement("option");
+        A選択肢.textContent= フィールド.name;
+        A選択肢.value= フィールド.id;
+        add_Afield_select.appendChild(A選択肢);
     }
     仮カードセット= structuredClone(カードセット);
     for (const よ of 初期化待ち達) {
