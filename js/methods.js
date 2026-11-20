@@ -53,10 +53,13 @@ function construct_table(){
     for(const 方式 of 仮カードセット.methods){
         const 行= document.createElement("tr");
         行.dataset.methodId= 方式.id;
-        
+
         const IDセル= document.createElement("td");
         IDセル.textContent= 方式.id;
         行.appendChild(IDセル);
+        if(削除予定方式.has(方式.id)){
+            行.classList.add("for-delete");
+        }
 
         const 出題フィールドセル= document.createElement("td");
         const 出題フィールド= 仮カードセット.fields.find((ふ) => ふ.id === 方式.Qfield);
@@ -71,6 +74,11 @@ function construct_table(){
         const 問題文セル= document.createElement("td");
         問題文セル.textContent= 方式.Qtext;
         行.appendChild(問題文セル);
+        if(
+            方式.Qtext!== カードセット.methods.find((ほ) => ほ.id==方式.id).Qtext
+        ){
+            問題文セル.classList.add("changed");
+        }
 
         method_table.appendChild(行);
     }
