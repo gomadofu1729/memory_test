@@ -17,9 +17,9 @@ const method_undelete= document.getElementById("method-undelete");
 const add_menu= document.getElementById("add-menu");
 const add_Qfield_select= document.getElementById("add-Qfield-select");
 const add_Qfield_reset= document.getElementById("add-Qfield-reset");
-const add_QA_swap= document.getElementById("add-QA-swap");
 const add_Afield_select= document.getElementById("add-Afield-select");
 const add_Afield_reset= document.getElementById("add-Afield-reset");
+const add_QA_swap= document.getElementById("add-QA-swap");
 const add_Qtext= document.getElementById("add-Qtext");
 const add_confirm= document.getElementById("add-confirm");
 const add_close= document.getElementById("add-close");
@@ -30,6 +30,22 @@ let 仮カードセット;
 let 指定方式ID;
 let 指定方式行;
 let 削除予定方式= new Set();
+function success_Qop(){
+    const 選択済_Q= new Set(
+        [...add_Qfield_select.selectedOptions].map((せ) => せ.value)
+    );
+    for(const 選択肢 of add_Afield_select){
+        選択肢.disabled= 選択済_Q.has(選択肢.value);
+    }
+}
+function success_Aop(){
+    const 選択済_A= new Set(
+        [...add_Afield_select.selectedOptions].map((せ) => せ.value)
+    );
+    for(const 選択肢 of add_Qfield_select){
+        選択肢.disabled= 選択済_A.has(選択肢.value);
+    }
+}
 async function OP() {
     const 初期化待ち達= document.querySelectorAll(".wait");
     for (const よ of 初期化待ち達) {
@@ -168,11 +184,14 @@ add.addEventListener("click", ()=>{
     add_menu.classList.add("vertical");
     add_Qfield_reset.click();
     add_Afield_reset.click();
+    add_Qtext.value="";
 });
 
+add_Qfield_select.addEventListener("change", success_Qop);
 add_Qfield_reset.addEventListener("click", ()=>{
     add_Qfield_select.selectedIndex = -1;
 });
+add_Afield_select.addEventListener("change", success_Aop);
 add_Afield_reset.addEventListener("click", ()=>{
     add_Afield_select.selectedIndex = -1;
 });
