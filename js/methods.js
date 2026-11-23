@@ -250,7 +250,7 @@ add_confirm.addEventListener("click", ()=>{
                 Afield: A選択肢.value,
                 Qtext: add_Qtext.value
                     .replaceAll("{問題}", 問題フィールド名)
-                    .replaceAll("{解答}", 解答フィールド名);
+                    .replaceAll("{解答}", 解答フィールド名)
             };
             仮カードセット.methods.push(追加方式);
         }
