@@ -244,8 +244,8 @@ add_confirm.addEventListener("click", ()=>{
             const 重複= 仮カードセット.methods.some((ほ) => ほ.id === 追加予定ID);
             if(重複){continue;}
 
-            const 問題フィールド名= 仮カードセット.fields.find((ふ) => ふ.id= Q選択肢.value);
-            const 解答フィールド名= 仮カードセット.fields.find((ふ) => ふ.id= A選択肢.value);
+            const 問題フィールド名= 仮カードセット.fields.find((ふ) => ふ.id= Q選択肢.value).name;
+            const 解答フィールド名= 仮カードセット.fields.find((ふ) => ふ.id= A選択肢.value).name;
             const 追加方式= {
                 id: 追加予定ID,
                 Qfield: Q選択肢.value,
