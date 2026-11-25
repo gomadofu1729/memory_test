@@ -75,6 +75,7 @@ function construct_table(){
         問題文セル.textContent= 方式.Qtext;
         行.appendChild(問題文セル);
         if(
+            !カードセット.methods.includes(方式.Qtext) ||
             方式.Qtext!== カードセット.methods.find((ほ) => ほ.id==方式.id).Qtext
         ){
             問題文セル.classList.add("changed");
