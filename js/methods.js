@@ -74,9 +74,10 @@ function construct_table(){
         const 問題文セル= document.createElement("td");
         問題文セル.textContent= 方式.Qtext;
         行.appendChild(問題文セル);
+
+        const 元方式=カードセット.methods.find((ほ) => ほ.id==方式.id);
         if(
-            !カードセット.methods.includes(方式) ||
-            方式.Qtext!== カードセット.methods.find((ほ) => ほ.id==方式.id).Qtext
+            !元方式 || 方式.Qtext!== 元方式.Qtext
         ){
             問題文セル.classList.add("changed");
         }
